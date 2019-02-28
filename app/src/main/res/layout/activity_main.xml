@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:id="@+id/main_activity_root_layout"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@android:color/white">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/activity_main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/activity_main_layout_search"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_main_layout_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/activity_main_toolbar"
+            app:layout_constraintBottom_toTopOf="@id/main_tab_layout"
+            android:background="@color/colorPrimary"
+            android:visibility="gone">
+
+        <EditText
+                android:id="@+id/activity_main_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/search_margin"
+                android:layout_marginEnd="@dimen/search_margin"
+                android:backgroundTint="@color/white"
+                android:hint="@string/search_reply"
+                android:textColorHint="@color/white"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:imeOptions="actionDone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/main_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/activity_main_layout_search"
+            app:tabBackground="@color/colorPrimary"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@android:color/white"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextColor="@color/colorPrimaryLight"/>
+
+
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/reply_view_pager"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_tab_layout"
+            android:layout_height="0dp"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/shadow_height"
+            android:background="@drawable/shadow"
+            app:layout_constraintTop_toBottomOf="@id/main_tab_layout"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.COMPILE_SDK
+    defaultConfig {
+        applicationId "fr.legrand.oss117soundboard"
+        minSdkVersion Versions.MIN_SDK
+        targetSdkVersion Versions.TARGET_SDK
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "env"
+    productFlavors{
+        dev{
+            dimension "env"
+            applicationIdSuffix ".dev"
+        }
+        prod{
+            dimension "env"
+        }
+    }
+}
+
+dependencies {
+   implementation Libraries.KTX
+   implementation Libraries.SUPPORT
+   implementation Libraries.KOTLIN_STDLIB
+   implementation Libraries.ARCH_COMPONENTS
+
+    implementation Libraries.GLIDE
+
+    implementation Libraries.DAGGER_ANDROID
+    kapt Libraries.DAGGER_ANDROID_PROCESSORS
+
+    implementation Libraries.TIMBER
+    implementation Libraries.RX_JAVA_2
+    implementation Libraries.RX_KOTLIN
+
+    implementation Libraries.EXOPLAYER
+}
