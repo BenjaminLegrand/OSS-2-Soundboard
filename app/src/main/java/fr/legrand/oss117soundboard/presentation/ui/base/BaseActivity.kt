@@ -8,6 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -23,6 +25,8 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject
     lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
 
+    protected val navController : NavController by lazy { findNavController(getNavHostId()) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -31,6 +35,7 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @LayoutRes
     abstract fun getLayoutId(): Int
+    abstract fun getNavHostId(): Int
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
 

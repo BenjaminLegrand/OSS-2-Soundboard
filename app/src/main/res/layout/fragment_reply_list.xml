@@ -5,18 +5,10 @@
                                                    android:animateLayoutChanges="true"
                                                    android:layout_height="match_parent">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                           android:id="@+id/fragment_reply_list_refresh_layout"
-                                                           android:layout_width="match_parent"
-                                                           android:layout_height="match_parent"
-                                                           android:background="@android:color/transparent">
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_reply_list_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_reply_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     <ImageView
             android:id="@+id/fragment_reply_list_placeholder_image"

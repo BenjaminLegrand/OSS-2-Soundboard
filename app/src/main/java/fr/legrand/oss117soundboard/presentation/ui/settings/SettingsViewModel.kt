@@ -1,12 +1,18 @@
 package fr.legrand.oss117soundboard.presentation.ui.settings
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
+import fr.legrand.oss117soundboard.data.values.SortValues
+import fr.legrand.oss117soundboard.presentation.OSSApplication
 import fr.legrand.oss117soundboard.presentation.component.MediaPlayerComponent
 import fr.legrand.oss117soundboard.presentation.ui.reply.item.ReplyViewData
+import fr.legrand.oss117soundboard.presentation.viewmodel.AndroidStateViewModel
 import fr.legrand.oss117soundboard.presentation.viewmodel.StateViewModel
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -20,8 +26,9 @@ private const val M_S_MODULO_VALUE: Long = 60
 
 class SettingsViewModel @Inject constructor(
     private val contentRepository: ContentRepository,
-    private val mediaPlayerComponent: MediaPlayerComponent
-) : StateViewModel<SettingsViewState>() {
+    private val mediaPlayerComponent: MediaPlayerComponent,
+    application: Application
+) : AndroidStateViewModel<SettingsViewState>(application) {
     override val currentViewState = SettingsViewState()
 
     val replySort = MutableLiveData<String>()
@@ -66,14 +73,25 @@ class SettingsViewModel @Inject constructor(
 
     private fun getReplySort() {
         contentRepository.getReplySort().subscribeOn(Schedulers.io())
-            .subscribeBy(onNext = { replySort.postValue(it) }, onError = { it.printStackTrace() })
+            .subscribeBy(onSuccess = {
+                val sortText = when(it){
+                    SortValues.ALPHABETICAL_SORT -> getApplication<OSSApplication>().getString(R.string.alphabetical_order)
+                    SortValues.MOVIE_SORT ->getApplication<OSSApplication>().getString(R.string.movie_order)
+                    SortValues.RANDOM_SORT -> getApplication<OSSApplication>().getString(R.string.alphabetical_order)
+                }
+                replySort.postValue(sortText)
+            }, onError = { Timber.e(it) })
     }
 
     private fun getMostListenedReply() {
         contentRepository.getMostListenedReply().subscribeOn(Schedulers.io()).subscribeBy(
             onNext = {
-                viewState.update { mostListenedReplyAvailable = true }
-                mostListenedReply.postValue(ReplyViewData(it))
+                if(it.listenCount > 0){
+                    viewState.update { mostListenedReplyAvailable = true }
+                    mostListenedReply.postValue(ReplyViewData(it))
+                }else{
+                    viewState.update { mostListenedReplyAvailable = false }
+                }
             },
             onError = {
                 viewState.update { mostListenedReplyAvailable = false }
@@ -91,11 +109,13 @@ class SettingsViewModel @Inject constructor(
                     )
                 )
             },
-                onError = { it.printStackTrace() })
+                onError = { Timber.e(it) })
     }
 
     private fun listenToReply(replyId: Int) {
-        mediaPlayerComponent.playSoundMedia(replyId).subscribeOn(Schedulers.io()).subscribe()
+        contentRepository.incrementReplyListenCount(replyId).subscribeBy(onError = {}, onComplete = {})
+        mediaPlayerComponent.playSoundMedia(replyId).subscribeOn(Schedulers.io())
+            .subscribeBy(onError = { Timber.e(it) }, onComplete = {})
     }
 
 }

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <PreferenceCategory android:title="@string/parameter_title">
+    <PreferenceCategory android:title="@string/settings_title">
 
         <SwitchPreference
             android:key="@string/multi_listen_preference_key"

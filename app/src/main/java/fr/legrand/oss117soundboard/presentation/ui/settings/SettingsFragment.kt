@@ -35,14 +35,26 @@ class SettingsFragment : BaseVMFragment<SettingsViewModel>() {
             sharedViewModel.onSortUpdated()
             fragment_settings_reply_sort.text = it
         }
+
         viewModel.totalReplyTime.observeSafe(this) {
             fragment_settings_total_reply_time.text = getString(R.string.total_reply_time_text, it.first, it.second, it.third)
         }
+
         viewModel.viewState.observeSafe(this) {
             if (!it.mostListenedReplyAvailable) {
                 fragment_settings_most_listened_reply.text = getString(R.string.no_listened_reply)
             }
         }
+
+        viewModel.multiListenEnabled.observeSafe(this) {
+            fragment_settings_select_multi_listen_switch.isChecked = it
+        }
+
+        fragment_settings_select_multi_listen_switch.setOnCheckedChangeListener { _, checked ->
+            viewModel.updateMultiListenParameter(checked)
+        }
+
+        fragment_settings_random_reply_title.setOnClickListener { viewModel.listenToRandomReply() }
     }
 
 //    fun updateSwitch(checked: Boolean) {
@@ -88,9 +100,4 @@ class SettingsFragment : BaseVMFragment<SettingsViewModel>() {
 //        }
 //    }
 
-    companion object {
-        fun newInstance(): SettingsFragment {
-            return SettingsFragment()
-        }
-    }
 }

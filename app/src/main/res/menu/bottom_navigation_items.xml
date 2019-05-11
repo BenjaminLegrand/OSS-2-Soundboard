@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@id/favorite_reply_fragment"
+        android:icon="@drawable/ic_bottom_favorite"
+        android:title="@string/favorite_list_title"
+        app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@id/all_reply_fragment"
+            android:icon="@drawable/ic_bottom_all"
+            android:title="@string/reply_list_title"
+            app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@id/settings_fragment"
+            android:icon="@drawable/ic_bottom_settings"
+            android:title="@string/settings_title"
+            app:showAsAction="ifRoom" />
+</menu>

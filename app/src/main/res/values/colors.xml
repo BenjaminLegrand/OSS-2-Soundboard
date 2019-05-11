@@ -12,4 +12,5 @@
     <color name="shadow_start_color">#38000000</color>
     <color name="white">#fff</color>
     <color name="base_separator_color">#E0E0E0</color>
+    <color name="base_background_color">#FAFAFA</color>
 </resources>

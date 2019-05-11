@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath Plugins.ANDROID_GRADLE_PLUGIN
         classpath Plugins.KOTLIN_GRADLE_PLUGIN
+        classpath Plugins.SAFE_ARGS_PLUGIN
     }
 }
 

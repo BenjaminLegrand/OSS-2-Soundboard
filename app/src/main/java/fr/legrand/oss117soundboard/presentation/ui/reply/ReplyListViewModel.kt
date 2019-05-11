@@ -11,6 +11,7 @@ import fr.legrand.oss117soundboard.presentation.viewmodel.StateViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -41,7 +42,7 @@ class ReplyListViewModel @Inject constructor(
         currentSearch = search
     }
 
-    fun getAllReply(favorite : Boolean) {
+    fun getAllReply(favorite: Boolean) {
         viewState.update {
             refreshing = true
         }
@@ -88,8 +89,7 @@ class ReplyListViewModel @Inject constructor(
 
     @SuppressLint("CheckResult")
     private fun listenToReply(replyId: Int) {
-        mediaPlayerComponent.playSoundMedia(replyId).subscribeOn(Schedulers.io()).subscribe {
-            replyListened.postValue(true)
-        }
+        mediaPlayerComponent.playSoundMedia(replyId).subscribeOn(Schedulers.io())
+            .subscribeBy(onError = { Timber.e(it) }, onComplete = { replyListened.postValue(true) })
     }
 }

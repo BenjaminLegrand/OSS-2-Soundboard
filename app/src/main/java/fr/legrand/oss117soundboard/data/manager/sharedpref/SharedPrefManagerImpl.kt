@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.core.content.edit
 import fr.legrand.oss117soundboard.R
+import fr.legrand.oss117soundboard.data.values.SortValues
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -42,8 +43,9 @@ constructor(private val context: Context) : SharedPrefManager {
         return sharedPreferences.getLong(TOTAL_REPLY_TIME_KEY, 0)
     }
 
-    override fun getReplySort(): String {
-        return sharedPreferences.getString(REPLY_SORT_KEY, context.getString(R.string.alphabetical_order)) ?: ""
+    override fun getReplySort(): SortValues {
+        val sort = sharedPreferences.getString(REPLY_SORT_KEY, SortValues.ALPHABETICAL_SORT.name) ?: SortValues.ALPHABETICAL_SORT.name
+        return SortValues.valueOf(sort)
     }
 
     override fun setReplySort(replySort: String) {

@@ -12,7 +12,7 @@ data class ReplyViewData(private val reply: Reply) {
 
     fun getFormattedDescription() = String.format("%s%s%s", "\"", reply.description, "\"")
 
-    fun getMostListenedText() = String.format("%1s (%2d)", reply.name, reply.listenCount)
+    fun getMostListenedText() = String.format("%s (%d)", reply.name, reply.listenCount)
 
     fun getId() = reply.id
 

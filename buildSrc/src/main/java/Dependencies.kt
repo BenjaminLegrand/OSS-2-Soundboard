@@ -5,7 +5,7 @@ object Versions {
     const val COMPILE_SDK = 28
     const val TARGET_SDK = 28
     const val MIN_SDK = 21
-    const val KOTLIN = "1.3.20"
+    const val KOTLIN = "1.3.31"
 
     /**
      * Gradle dependencies versions
@@ -20,6 +20,7 @@ object Versions {
     const val APP_COMPAT = "1.0.0"
     const val MATERIAL = "1.0.0"
     const val ARCH_COMPONENTS = "2.0.0"
+    const val NAVIGATION = "2.0.0"
 
     /**
      * Thrid party versions
@@ -31,7 +32,7 @@ object Versions {
     const val GLIDE = "4.6.1"
     const val MATERIAL_DIALOG = "2.0"
     const val TIMBER = "4.7.0"
-    const val EXOPLAYER = "2.8.3"
+    const val EXOPLAYER = "2.8.4"
 }
 
 object Libraries {
@@ -46,12 +47,17 @@ object Libraries {
      */
     @JvmField
     val SUPPORT = arrayOf(
-            "androidx.appcompat:appcompat:${Versions.APP_COMPAT}",
-            "com.google.android.material:material:${Versions.MATERIAL}",
-            "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT}"
+        "androidx.appcompat:appcompat:${Versions.APP_COMPAT}",
+        "com.google.android.material:material:${Versions.MATERIAL}",
+        "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT}"
     )
     const val ARCH_COMPONENTS = "android.arch.lifecycle:extensions:${Versions.ARCH_COMPONENTS}"
 
+    @JvmField
+    val NAVIGATION = arrayOf(
+        "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
+        "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
+    )
 
     /**
      * Third party libraries dependencies
@@ -60,13 +66,13 @@ object Libraries {
     const val DAGGER_PROCESSOR = "com.google.dagger:dagger-compiler:${Versions.DAGGER}"
     @JvmField
     val DAGGER_ANDROID = arrayOf(
-            DAGGER,
-            "com.google.dagger:dagger-android-support:${Versions.DAGGER}"
+        DAGGER,
+        "com.google.dagger:dagger-android-support:${Versions.DAGGER}"
     )
     @JvmField
     val DAGGER_ANDROID_PROCESSORS = arrayOf(
-            DAGGER_PROCESSOR,
-            "com.google.dagger:dagger-android-processor:${Versions.DAGGER}"
+        DAGGER_PROCESSOR,
+        "com.google.dagger:dagger-android-processor:${Versions.DAGGER}"
     )
 
     const val RX_JAVA_2 = "io.reactivex.rxjava2:rxjava:${Versions.RX_JAVA_2}"
@@ -84,4 +90,5 @@ object Libraries {
 object Plugins {
     const val ANDROID_GRADLE_PLUGIN = "com.android.tools.build:gradle:${Versions.ANDROID_GRADLE}"
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
+    const val SAFE_ARGS_PLUGIN = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NAVIGATION}"
 }

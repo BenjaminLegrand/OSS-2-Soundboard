@@ -1,6 +1,8 @@
 package fr.legrand.oss117soundboard.presentation.di.module.activity
 
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import dagger.Module
 import dagger.Provides
 import fr.legrand.oss117soundboard.presentation.di.annotation.PerActivity

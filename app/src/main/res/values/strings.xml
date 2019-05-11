@@ -7,7 +7,7 @@
     <string name="reply_list_title">Répliques</string>
     <string name="delete">Retirer</string>
     <string name="multi_listen">Écoute multiple (8 simultanées max)</string>
-    <string name="parameter_title">Paramètres</string>
+    <string name="settings_title">Paramètres</string>
     <string name="listen_error">Et là, euh… Vous faites quoi ? (Trop d\'écoutes simultanées)</string>
     <string name="easter_egg_search">oss 3</string>
     <string name="easter_egg_url">https://duckduckgo.com/?q=oss+117+3&amp;kad=fr_FR</string>
@@ -586,5 +586,8 @@
     <string name="sortidesoncontexte_title">Sorti de son contexte…</string>
     <string name="sortidesoncontexte_desc">Sorti de son contexte, un doigt dans les fesses, ça peut être… Je préfère que ce soit plus clair parce qu\'on a tendance parfois à se faire des idées…</string>
     <string name="stop_listen">Arrêter</string>
+    <string name="settings_label">Paramètres</string>
+    <string name="stats_label">Statistiques</string>
+    <string name="others_label">Autres</string>
 
 </resources>

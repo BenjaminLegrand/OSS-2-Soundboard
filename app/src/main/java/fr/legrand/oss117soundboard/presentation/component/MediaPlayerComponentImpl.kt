@@ -59,6 +59,7 @@ class MediaPlayerComponentImpl @Inject constructor(
 
     override fun releaseAllRunningPlayer() {
         runningMediaPlayerList.forEach { stopRunningPlayer(it) }
+        runningMediaPlayerList.clear()
     }
 
     override fun isPlayerCurrentlyRunning() = runningMediaPlayerList.isNotEmpty()

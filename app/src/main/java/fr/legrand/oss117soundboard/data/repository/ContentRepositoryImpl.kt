@@ -6,8 +6,10 @@ import fr.legrand.oss117soundboard.data.entity.Reply
 import fr.legrand.oss117soundboard.data.manager.file.FileManager
 import fr.legrand.oss117soundboard.data.manager.sharedpref.SharedPrefManager
 import fr.legrand.oss117soundboard.data.manager.storage.StorageManager
+import fr.legrand.oss117soundboard.data.values.SortValues
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import java.util.concurrent.ThreadLocalRandom
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -17,24 +19,21 @@ import javax.inject.Singleton
  */
 @Singleton
 class ContentRepositoryImpl @Inject constructor(
-    private val storageManager: StorageManager,
-    private val sharedPrefManager: SharedPrefManager,
-    private val fileManager: FileManager,
-    private val context: Context
+        private val storageManager: StorageManager,
+        private val sharedPrefManager: SharedPrefManager,
+        private val fileManager: FileManager,
+        private val context: Context
 ) : ContentRepository {
 
     override fun getReplyWithSearch(search: String, fromFavorite: Boolean): Observable<List<Reply>> {
         return Observable.defer {
             val replyList = storageManager.getReplyWithSearch(search, fromFavorite)
-            when {
-                sharedPrefManager.getReplySort() == context.getString(R.string.alphabetical_order) ->
-                    replyList.sortedBy { it.name }
-                sharedPrefManager.getReplySort() == context.getString(R.string.movie_order) ->
-                    replyList.sortedBy { it.timestamp }
-                sharedPrefManager.getReplySort() == context.getString(R.string.random_order) ->
-                    replyList.shuffled()
+            val result = when (sharedPrefManager.getReplySort()) {
+                SortValues.ALPHABETICAL_SORT -> replyList.sortedBy { it.name }
+                SortValues.MOVIE_SORT -> replyList.sortedBy { it.timestamp }
+                SortValues.RANDOM_SORT -> replyList.shuffled()
             }
-            Observable.just(replyList)
+            Observable.just(result)
         }
     }
 
@@ -58,15 +57,12 @@ class ContentRepositoryImpl @Inject constructor(
     override fun getAllReply(fromFavorite: Boolean): Observable<List<Reply>> {
         return Observable.defer {
             val replyList = storageManager.getAllReply(fromFavorite)
-            when {
-                sharedPrefManager.getReplySort() == context.getString(R.string.alphabetical_order) ->
-                    replyList.sortedBy { it.name }
-                sharedPrefManager.getReplySort() == context.getString(R.string.movie_order) ->
-                    replyList.sortedBy { it.timestamp }
-                sharedPrefManager.getReplySort() == context.getString(R.string.random_order) ->
-                    replyList.shuffled()
+            val result = when (sharedPrefManager.getReplySort()) {
+                SortValues.ALPHABETICAL_SORT -> replyList.sortedBy { it.name }
+                SortValues.MOVIE_SORT -> replyList.sortedBy { it.timestamp }
+                SortValues.RANDOM_SORT -> replyList.shuffled()
             }
-            Observable.just(replyList)
+            Observable.just(result)
         }
     }
 
@@ -115,7 +111,7 @@ class ContentRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getReplySort(): Observable<String> {
-        return Observable.fromCallable { sharedPrefManager.getReplySort() }
+    override fun getReplySort(): Single<SortValues> {
+        return Single.defer { Single.just(sharedPrefManager.getReplySort()) }
     }
 }

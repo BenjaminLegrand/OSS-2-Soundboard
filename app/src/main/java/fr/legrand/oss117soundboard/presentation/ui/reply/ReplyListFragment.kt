@@ -3,6 +3,7 @@ package fr.legrand.oss117soundboard.presentation.ui.reply
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.presentation.ui.base.BaseVMFragment
@@ -19,13 +20,12 @@ import javax.inject.Inject
  * Created by Benjamin on 30/09/2017.
  */
 
-private const val FAVORITE_KEY = "FAVORITE_KEY"
-
 class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
     override val viewModelClass = ReplyListViewModel::class
     @Inject
     lateinit var replyListAdapter: ReplyListAdapter
 
+    private val args by navArgs<ReplyListFragmentArgs>()
     private lateinit var sharedViewModel: ReplySharedViewModel
 
     override fun getLayoutId() = R.layout.fragment_reply_list
@@ -34,22 +34,21 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         sharedViewModel = ViewModelProviders.of(activity!!, viewModelFactory)[ReplySharedViewModel::class.java]
 
-
         initializeRecyclerView()
 
         fragment_reply_list_placeholder_image.setToGrayScale()
 
         sharedViewModel.onSearchRequested.observeSafe(this) {
             viewModel.updateSearch(it)
-            viewModel.getAllReply(arguments?.getBoolean(FAVORITE_KEY) ?: false)
+            viewModel.getAllReply(args.favorite)
         }
 
         sharedViewModel.onReplyFavoriteUpdated.observeSafe(this) {
-            viewModel.getAllReply(arguments?.getBoolean(FAVORITE_KEY) ?: false)
+            viewModel.getAllReply(args.favorite)
         }
 
         sharedViewModel.onSortUpdated.observeSafe(this){
-            viewModel.getAllReply(arguments?.getBoolean(FAVORITE_KEY) ?: false)
+            viewModel.getAllReply(args.favorite)
         }
 
         viewModel.replyFavoriteUpdated.observeSafe(this) {
@@ -70,8 +69,9 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
             } else {
                 displayReplyList()
             }
-            fragment_reply_list_refresh_layout.isRefreshing = it.refreshing
         }
+
+        viewModel.getAllReply(args.favorite)
     }
 
     private fun displayPlaceholder() {
@@ -86,10 +86,6 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
 
 
     private fun initializeRecyclerView() {
-        fragment_reply_list_refresh_layout.setColorSchemeResources(R.color.colorPrimary)
-        fragment_reply_list_refresh_layout.setOnRefreshListener {
-            viewModel.getAllReply(arguments?.getBoolean(FAVORITE_KEY) ?: false)
-        }
         fragment_reply_list_recycler.layoutManager = LinearLayoutManager(activity)
         fragment_reply_list_recycler.adapter = replyListAdapter
 
@@ -100,13 +96,4 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
             viewModel.updateFavoriteReply(id, favorite)
         }
     }
-
-    companion object {
-        fun newInstance(fromFavorite: Boolean): ReplyListFragment {
-            val args = Bundle().apply { putBoolean(FAVORITE_KEY, fromFavorite) }
-            return ReplyListFragment().apply { arguments = args }
-        }
-    }
-
-
 }

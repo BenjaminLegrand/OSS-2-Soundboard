@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion Versions.COMPILE_SDK
@@ -18,6 +19,11 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     flavorDimensions "env"
@@ -37,6 +43,7 @@ dependencies {
    implementation Libraries.SUPPORT
    implementation Libraries.KOTLIN_STDLIB
    implementation Libraries.ARCH_COMPONENTS
+   implementation Libraries.NAVIGATION
 
     implementation Libraries.GLIDE
 
