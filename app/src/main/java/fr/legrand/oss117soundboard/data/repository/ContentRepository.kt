@@ -1,6 +1,7 @@
 package fr.legrand.oss117soundboard.data.repository
 
 import fr.legrand.oss117soundboard.data.entity.Reply
+import fr.legrand.oss117soundboard.data.values.PlayerState
 import fr.legrand.oss117soundboard.data.values.SortValues
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -25,15 +26,15 @@ interface ContentRepository {
 
     fun getMostListenedReply(): Observable<Reply>
 
-    fun incrementReplyListenCount(replyId: Int): Completable
-
-    fun increaseTotalReplyTime(duration: Long)
-
     fun getTotalReplyTime(): Observable<Long>
 
-    fun retrieveRandomReplyIdToListen(): Observable<Int>
-
-    fun updateReplySort(replySort: String): Completable
+    fun updateReplySort(replySort: SortValues): Completable
 
     fun getReplySort(): Single<SortValues>
+
+    fun playSoundMedia(replyId: Int): Completable
+
+    fun listenToRandomReply(): Completable
+
+    fun listenToPlayerState(): Observable<PlayerState>
 }

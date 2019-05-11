@@ -28,7 +28,10 @@ class StorageManagerImpl @Inject constructor() : StorageManager {
     }
 
     override fun incrementReplyListenCount(replyId: Int) {
-        replyList.find { it.id == replyId }?.listenCount?.plus(1)
+        val reply = replyList.find { it.id == replyId }
+        reply?.let {
+            it.listenCount++
+        }
     }
 
     override fun getAllReply(): List<Reply> = replyList

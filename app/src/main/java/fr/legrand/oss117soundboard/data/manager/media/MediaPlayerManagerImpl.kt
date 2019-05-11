@@ -1,4 +1,4 @@
-package fr.legrand.oss117soundboard.presentation.component
+package fr.legrand.oss117soundboard.data.manager.media
 
 import android.content.Context
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -6,9 +6,12 @@ import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import fr.legrand.oss117soundboard.data.entity.RunningPlayer
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
+import fr.legrand.oss117soundboard.data.values.PlayerState
 import fr.legrand.oss117soundboard.presentation.utils.onStopListener
 import fr.legrand.oss117soundboard.presentation.utils.startMedia
 import io.reactivex.Completable
+import io.reactivex.Emitter
+import io.reactivex.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,63 +22,61 @@ import javax.inject.Singleton
 private const val MULTI_LISTEN_NUMBER_LIMIT = 8
 
 @Singleton
-class MediaPlayerComponentImpl @Inject constructor(
-        private val contentRepository: ContentRepository,
-        private val context: Context
-) : MediaPlayerComponent {
+class MediaPlayerManagerImpl @Inject constructor(
+    private val context: Context
+) : MediaPlayerManager {
+
 
     private val runningMediaPlayerList = mutableListOf<RunningPlayer>()
 
-    private var startListenTimestamp = 0L
+    private lateinit var playerStateEmitter: Emitter<PlayerState>
+    private val playerStateObservable = Observable.create<PlayerState> { playerStateEmitter = it }
 
-    override fun playSoundMedia(mediaId: Int): Completable {
+
+    override fun playSoundMedia(mediaId: Int, multiListen: Boolean): Completable {
         return Completable.create { emitter ->
             val videoTrackSelectionFactory = AdaptiveTrackSelection.Factory(null)
             val trackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
             val simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(context, trackSelector)
 
-            simpleExoPlayer.startMedia(context, mediaId) {
-                emitter.onError(it)
+            runningMediaPlayerList.add(RunningPlayer(simpleExoPlayer, mediaId))
+
+            if (!multiListen && runningMediaPlayerList.isNotEmpty()
+                || runningMediaPlayerList.size >= MULTI_LISTEN_NUMBER_LIMIT
+            ) {
+                stopRunningPlayer(runningMediaPlayerList[0])
             }
 
             simpleExoPlayer.onStopListener(onStop = {
                 releaseRunningPlayerById(mediaId)
-                emitter.onComplete()
+                playerStateEmitter.onNext(PlayerState.STOP)
             }, onError = {
-                emitter.onError(it)
+                playerStateEmitter.onError(it)
             })
-
-            if (startListenTimestamp == 0L) {
-                startListenTimestamp = System.currentTimeMillis()
+            simpleExoPlayer.startMedia(context, mediaId) {
+                playerStateEmitter.onError(it)
             }
-
-            if (runningMediaPlayerList.isNotEmpty()
-                    && runningMediaPlayerList.size >= MULTI_LISTEN_NUMBER_LIMIT) {
-                stopRunningPlayer(runningMediaPlayerList[0])
-            }
-            runningMediaPlayerList.add(RunningPlayer(simpleExoPlayer, mediaId))
+            emitter.onComplete()
         }
     }
 
+    override fun listenToPlayerState(): Observable<PlayerState> = playerStateObservable
+
     override fun releaseAllRunningPlayer() {
-        runningMediaPlayerList.forEach { stopRunningPlayer(it) }
-        runningMediaPlayerList.clear()
+        runningMediaPlayerList.toSet().forEach { stopRunningPlayer(it) }
     }
 
     override fun isPlayerCurrentlyRunning() = runningMediaPlayerList.isNotEmpty()
 
     private fun releaseRunningPlayerById(mediaId: Int) {
-        releaseRunningPlayer(runningMediaPlayerList.first { it.mediaId == mediaId })
+        runningMediaPlayerList.firstOrNull { it.mediaId == mediaId }?.let {
+            releaseRunningPlayer(it)
+        }
     }
 
     private fun releaseRunningPlayer(player: RunningPlayer) {
         runningMediaPlayerList.remove(player)
         player.simpleExoPlayer.release()
-
-        if (runningMediaPlayerList.isEmpty()) {
-            contentRepository.increaseTotalReplyTime(System.currentTimeMillis() - startListenTimestamp)
-            startListenTimestamp = 0
-        }
     }
 
     private fun stopRunningPlayer(player: RunningPlayer) {

@@ -1,11 +1,11 @@
 package fr.legrand.oss117soundboard.data.repository
 
-import android.content.Context
-import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.entity.Reply
 import fr.legrand.oss117soundboard.data.manager.file.FileManager
+import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
 import fr.legrand.oss117soundboard.data.manager.sharedpref.SharedPrefManager
 import fr.legrand.oss117soundboard.data.manager.storage.StorageManager
+import fr.legrand.oss117soundboard.data.values.PlayerState
 import fr.legrand.oss117soundboard.data.values.SortValues
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -19,11 +19,13 @@ import javax.inject.Singleton
  */
 @Singleton
 class ContentRepositoryImpl @Inject constructor(
-        private val storageManager: StorageManager,
-        private val sharedPrefManager: SharedPrefManager,
-        private val fileManager: FileManager,
-        private val context: Context
+    private val storageManager: StorageManager,
+    private val sharedPrefManager: SharedPrefManager,
+    private val fileManager: FileManager,
+    private val mediaPlayerManager: MediaPlayerManager
 ) : ContentRepository {
+
+    private var startListenTimestamp = 0L
 
     override fun getReplyWithSearch(search: String, fromFavorite: Boolean): Observable<List<Reply>> {
         return Observable.defer {
@@ -67,8 +69,11 @@ class ContentRepositoryImpl @Inject constructor(
     }
 
     override fun updateMultiListenParameter(multiListen: Boolean): Completable {
-        sharedPrefManager.setMultiListenEnabled(multiListen)
-        return Completable.complete()
+        return Completable.defer {
+            mediaPlayerManager.releaseAllRunningPlayer()
+            sharedPrefManager.setMultiListenEnabled(multiListen)
+            Completable.complete()
+        }
     }
 
     override fun multiListenEnabled(): Observable<Boolean> {
@@ -79,39 +84,57 @@ class ContentRepositoryImpl @Inject constructor(
         return Observable.fromCallable { storageManager.getMostListenedReply() }
     }
 
-    override fun incrementReplyListenCount(replyId: Int): Completable {
+
+    override fun playSoundMedia(replyId: Int): Completable {
         return Completable.defer {
-            storageManager.incrementReplyListenCount(replyId)
-            Completable.complete()
+            if (!mediaPlayerManager.isPlayerCurrentlyRunning()) {
+                startListenTimestamp = System.currentTimeMillis()
+            }
+            mediaPlayerManager.playSoundMedia(replyId, sharedPrefManager.isMultiListenEnabled()).doOnComplete {
+                storageManager.incrementReplyListenCount(replyId)
+            }
         }
     }
 
-    override fun increaseTotalReplyTime(duration: Long) {
-        sharedPrefManager.increaseTotalReplyTime(duration)
+    override fun listenToPlayerState(): Observable<PlayerState> {
+        return Observable.defer {
+            mediaPlayerManager.listenToPlayerState().doOnNext {
+                when (it) {
+                    PlayerState.STOP -> {
+                        if (!mediaPlayerManager.isPlayerCurrentlyRunning()) {
+                            increaseTotalReplyTime(System.currentTimeMillis() - startListenTimestamp)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override fun getTotalReplyTime(): Observable<Long> {
         return Observable.fromCallable { sharedPrefManager.getTotalReplyTime() }
     }
 
-    override fun retrieveRandomReplyIdToListen(): Observable<Int> {
-        return Observable.defer {
+    override fun listenToRandomReply(): Completable {
+        return Completable.defer {
             val replyList = storageManager.getAllReply()
-            val randomNumber = ThreadLocalRandom.current().nextInt(0, replyList.size + 1)
-            val replyId = replyList[randomNumber].id
-            storageManager.incrementReplyListenCount(replyId)
-            Observable.just(replyId)
+            val replyId = replyList[(0 until replyList.size).random()].id
+            playSoundMedia(replyId)
         }
     }
 
-    override fun updateReplySort(replySort: String): Completable {
+    override fun updateReplySort(replySort: SortValues): Completable {
         return Completable.defer {
-            sharedPrefManager.setReplySort(replySort)
+            sharedPrefManager.setReplySort(replySort.name)
             Completable.complete()
         }
     }
 
     override fun getReplySort(): Single<SortValues> {
-        return Single.defer { Single.just(sharedPrefManager.getReplySort()) }
+        return Single.fromCallable { sharedPrefManager.getReplySort() }
+    }
+
+
+    private fun increaseTotalReplyTime(duration: Long) {
+        sharedPrefManager.increaseTotalReplyTime(duration)
     }
 }

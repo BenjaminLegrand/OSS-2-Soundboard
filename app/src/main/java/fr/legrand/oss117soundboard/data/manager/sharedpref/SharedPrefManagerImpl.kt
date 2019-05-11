@@ -15,11 +15,11 @@ import javax.inject.Singleton
 
 private const val MULTI_LISTEN_KEY = "MULTI_LISTEN_KEY"
 private const val TOTAL_REPLY_TIME_KEY = "TOTAL_REPLY_TIME_KEY"
-private const val REPLY_SORT_KEY = "MULTI_LISTEN_KEY"
+private const val REPLY_SORT_KEY = "REPLY_SORT_KEY"
 
 @Singleton
 class SharedPrefManagerImpl @Inject
-constructor(private val context: Context) : SharedPrefManager {
+constructor(context: Context) : SharedPrefManager {
 
     private val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 

@@ -589,5 +589,6 @@
     <string name="settings_label">Paramètres</string>
     <string name="stats_label">Statistiques</string>
     <string name="others_label">Autres</string>
+    <string name="most_listened_reply_format">%s (%d)</string>
 
 </resources>

@@ -1,15 +1,17 @@
 package fr.legrand.oss117soundboard.presentation.ui.settings
 
 import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
 import fr.legrand.oss117soundboard.data.values.SortValues
 import fr.legrand.oss117soundboard.presentation.OSSApplication
-import fr.legrand.oss117soundboard.presentation.component.MediaPlayerComponent
+import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
+import fr.legrand.oss117soundboard.data.values.PlayerState
 import fr.legrand.oss117soundboard.presentation.ui.reply.item.ReplyViewData
-import fr.legrand.oss117soundboard.presentation.viewmodel.AndroidStateViewModel
-import fr.legrand.oss117soundboard.presentation.viewmodel.StateViewModel
+import fr.legrand.oss117soundboard.presentation.utils.SingleLiveEvent
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
@@ -26,11 +28,10 @@ private const val M_S_MODULO_VALUE: Long = 60
 
 class SettingsViewModel @Inject constructor(
     private val contentRepository: ContentRepository,
-    private val mediaPlayerComponent: MediaPlayerComponent,
     application: Application
-) : AndroidStateViewModel<SettingsViewState>(application) {
-    override val currentViewState = SettingsViewState()
+) : AndroidViewModel(application) {
 
+    private val disposable = CompositeDisposable()
     val replySort = MutableLiveData<String>()
     val multiListenEnabled = MutableLiveData<Boolean>()
     val mostListenedReply = MutableLiveData<ReplyViewData>()
@@ -41,60 +42,61 @@ class SettingsViewModel @Inject constructor(
         getReplySort()
         getMostListenedReply()
         getTotalReplyTime()
+        listenToPlayerState()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
+
+    private fun listenToPlayerState() {
+        disposable.add(contentRepository.listenToPlayerState().subscribeOn(Schedulers.io()).subscribeBy(
+            onNext = {
+                when (it) {
+                    PlayerState.STOP -> updateAllReplyData()
+                }
+            }, onError = { Timber.e(it) })
+        )
     }
 
     fun updateMultiListenParameter(multiListen: Boolean) {
         contentRepository.updateMultiListenParameter(multiListen).subscribeOn(Schedulers.io()).subscribeBy(
             onComplete = {
-                mediaPlayerComponent.releaseAllRunningPlayer()
                 multiListenEnabled.postValue(multiListen)
-            }, onError = { it.printStackTrace() })
+            }, onError = { Timber.e(it) })
     }
 
     fun listenToRandomReply() {
-        contentRepository.retrieveRandomReplyIdToListen().subscribeOn(Schedulers.io())
-            .subscribeBy(onNext = { listenToReply(it) }, onError = { it.printStackTrace() })
+        contentRepository.listenToRandomReply().subscribeOn(Schedulers.io())
+            .subscribeBy(onComplete = { }, onError = { Timber.e(it) })
     }
 
-    fun updateReplySort(newSort: String) {
+    fun updateReplySort(newSort: SortValues) {
         contentRepository.updateReplySort(newSort).subscribeOn(Schedulers.io())
-            .subscribeBy(onComplete = { replySort.postValue(newSort) }, onError = { it.printStackTrace() })
+            .subscribeBy(onComplete = { setReplySortText(newSort) }, onError = { Timber.e(it) })
     }
 
-    fun updateAllReplyData() {
-        getMostListenedReply()
-        getTotalReplyTime()
-    }
 
     private fun checkMultiListenEnabled() {
         contentRepository.multiListenEnabled().subscribeOn(Schedulers.io())
-            .subscribeBy(onNext = { multiListenEnabled.postValue(it) }, onError = { it.printStackTrace() })
+            .subscribeBy(onNext = { multiListenEnabled.postValue(it) }, onError = { Timber.e(it) })
     }
 
     private fun getReplySort() {
         contentRepository.getReplySort().subscribeOn(Schedulers.io())
             .subscribeBy(onSuccess = {
-                val sortText = when(it){
-                    SortValues.ALPHABETICAL_SORT -> getApplication<OSSApplication>().getString(R.string.alphabetical_order)
-                    SortValues.MOVIE_SORT ->getApplication<OSSApplication>().getString(R.string.movie_order)
-                    SortValues.RANDOM_SORT -> getApplication<OSSApplication>().getString(R.string.alphabetical_order)
-                }
-                replySort.postValue(sortText)
+                setReplySortText(it)
             }, onError = { Timber.e(it) })
     }
 
     private fun getMostListenedReply() {
         contentRepository.getMostListenedReply().subscribeOn(Schedulers.io()).subscribeBy(
             onNext = {
-                if(it.listenCount > 0){
-                    viewState.update { mostListenedReplyAvailable = true }
-                    mostListenedReply.postValue(ReplyViewData(it))
-                }else{
-                    viewState.update { mostListenedReplyAvailable = false }
-                }
+                mostListenedReply.postValue(ReplyViewData(it))
             },
             onError = {
-                viewState.update { mostListenedReplyAvailable = false }
+                Timber.e(it)
             })
     }
 
@@ -112,10 +114,17 @@ class SettingsViewModel @Inject constructor(
                 onError = { Timber.e(it) })
     }
 
-    private fun listenToReply(replyId: Int) {
-        contentRepository.incrementReplyListenCount(replyId).subscribeBy(onError = {}, onComplete = {})
-        mediaPlayerComponent.playSoundMedia(replyId).subscribeOn(Schedulers.io())
-            .subscribeBy(onError = { Timber.e(it) }, onComplete = {})
+    private fun updateAllReplyData() {
+        getMostListenedReply()
+        getTotalReplyTime()
     }
 
+    private fun setReplySortText(sort: SortValues) {
+        val sortText = when (sort) {
+            SortValues.ALPHABETICAL_SORT -> getApplication<OSSApplication>().getString(R.string.alphabetical_order)
+            SortValues.MOVIE_SORT -> getApplication<OSSApplication>().getString(R.string.movie_order)
+            SortValues.RANDOM_SORT -> getApplication<OSSApplication>().getString(R.string.alphabetical_order)
+        }
+        replySort.postValue(sortText)
+    }
 }

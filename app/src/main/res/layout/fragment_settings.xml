@@ -186,6 +186,7 @@
                 android:layout_height="@dimen/settings_min_clickable_height"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/setting_title_padding"
+                android:background="@drawable/settings_text_ripple"
                 android:paddingEnd="@dimen/setting_title_padding"
                 android:text="@string/random_reply"
                 android:textSize="@dimen/setting_title_text_size"

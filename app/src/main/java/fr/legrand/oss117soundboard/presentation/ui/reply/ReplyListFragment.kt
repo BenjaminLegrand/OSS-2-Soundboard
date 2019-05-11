@@ -43,24 +43,12 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
             viewModel.getAllReply(args.favorite)
         }
 
-        sharedViewModel.onReplyFavoriteUpdated.observeSafe(this) {
-            viewModel.getAllReply(args.favorite)
-        }
-
-        sharedViewModel.onSortUpdated.observeSafe(this){
-            viewModel.getAllReply(args.favorite)
-        }
-
         viewModel.replyFavoriteUpdated.observeSafe(this) {
-            sharedViewModel.onReplyFavoriteUpdated()
+            viewModel.getAllReply(args.favorite)
         }
 
         viewModel.replyListLiveData.observeSafe(this) {
             replyListAdapter.setItems(it)
-        }
-
-        viewModel.replyListened.observeSafe(this){
-            sharedViewModel.onReplyListened()
         }
 
         viewModel.viewState.observeSafe(this) {
@@ -90,7 +78,7 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
         fragment_reply_list_recycler.adapter = replyListAdapter
 
         replyListAdapter.onListenClickListener = {
-            viewModel.incrementReplyCount(it)
+            viewModel.listenToReply(it)
         }
         replyListAdapter.onFavoriteClickListener = { id, favorite ->
             viewModel.updateFavoriteReply(id, favorite)

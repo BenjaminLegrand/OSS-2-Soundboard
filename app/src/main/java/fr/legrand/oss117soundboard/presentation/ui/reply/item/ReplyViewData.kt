@@ -1,5 +1,7 @@
 package fr.legrand.oss117soundboard.presentation.ui.reply.item
 
+import android.content.Context
+import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.entity.Reply
 
 /**
@@ -12,7 +14,11 @@ data class ReplyViewData(private val reply: Reply) {
 
     fun getFormattedDescription() = String.format("%s%s%s", "\"", reply.description, "\"")
 
-    fun getMostListenedText() = String.format("%s (%d)", reply.name, reply.listenCount)
+    fun getMostListenedText(context: Context): String = if (reply.listenCount == 0) {
+        context.getString(R.string.no_listened_reply)
+    } else {
+        context.getString(R.string.most_listened_reply_format, reply.name, reply.listenCount)
+    }
 
     fun getId() = reply.id
 

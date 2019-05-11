@@ -12,8 +12,8 @@ import fr.legrand.oss117soundboard.data.manager.storage.StorageManager
 import fr.legrand.oss117soundboard.data.manager.storage.StorageManagerImpl
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
 import fr.legrand.oss117soundboard.data.repository.ContentRepositoryImpl
-import fr.legrand.oss117soundboard.presentation.component.MediaPlayerComponent
-import fr.legrand.oss117soundboard.presentation.component.MediaPlayerComponentImpl
+import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
+import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManagerImpl
 import javax.inject.Singleton
 
 @Module
@@ -41,5 +41,5 @@ abstract class ApplicationModule {
 
     @Singleton
     @Binds
-    abstract fun providePlayerComponent(mediaPlayerComponentImpl: MediaPlayerComponentImpl): MediaPlayerComponent
+    abstract fun providePlayerComponent(mediaPlayerComponentImpl: MediaPlayerManagerImpl): MediaPlayerManager
 }

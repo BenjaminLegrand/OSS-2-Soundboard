@@ -3,7 +3,7 @@ package fr.legrand.oss117soundboard.presentation.ui.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
-import fr.legrand.oss117soundboard.presentation.component.MediaPlayerComponent
+import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -14,10 +14,8 @@ import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
         private val contentRepository: ContentRepository,
-        private val mediaPlayerComponent: MediaPlayerComponent
+        private val mediaPlayerManager: MediaPlayerManager
 ) : ViewModel() {
-
-    val replyLoaded = MutableLiveData<Boolean>()
 
     init {
         initAllReply()
@@ -26,14 +24,13 @@ class MainViewModel @Inject constructor(
     private fun initAllReply() {
         contentRepository.initAllReply().subscribeOn(Schedulers.io())
                 .subscribeBy(onComplete = {
-                    replyLoaded.postValue(true)
                 }, onError = {
                     //Nothing to do
                 })
     }
 
     fun releaseRunningPlayers() {
-        mediaPlayerComponent.releaseAllRunningPlayer()
+        mediaPlayerManager.releaseAllRunningPlayer()
     }
 
     override fun onCleared() {
