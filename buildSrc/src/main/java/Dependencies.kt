@@ -30,7 +30,7 @@ object Versions {
     const val RX_KOTLIN = "2.2.0"
 
     const val GLIDE = "4.6.1"
-    const val MATERIAL_DIALOG = "2.0"
+    const val MATERIAL_DIALOG = "2.8.1"
     const val TIMBER = "4.7.0"
     const val EXOPLAYER = "2.8.4"
 }

@@ -55,4 +55,5 @@ dependencies {
     implementation Libraries.RX_KOTLIN
 
     implementation Libraries.EXOPLAYER
+    implementation Libraries.MATERIAL_DIALOG
 }

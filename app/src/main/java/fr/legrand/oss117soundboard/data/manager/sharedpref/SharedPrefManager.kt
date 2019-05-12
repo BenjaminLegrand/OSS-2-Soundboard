@@ -1,6 +1,6 @@
 package fr.legrand.oss117soundboard.data.manager.sharedpref
 
-import fr.legrand.oss117soundboard.data.values.SortValues
+import fr.legrand.oss117soundboard.data.values.SortType
 
 /**
  * Created by Benjamin on 30/09/2017.
@@ -15,7 +15,7 @@ interface SharedPrefManager {
 
     fun getTotalReplyTime(): Long
 
-    fun getReplySort(): SortValues
+    fun getReplySort(): SortType
 
     fun setReplySort(replySort: String)
 }

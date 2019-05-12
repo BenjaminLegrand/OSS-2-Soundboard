@@ -18,8 +18,8 @@
                 android:id="@+id/fragment_settings_settings_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
                 android:layout_marginTop="@dimen/base_margin"
+                android:fontFamily="sans-serif-medium"
                 android:padding="@dimen/base_padding"
                 android:text="@string/settings_label"
                 android:textColor="@color/colorAccent"
@@ -60,11 +60,21 @@
                 android:background="@color/base_separator_color"
                 app:layout_constraintTop_toBottomOf="@id/fragment_settings_multi_listen_title" />
 
+            <View
+                android:id="@+id/fragment_settings_reply_sort_area"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/settings_text_ripple"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_settings_reply_sort"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/fragment_settings_reply_sort_title" />
+
             <TextView
                 android:id="@+id/fragment_settings_reply_sort_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/base_margin"
+                android:paddingTop="@dimen/base_margin"
                 android:paddingStart="@dimen/setting_title_padding"
                 android:paddingEnd="@dimen/setting_title_padding"
                 android:text="@string/reply_sort"
@@ -89,12 +99,13 @@
                 app:layout_constraintTop_toBottomOf="@id/fragment_settings_reply_sort_title"
                 tools:text="Tri random" />
 
+
             <TextView
                 android:id="@+id/fragment_settings_stats_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
                 android:layout_marginTop="@dimen/base_margin"
+                android:fontFamily="sans-serif-medium"
                 android:padding="@dimen/base_padding"
                 android:text="@string/stats_label"
                 android:textColor="@color/colorAccent"
@@ -171,8 +182,8 @@
                 android:id="@+id/fragment_settings_others_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
                 android:layout_marginTop="@dimen/base_margin"
+                android:fontFamily="sans-serif-medium"
                 android:padding="@dimen/base_padding"
                 android:text="@string/others_label"
                 android:textColor="@color/colorAccent"
@@ -184,9 +195,9 @@
                 android:id="@+id/fragment_settings_random_reply_title"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/settings_min_clickable_height"
+                android:background="@drawable/settings_text_ripple"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/setting_title_padding"
-                android:background="@drawable/settings_text_ripple"
                 android:paddingEnd="@dimen/setting_title_padding"
                 android:text="@string/random_reply"
                 android:textSize="@dimen/setting_title_text_size"

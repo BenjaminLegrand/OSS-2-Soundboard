@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#0288D1</color>
-    <color name="colorPrimaryLight">#81D4FA</color>
     <color name="colorPrimaryDark">#01579B</color>
     <color name="colorAccent">#E53935</color>
     <color name="divider_background">#E0E0E0</color>
     <color name="placeholder_text_color">#808080</color>
 
-    <color name="favorite_on_button_color">#FFEA00</color>
     <color name="favorite_off_button_color">#000000</color>
-    <color name="shadow_start_color">#38000000</color>
     <color name="white">#fff</color>
     <color name="base_separator_color">#E0E0E0</color>
     <color name="base_background_color">#FAFAFA</color>

@@ -6,11 +6,10 @@ import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
 import fr.legrand.oss117soundboard.data.manager.sharedpref.SharedPrefManager
 import fr.legrand.oss117soundboard.data.manager.storage.StorageManager
 import fr.legrand.oss117soundboard.data.values.PlayerState
-import fr.legrand.oss117soundboard.data.values.SortValues
+import fr.legrand.oss117soundboard.data.values.SortType
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
-import java.util.concurrent.ThreadLocalRandom
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,9 +30,9 @@ class ContentRepositoryImpl @Inject constructor(
         return Observable.defer {
             val replyList = storageManager.getReplyWithSearch(search, fromFavorite)
             val result = when (sharedPrefManager.getReplySort()) {
-                SortValues.ALPHABETICAL_SORT -> replyList.sortedBy { it.name }
-                SortValues.MOVIE_SORT -> replyList.sortedBy { it.timestamp }
-                SortValues.RANDOM_SORT -> replyList.shuffled()
+                SortType.ALPHABETICAL_SORT -> replyList.sortedBy { it.name }
+                SortType.MOVIE_SORT -> replyList.sortedBy { it.timestamp }
+                SortType.RANDOM_SORT -> replyList.shuffled()
             }
             Observable.just(result)
         }
@@ -60,9 +59,9 @@ class ContentRepositoryImpl @Inject constructor(
         return Observable.defer {
             val replyList = storageManager.getAllReply(fromFavorite)
             val result = when (sharedPrefManager.getReplySort()) {
-                SortValues.ALPHABETICAL_SORT -> replyList.sortedBy { it.name }
-                SortValues.MOVIE_SORT -> replyList.sortedBy { it.timestamp }
-                SortValues.RANDOM_SORT -> replyList.shuffled()
+                SortType.ALPHABETICAL_SORT -> replyList.sortedBy { it.name }
+                SortType.MOVIE_SORT -> replyList.sortedBy { it.timestamp }
+                SortType.RANDOM_SORT -> replyList.shuffled()
             }
             Observable.just(result)
         }
@@ -122,14 +121,14 @@ class ContentRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun updateReplySort(replySort: SortValues): Completable {
+    override fun updateReplySort(replySort: SortType): Completable {
         return Completable.defer {
             sharedPrefManager.setReplySort(replySort.name)
             Completable.complete()
         }
     }
 
-    override fun getReplySort(): Single<SortValues> {
+    override fun getReplySort(): Single<SortType> {
         return Single.fromCallable { sharedPrefManager.getReplySort() }
     }
 

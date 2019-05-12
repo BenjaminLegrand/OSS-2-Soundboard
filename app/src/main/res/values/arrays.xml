@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="reply_sort_items">
-        <item>@string/alphabetical_order</item>
-        <item>@string/movie_order</item>
-        <item>@string/random_order</item>
-    </string-array>
 </resources>

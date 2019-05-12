@@ -2,7 +2,7 @@ package fr.legrand.oss117soundboard.data.repository
 
 import fr.legrand.oss117soundboard.data.entity.Reply
 import fr.legrand.oss117soundboard.data.values.PlayerState
-import fr.legrand.oss117soundboard.data.values.SortValues
+import fr.legrand.oss117soundboard.data.values.SortType
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -28,9 +28,9 @@ interface ContentRepository {
 
     fun getTotalReplyTime(): Observable<Long>
 
-    fun updateReplySort(replySort: SortValues): Completable
+    fun updateReplySort(replySort: SortType): Completable
 
-    fun getReplySort(): Single<SortValues>
+    fun getReplySort(): Single<SortType>
 
     fun playSoundMedia(replyId: Int): Completable
 

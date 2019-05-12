@@ -3,14 +3,11 @@ package fr.legrand.oss117soundboard.presentation.ui.settings
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
-import fr.legrand.oss117soundboard.data.values.SortValues
-import fr.legrand.oss117soundboard.presentation.OSSApplication
-import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
+import fr.legrand.oss117soundboard.data.values.SortType
 import fr.legrand.oss117soundboard.data.values.PlayerState
 import fr.legrand.oss117soundboard.presentation.ui.reply.item.ReplyViewData
-import fr.legrand.oss117soundboard.presentation.utils.SingleLiveEvent
+import fr.legrand.oss117soundboard.presentation.ui.settings.item.SortViewData
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -32,7 +29,7 @@ class SettingsViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
     private val disposable = CompositeDisposable()
-    val replySort = MutableLiveData<String>()
+    val replySort = MutableLiveData<SortViewData>()
     val multiListenEnabled = MutableLiveData<Boolean>()
     val mostListenedReply = MutableLiveData<ReplyViewData>()
     val totalReplyTime = MutableLiveData<Triple<Long, Long, Long>>()
@@ -72,9 +69,11 @@ class SettingsViewModel @Inject constructor(
             .subscribeBy(onComplete = { }, onError = { Timber.e(it) })
     }
 
-    fun updateReplySort(newSort: SortValues) {
+    fun updateReplySort(newSort: SortType) {
         contentRepository.updateReplySort(newSort).subscribeOn(Schedulers.io())
-            .subscribeBy(onComplete = { setReplySortText(newSort) }, onError = { Timber.e(it) })
+            .subscribeBy(
+                onComplete = { replySort.postValue(SortViewData(getApplication(), newSort)) },
+                onError = { Timber.e(it) })
     }
 
 
@@ -86,7 +85,7 @@ class SettingsViewModel @Inject constructor(
     private fun getReplySort() {
         contentRepository.getReplySort().subscribeOn(Schedulers.io())
             .subscribeBy(onSuccess = {
-                setReplySortText(it)
+                replySort.postValue(SortViewData(getApplication(), it))
             }, onError = { Timber.e(it) })
     }
 
@@ -117,14 +116,5 @@ class SettingsViewModel @Inject constructor(
     private fun updateAllReplyData() {
         getMostListenedReply()
         getTotalReplyTime()
-    }
-
-    private fun setReplySortText(sort: SortValues) {
-        val sortText = when (sort) {
-            SortValues.ALPHABETICAL_SORT -> getApplication<OSSApplication>().getString(R.string.alphabetical_order)
-            SortValues.MOVIE_SORT -> getApplication<OSSApplication>().getString(R.string.movie_order)
-            SortValues.RANDOM_SORT -> getApplication<OSSApplication>().getString(R.string.alphabetical_order)
-        }
-        replySort.postValue(sortText)
     }
 }
