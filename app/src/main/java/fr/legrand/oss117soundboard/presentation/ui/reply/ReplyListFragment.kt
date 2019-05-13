@@ -78,7 +78,7 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
         fragment_reply_list_recycler.adapter = replyListAdapter
 
         replyListAdapter.onListenClickListener = {
-            viewModel.listenToReply(it)
+            sharedViewModel.listenToReply(it)
         }
         replyListAdapter.onFavoriteClickListener = { id, favorite ->
             viewModel.updateFavoriteReply(id, favorite)

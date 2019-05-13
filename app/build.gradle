@@ -56,4 +56,7 @@ dependencies {
 
     implementation Libraries.EXOPLAYER
     implementation Libraries.MATERIAL_DIALOG
+
+    implementation Libraries.ROOM
+    kapt Libraries.ROOM_PROCESSOR
 }

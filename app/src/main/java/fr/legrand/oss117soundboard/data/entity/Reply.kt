@@ -1,14 +1,25 @@
 package fr.legrand.oss117soundboard.data.entity
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 /**
  * Created by Benjamin on 30/09/2017.
  */
+@Entity
 data class Reply(
+    @PrimaryKey
     var id: Int = 0,
+    @ColumnInfo
     var name: String = "",
+    @ColumnInfo
     var description: String = "",
+    @ColumnInfo
     var isFavorite: Boolean = false,
+    @ColumnInfo
     var listenCount: Int = 0,
+    @ColumnInfo
     var timestamp: Int = 0
 ) {
 

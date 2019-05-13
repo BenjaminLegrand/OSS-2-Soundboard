@@ -30,9 +30,10 @@ object Versions {
     const val RX_KOTLIN = "2.2.0"
 
     const val GLIDE = "4.6.1"
-    const val MATERIAL_DIALOG = "2.8.1"
+    const val MATERIAL_DIALOG = "2.0.0"
     const val TIMBER = "4.7.0"
     const val EXOPLAYER = "2.8.4"
+    const val ROOM = "2.0.0"
 }
 
 object Libraries {
@@ -58,6 +59,8 @@ object Libraries {
         "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}",
         "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
     )
+    const val ROOM = "androidx.room:room-runtime:${Versions.ROOM}"
+    const val ROOM_PROCESSOR = "androidx.room:room-compiler:${Versions.ROOM}"
 
     /**
      * Third party libraries dependencies

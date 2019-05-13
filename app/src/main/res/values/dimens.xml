@@ -7,7 +7,7 @@
     <dimen name="button_margin">8dp</dimen>
     <dimen name="setting_title_padding">16dp</dimen>
     <dimen name="base_margin">8dp</dimen>
-    <dimen name="search_margin">16dp</dimen>
+    <dimen name="search_margin">12dp</dimen>
     <dimen name="setting_title_text_size">16sp</dimen>
     <dimen name="base_separator_height">1dp</dimen>
     <dimen name="setting_data_margin">24dp</dimen>

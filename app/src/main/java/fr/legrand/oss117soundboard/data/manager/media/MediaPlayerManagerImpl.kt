@@ -5,13 +5,10 @@ import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import fr.legrand.oss117soundboard.data.entity.RunningPlayer
-import fr.legrand.oss117soundboard.data.repository.ContentRepository
-import fr.legrand.oss117soundboard.data.values.PlayerState
 import fr.legrand.oss117soundboard.presentation.utils.onStopListener
 import fr.legrand.oss117soundboard.presentation.utils.startMedia
 import io.reactivex.Completable
-import io.reactivex.Emitter
-import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -28,9 +25,6 @@ class MediaPlayerManagerImpl @Inject constructor(
 
 
     private val runningMediaPlayerList = mutableListOf<RunningPlayer>()
-
-    private lateinit var playerStateEmitter: Emitter<PlayerState>
-    private val playerStateObservable = Observable.create<PlayerState> { playerStateEmitter = it }
 
 
     override fun playSoundMedia(mediaId: Int, multiListen: Boolean): Completable {
@@ -49,18 +43,16 @@ class MediaPlayerManagerImpl @Inject constructor(
 
             simpleExoPlayer.onStopListener(onStop = {
                 releaseRunningPlayerById(mediaId)
-                playerStateEmitter.onNext(PlayerState.STOP)
+                emitter.onComplete()
             }, onError = {
-                playerStateEmitter.onError(it)
+                emitter.onError(it)
             })
             simpleExoPlayer.startMedia(context, mediaId) {
-                playerStateEmitter.onError(it)
+                emitter.onError(it)
             }
-            emitter.onComplete()
-        }
-    }
 
-    override fun listenToPlayerState(): Observable<PlayerState> = playerStateObservable
+        }.observeOn(Schedulers.io())
+    }
 
     override fun releaseAllRunningPlayer() {
         runningMediaPlayerList.toSet().forEach { stopRunningPlayer(it) }

@@ -5,7 +5,6 @@ import fr.legrand.oss117soundboard.data.manager.file.FileManager
 import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
 import fr.legrand.oss117soundboard.data.manager.sharedpref.SharedPrefManager
 import fr.legrand.oss117soundboard.data.manager.storage.StorageManager
-import fr.legrand.oss117soundboard.data.values.PlayerState
 import fr.legrand.oss117soundboard.data.values.SortType
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -89,25 +88,16 @@ class ContentRepositoryImpl @Inject constructor(
             if (!mediaPlayerManager.isPlayerCurrentlyRunning()) {
                 startListenTimestamp = System.currentTimeMillis()
             }
+
             mediaPlayerManager.playSoundMedia(replyId, sharedPrefManager.isMultiListenEnabled()).doOnComplete {
                 storageManager.incrementReplyListenCount(replyId)
-            }
-        }
-    }
-
-    override fun listenToPlayerState(): Observable<PlayerState> {
-        return Observable.defer {
-            mediaPlayerManager.listenToPlayerState().doOnNext {
-                when (it) {
-                    PlayerState.STOP -> {
-                        if (!mediaPlayerManager.isPlayerCurrentlyRunning()) {
-                            increaseTotalReplyTime(System.currentTimeMillis() - startListenTimestamp)
-                        }
-                    }
+                if (!mediaPlayerManager.isPlayerCurrentlyRunning()) {
+                    increaseTotalReplyTime(System.currentTimeMillis() - startListenTimestamp)
                 }
             }
         }
     }
+
 
     override fun getTotalReplyTime(): Observable<Long> {
         return Observable.fromCallable { sharedPrefManager.getTotalReplyTime() }

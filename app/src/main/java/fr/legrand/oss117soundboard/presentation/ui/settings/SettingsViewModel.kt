@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
 import fr.legrand.oss117soundboard.data.values.SortType
-import fr.legrand.oss117soundboard.data.values.PlayerState
 import fr.legrand.oss117soundboard.presentation.ui.reply.item.ReplyViewData
 import fr.legrand.oss117soundboard.presentation.ui.settings.item.SortViewData
 import io.reactivex.disposables.CompositeDisposable
@@ -39,7 +38,6 @@ class SettingsViewModel @Inject constructor(
         getReplySort()
         getMostListenedReply()
         getTotalReplyTime()
-        listenToPlayerState()
     }
 
     override fun onCleared() {
@@ -47,74 +45,69 @@ class SettingsViewModel @Inject constructor(
         disposable.clear()
     }
 
-    private fun listenToPlayerState() {
-        disposable.add(contentRepository.listenToPlayerState().subscribeOn(Schedulers.io()).subscribeBy(
-            onNext = {
-                when (it) {
-                    PlayerState.STOP -> updateAllReplyData()
-                }
+    fun updateMultiListenParameter(multiListen: Boolean) {
+        disposable.add(contentRepository.updateMultiListenParameter(multiListen).subscribeOn(Schedulers.io()).subscribeBy(
+            onComplete = {
+                multiListenEnabled.postValue(multiListen)
             }, onError = { Timber.e(it) })
         )
     }
 
-    fun updateMultiListenParameter(multiListen: Boolean) {
-        contentRepository.updateMultiListenParameter(multiListen).subscribeOn(Schedulers.io()).subscribeBy(
-            onComplete = {
-                multiListenEnabled.postValue(multiListen)
-            }, onError = { Timber.e(it) })
-    }
-
-    fun listenToRandomReply() {
-        contentRepository.listenToRandomReply().subscribeOn(Schedulers.io())
-            .subscribeBy(onComplete = { }, onError = { Timber.e(it) })
-    }
-
     fun updateReplySort(newSort: SortType) {
-        contentRepository.updateReplySort(newSort).subscribeOn(Schedulers.io())
-            .subscribeBy(
-                onComplete = { replySort.postValue(SortViewData(getApplication(), newSort)) },
-                onError = { Timber.e(it) })
+        disposable.add(
+            contentRepository.updateReplySort(newSort).subscribeOn(Schedulers.io())
+                .subscribeBy(
+                    onComplete = { replySort.postValue(SortViewData(getApplication(), newSort)) },
+                    onError = { Timber.e(it) })
+        )
     }
 
-
-    private fun checkMultiListenEnabled() {
-        contentRepository.multiListenEnabled().subscribeOn(Schedulers.io())
-            .subscribeBy(onNext = { multiListenEnabled.postValue(it) }, onError = { Timber.e(it) })
-    }
-
-    private fun getReplySort() {
-        contentRepository.getReplySort().subscribeOn(Schedulers.io())
-            .subscribeBy(onSuccess = {
-                replySort.postValue(SortViewData(getApplication(), it))
-            }, onError = { Timber.e(it) })
-    }
-
-    private fun getMostListenedReply() {
-        contentRepository.getMostListenedReply().subscribeOn(Schedulers.io()).subscribeBy(
-            onNext = {
-                mostListenedReply.postValue(ReplyViewData(it))
-            },
-            onError = {
-                Timber.e(it)
-            })
-    }
-
-    private fun getTotalReplyTime() {
-        contentRepository.getTotalReplyTime().subscribeOn(Schedulers.io())
-            .subscribeBy(onNext = {
-                totalReplyTime.postValue(
-                    Triple(
-                        it / MS_TO_H,
-                        it / MS_TO_M % M_S_MODULO_VALUE,
-                        it / MS_TO_S % M_S_MODULO_VALUE
-                    )
-                )
-            },
-                onError = { Timber.e(it) })
-    }
-
-    private fun updateAllReplyData() {
+    fun updateAllReplyData() {
         getMostListenedReply()
         getTotalReplyTime()
     }
+
+    private fun checkMultiListenEnabled() {
+        disposable.add(contentRepository.multiListenEnabled().subscribeOn(Schedulers.io())
+            .subscribeBy(onNext = { multiListenEnabled.postValue(it) }, onError = { Timber.e(it) })
+        )
+    }
+
+    private fun getReplySort() {
+        disposable.add(contentRepository.getReplySort().subscribeOn(Schedulers.io())
+            .subscribeBy(onSuccess = {
+                replySort.postValue(SortViewData(getApplication(), it))
+            }, onError = { Timber.e(it) })
+        )
+    }
+
+    private fun getMostListenedReply() {
+        disposable.add(
+            contentRepository.getMostListenedReply().subscribeOn(Schedulers.io()).subscribeBy(
+                onNext = {
+                    mostListenedReply.postValue(ReplyViewData(it))
+                },
+                onError = {
+                    Timber.e(it)
+                })
+        )
+    }
+
+    private fun getTotalReplyTime() {
+        disposable.add(
+            contentRepository.getTotalReplyTime().subscribeOn(Schedulers.io())
+                .subscribeBy(onNext = {
+                    totalReplyTime.postValue(
+                        Triple(
+                            it / MS_TO_H,
+                            it / MS_TO_M % M_S_MODULO_VALUE,
+                            it / MS_TO_S % M_S_MODULO_VALUE
+                        )
+                    )
+                },
+                    onError = { Timber.e(it) })
+        )
+    }
+
+
 }

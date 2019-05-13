@@ -34,9 +34,9 @@ class SettingsFragment : BaseVMFragment<SettingsViewModel>() {
         viewModel.mostListenedReply.observeSafe(this) {
             fragment_settings_most_listened_reply.text = it.getMostListenedText(context!!)
         }
-        viewModel.replySort.observeSafe(this) {sort ->
+        viewModel.replySort.observeSafe(this) { sort ->
             fragment_settings_reply_sort.text = sort.getSortText(context!!)
-            fragment_settings_reply_sort_area.setOnClickListener {_ ->
+            fragment_settings_reply_sort_area.setOnClickListener { _ ->
                 dialogComponent.displaySingleChoiceDialog(
                     R.string.reply_sort,
                     sort.sortString,
@@ -48,6 +48,10 @@ class SettingsFragment : BaseVMFragment<SettingsViewModel>() {
                     R.string.cancel,
                     {})
             }
+        }
+
+        sharedViewModel.onReplyListened.observeSafe(this) {
+            viewModel.updateAllReplyData()
         }
 
         viewModel.totalReplyTime.observeSafe(this) {
@@ -62,7 +66,7 @@ class SettingsFragment : BaseVMFragment<SettingsViewModel>() {
             }
         }
 
-        fragment_settings_random_reply_title.setOnClickListener { viewModel.listenToRandomReply() }
+        fragment_settings_random_reply_title.setOnClickListener { sharedViewModel.listenToRandomReply() }
 
 
     }

@@ -28,7 +28,6 @@ class ReplyListViewModel @Inject constructor(
 
     val replyListLiveData = MutableLiveData<List<ReplyViewData>>()
     val replyFavoriteUpdated = SingleLiveEvent<Boolean>()
-    val replyListened = SingleLiveEvent<Boolean>()
 
     private var currentSearch = ReplySharedViewModel.NO_SEARCH
 
@@ -70,11 +69,5 @@ class ReplyListViewModel @Inject constructor(
                 ).subscribeOn(Schedulers.io()).subscribe {
                     replyFavoriteUpdated.postValue(true)
                 })
-    }
-
-    @SuppressLint("CheckResult")
-    fun listenToReply(replyId: Int) {
-        contentRepository.playSoundMedia(replyId).subscribeOn(Schedulers.io())
-                .subscribeBy(onError = { Timber.e(it) }, onComplete = { })
     }
 }
