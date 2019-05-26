@@ -1,5 +1,7 @@
 package fr.legrand.oss117soundboard.data.repository
 
+import fr.legrand.oss117soundboard.data.entity.FilterType
+import fr.legrand.oss117soundboard.data.entity.MovieCharacter
 import fr.legrand.oss117soundboard.data.entity.Reply
 import fr.legrand.oss117soundboard.data.manager.file.FileManager
 import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
@@ -97,6 +99,12 @@ class ContentRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override fun getAllFilters(): Single<List<FilterType>> =
+        Single.defer { Single.just(FilterType.values().toList()) }
+
+    override fun getAllCharacters(): Single<List<MovieCharacter>> =
+        Single.defer { Single.just(MovieCharacter.values().toList()) }
 
 
     override fun getTotalReplyTime(): Observable<Long> {

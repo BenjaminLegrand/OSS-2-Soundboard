@@ -34,6 +34,7 @@ object Versions {
     const val TIMBER = "4.7.0"
     const val EXOPLAYER = "2.8.4"
     const val ROOM = "2.0.0"
+    const val GSON = "2.8.5"
 }
 
 object Libraries {
@@ -86,6 +87,7 @@ object Libraries {
 
     const val TIMBER = "com.jakewharton.timber:timber:${Versions.TIMBER}"
     const val EXOPLAYER = "com.google.android.exoplayer:exoplayer:${Versions.EXOPLAYER}"
+    const val GSON = "com.google.code.gson:gson:${Versions.GSON}"
 
 }
 

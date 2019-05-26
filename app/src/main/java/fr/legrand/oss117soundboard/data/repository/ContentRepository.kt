@@ -1,5 +1,7 @@
 package fr.legrand.oss117soundboard.data.repository
 
+import fr.legrand.oss117soundboard.data.entity.FilterType
+import fr.legrand.oss117soundboard.data.entity.MovieCharacter
 import fr.legrand.oss117soundboard.data.entity.Reply
 import fr.legrand.oss117soundboard.data.values.SortType
 import io.reactivex.Completable
@@ -38,4 +40,8 @@ interface ContentRepository {
     fun releaseRunningPlayers() : Completable
 
     fun isPlayerRunning() : Single<Boolean>
+
+    fun getAllFilters(): Single<List<FilterType>>
+
+    fun getAllCharacters(): Single<List<MovieCharacter>>
 }

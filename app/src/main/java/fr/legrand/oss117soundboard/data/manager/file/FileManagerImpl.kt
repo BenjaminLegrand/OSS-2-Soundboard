@@ -3,6 +3,7 @@ package fr.legrand.oss117soundboard.data.manager.file
 import android.content.Context
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.entity.Movie
+import fr.legrand.oss117soundboard.data.entity.MovieCharacter
 import fr.legrand.oss117soundboard.data.entity.Reply
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -19,284 +20,2786 @@ constructor(private val context: Context) : FileManager {
         val replyList = mutableListOf<Reply>()
 
         //Add ALL replies from movie
-        replyList.add(Reply(R.raw.cestgentil, context.getString(R.string.cestgentil_title), context.getString(R.string.cestgentil_desc), 161, Movie.OSS_1))
-        replyList.add(Reply(R.raw.mrleeteditbonjour, context.getString(R.string.mrleeteditbonjour_title), context.getString(R.string.mrleeteditbonjour_desc), 158, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ahahah, context.getString(R.string.ahahah_title), context.getString(R.string.ahahah_desc), 750, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ahautempspourmoi, context.getString(R.string.ahautempspourmoi_title), context.getString(R.string.ahautempspourmoi_desc), 246, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ahelleestpasmalcellela, context.getString(R.string.ahelleestpasmalcellela_title), context.getString(R.string.ahelleestpasmalcellela_desc), 305, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ahmafoi, context.getString(R.string.ahmafoi_title), context.getString(R.string.ahmafoi_desc), 250, Movie.OSS_2))
-        replyList.add(Reply(R.raw.arrogancedevotrebeaute, context.getString(R.string.arrogancedevotrebeaute_title), context.getString(R.string.arrogancedevotrebeaute_desc), 980, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bahvlaautrechose, context.getString(R.string.bahvlaautrechose_title), context.getString(R.string.bahvlaautrechose_desc), 449, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bonjourbonjour, context.getString(R.string.bonjourbonjour_title), context.getString(R.string.bonjourbonjour_desc), 300, Movie.OSS_2))
-        replyList.add(Reply(R.raw.borgeborgeborge, context.getString(R.string.borgeborgeborge_title), context.getString(R.string.borgeborgeborge_desc), 332, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bresiliennes, context.getString(R.string.bresiliennes_title), context.getString(R.string.bresiliennes_desc), 795, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cochinchine, context.getString(R.string.cochinchine_title), context.getString(R.string.cochinchine_desc), 672, Movie.OSS_2))
-        replyList.add(Reply(R.raw.commeunlundi, context.getString(R.string.commeunlundi_title), context.getString(R.string.commeunlundi_desc), 405, Movie.OSS_2))
-        replyList.add(Reply(R.raw.enfaitilladit, context.getString(R.string.enfaitilladit_title), context.getString(R.string.enfaitilladit_desc), 465, Movie.OSS_2))
-        replyList.add(Reply(R.raw.enfileconfortable, context.getString(R.string.enfileconfortable_title), context.getString(R.string.enfileconfortable_desc), 1036, Movie.OSS_2))
-        replyList.add(Reply(R.raw.enpleindansledos, context.getString(R.string.enpleindansledos_title), context.getString(R.string.enpleindansledos_desc), 695, Movie.OSS_2))
-        replyList.add(Reply(R.raw.erreursurlapersonne, context.getString(R.string.erreursurlapersonne_title), context.getString(R.string.erreursurlapersonne_desc), 705, Movie.OSS_2))
-        replyList.add(Reply(R.raw.etborgeilenditquoi, context.getString(R.string.etborgeilenditquoi_title), context.getString(R.string.etborgeilenditquoi_desc), 330, Movie.OSS_2))
-        replyList.add(Reply(R.raw.explorerunepartie, context.getString(R.string.explorerunepartie_title), context.getString(R.string.explorerunepartie_desc), 251, Movie.OSS_2))
-        replyList.add(Reply(R.raw.faireuncourrier, context.getString(R.string.faireuncourrier_title), context.getString(R.string.faireuncourrier_desc), 517, Movie.OSS_2))
-        replyList.add(Reply(R.raw.franquart, context.getString(R.string.franquart_title), context.getString(R.string.franquart_desc), 350, Movie.OSS_2))
-        replyList.add(Reply(R.raw.guetapens, context.getString(R.string.guetapens_title), context.getString(R.string.guetapens_desc), 632, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ilssontperdus, context.getString(R.string.ilssontperdus_title), context.getString(R.string.ilssontperdus_desc), 177, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jtapelleraisbill, context.getString(R.string.jtapelleraisbill_title), context.getString(R.string.jtapelleraisbill_desc), 830, Movie.OSS_2))
-        replyList.add(Reply(R.raw.kissmyass, context.getString(R.string.kissmyass_title), context.getString(R.string.kissmyass_desc), 835, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lesptfontcatresbien, context.getString(R.string.lesptfontcatresbien_title), context.getString(R.string.lesptfontcatresbien_desc), 490, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lessalesjaunes, context.getString(R.string.lessalesjaunes_title), context.getString(R.string.lessalesjaunes_desc), 240, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lessalesrougesnanlessalesjaunes, context.getString(R.string.lessalesrougesnanlessalesjaunes_title), context.getString(R.string.lessalesrougesnanlessalesjaunes_desc), 239, Movie.OSS_2))
-        replyList.add(Reply(R.raw.maisjevousenprie, context.getString(R.string.maisjevousenprie_title), context.getString(R.string.maisjevousenprie_desc), 970, Movie.OSS_2))
-        replyList.add(Reply(R.raw.malcsmfsoab, context.getString(R.string.malcsmfsoab_title), context.getString(R.string.malcsmfsoab_desc), 800, Movie.OSS_2))
-        replyList.add(Reply(R.raw.memepas, context.getString(R.string.memepas_title), context.getString(R.string.memepas_desc), 1016, Movie.OSS_2))
-        replyList.add(Reply(R.raw.montehubert, context.getString(R.string.montehubert_title), context.getString(R.string.montehubert_desc), 685, Movie.OSS_2))
-        replyList.add(Reply(R.raw.obregado, context.getString(R.string.obregado_title), context.getString(R.string.obregado_desc), 610, Movie.OSS_2))
-        replyList.add(Reply(R.raw.onafrolelacatastrophe, context.getString(R.string.onafrolelacatastrophe_title), context.getString(R.string.onafrolelacatastrophe_desc), 210, Movie.OSS_2))
-        replyList.add(Reply(R.raw.plaitil, context.getString(R.string.plaitil_title), context.getString(R.string.plaitil_desc), 655, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pointdevue, context.getString(R.string.pointdevue_title), context.getString(R.string.pointdevue_desc), 710, Movie.OSS_2))
-        replyList.add(Reply(R.raw.procedurehabituelle, context.getString(R.string.procedurehabituelle_title), context.getString(R.string.procedurehabituelle_desc), 498, Movie.OSS_2))
-        replyList.add(Reply(R.raw.quelputainchaleur, context.getString(R.string.quelputainchaleur_title), context.getString(R.string.quelputainchaleur_desc), 772, Movie.OSS_2))
-        replyList.add(Reply(R.raw.sacrehubert, context.getString(R.string.sacrehubert_title), context.getString(R.string.sacrehubert_desc), 735, Movie.OSS_2))
-        replyList.add(Reply(R.raw.semefierdeschinois, context.getString(R.string.semefierdeschinois_title), context.getString(R.string.semefierdeschinois_desc), 230, Movie.OSS_2))
-        replyList.add(Reply(R.raw.technologieamericaine, context.getString(R.string.technologieamericaine_title), context.getString(R.string.technologieamericaine_desc), 432, Movie.OSS_2))
-        replyList.add(Reply(R.raw.toctoctoc, context.getString(R.string.toctoctoc_title), context.getString(R.string.toctoctoc_desc), 386, Movie.OSS_2))
-        replyList.add(Reply(R.raw.tuastuemonfrere, context.getString(R.string.tuastuemonfrere_title), context.getString(R.string.tuastuemonfrere_desc), 645, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vousfaitesdusport, context.getString(R.string.vousfaitesdusport_title), context.getString(R.string.vousfaitesdusport_desc), 1015, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ahbahnoncestdommage, context.getString(R.string.ahbahnoncestdommage_title), context.getString(R.string.ahbahnoncestdommage_desc), 1650, Movie.OSS_2))
-        replyList.add(Reply(R.raw.atantotalors, context.getString(R.string.atantotalors_title), context.getString(R.string.atantotalors_desc), 1667, Movie.OSS_2))
-        replyList.add(Reply(R.raw.attachecaseaydeposer, context.getString(R.string.attachecaseaydeposer_title), context.getString(R.string.attachecaseaydeposer_desc), 1645, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bill, context.getString(R.string.bill_title), context.getString(R.string.bill_desc), 1890, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bravomemeconclusion, context.getString(R.string.bravomemeconclusion_title), context.getString(R.string.bravomemeconclusion_desc), 1900, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cheers, context.getString(R.string.cheers_title), context.getString(R.string.cheers_desc), 1905, Movie.OSS_2))
-        replyList.add(Reply(R.raw.choublanc, context.getString(R.string.choublanc_title), context.getString(R.string.choublanc_desc), 1850, Movie.OSS_2))
-        replyList.add(Reply(R.raw.commentditonqueso, context.getString(R.string.commentditonqueso_title), context.getString(R.string.commentditonqueso_desc), 1860, Movie.OSS_2))
-        replyList.add(Reply(R.raw.eirflantier, context.getString(R.string.eirflantier_title), context.getString(R.string.eirflantier_desc), 1695, Movie.OSS_2))
-        replyList.add(Reply(R.raw.entreallemands, context.getString(R.string.entreallemands_title), context.getString(R.string.entreallemands_desc), 1840, Movie.OSS_2))
-        replyList.add(Reply(R.raw.etraccourcissezmoicesjupes, context.getString(R.string.etraccourcissezmoicesjupes_title), context.getString(R.string.etraccourcissezmoicesjupes_desc), 1945, Movie.OSS_2))
-        replyList.add(Reply(R.raw.forcementuneassociation, context.getString(R.string.forcementuneassociation_title), context.getString(R.string.forcementuneassociation_desc), 1820, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jeconnaiscettetheorie, context.getString(R.string.jeconnaiscettetheorie_title), context.getString(R.string.jeconnaiscettetheorie_desc), 1845, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jesuiscertesfrancais, context.getString(R.string.jesuiscertesfrancais_title), context.getString(R.string.jesuiscertesfrancais_desc), 1875, Movie.OSS_2))
-        replyList.add(Reply(R.raw.joliepepette, context.getString(R.string.joliepepette_title), context.getString(R.string.joliepepette_desc), 1930, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lesallemands, context.getString(R.string.lesallemands_title), context.getString(R.string.lesallemands_desc), 1795, Movie.OSS_2))
-        replyList.add(Reply(R.raw.mercimaisjenemeserviraisquedelabrosseadents, context.getString(R.string.mercimaisjenemeserviraisquedelabrosseadents_title), context.getString(R.string.mercimaisjenemeserviraisquedelabrosseadents_desc), 1557, Movie.OSS_2))
-        replyList.add(Reply(R.raw.nanjepensaisplutotmaladroit, context.getString(R.string.nanjepensaisplutotmaladroit_title), context.getString(R.string.nanjepensaisplutotmaladroit_desc), 1605, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pasputuetoutesceschinetoques, context.getString(R.string.pasputuetoutesceschinetoques_title), context.getString(R.string.pasputuetoutesceschinetoques_desc), 1740, Movie.OSS_2))
-        replyList.add(Reply(R.raw.petitepartderesp, context.getString(R.string.petitepartderesp_title), context.getString(R.string.petitepartderesp_desc), 1620, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pyjamabrosseadents, context.getString(R.string.pyjamabrosseadents_title), context.getString(R.string.pyjamabrosseadents_desc), 1555, Movie.OSS_2))
-        replyList.add(Reply(R.raw.tresbellemission, context.getString(R.string.tresbellemission_title), context.getString(R.string.tresbellemission_desc), 1732, Movie.OSS_2))
-        replyList.add(Reply(R.raw.yalapiscine, context.getString(R.string.yalapiscine_title), context.getString(R.string.yalapiscine_desc), 1655, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ymettreunboncoup, context.getString(R.string.ymettreunboncoup_title), context.getString(R.string.ymettreunboncoup_desc), 1660, Movie.OSS_2))
-        replyList.add(Reply(R.raw.alaviealamort, context.getString(R.string.alaviealamort_title), context.getString(R.string.alaviealamort_desc), 3110, Movie.OSS_2))
-        replyList.add(Reply(R.raw.allerdeguiser, context.getString(R.string.allerdeguiser_title), context.getString(R.string.allerdeguiser_desc), 3360, Movie.OSS_2))
-        replyList.add(Reply(R.raw.analysepolitique, context.getString(R.string.analysepolitique_title), context.getString(R.string.analysepolitique_desc), 2105, Movie.OSS_2))
-        replyList.add(Reply(R.raw.attentionauxraccourcis, context.getString(R.string.attentionauxraccourcis_title), context.getString(R.string.attentionauxraccourcis_desc), 2345, Movie.OSS_2))
-        replyList.add(Reply(R.raw.attentionheinriech, context.getString(R.string.attentionheinriech_title), context.getString(R.string.attentionheinriech_desc), 3100, Movie.OSS_2))
-        replyList.add(Reply(R.raw.aurevoirlesenfants, context.getString(R.string.aurevoirlesenfants_title), context.getString(R.string.aurevoirlesenfants_desc), 2190, Movie.OSS_2))
-        replyList.add(Reply(R.raw.aveclescomplimentsdemrlee, context.getString(R.string.aveclescomplimentsdemrlee_title), context.getString(R.string.aveclescomplimentsdemrlee_desc), 2730, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bandedehippiessympatique, context.getString(R.string.bandedehippiessympatique_title), context.getString(R.string.bandedehippiessympatique_desc), 2680, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bivouaquer, context.getString(R.string.bivouaquer_title), context.getString(R.string.bivouaquer_desc), 3050, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bravootresdrolebravo, context.getString(R.string.bravootresdrolebravo_title), context.getString(R.string.bravootresdrolebravo_desc), 3278, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cacuitpas, context.getString(R.string.cacuitpas_title), context.getString(R.string.cacuitpas_desc), 3225, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cadeaudenoel2, context.getString(R.string.cadeaudenoel2_title), context.getString(R.string.cadeaudenoel2_desc), 3430, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cafait200kilos, context.getString(R.string.cafait200kilos_title), context.getString(R.string.cafait200kilos_desc), 3142, Movie.OSS_2))
-        replyList.add(Reply(R.raw.camestvenucommeca, context.getString(R.string.camestvenucommeca_title), context.getString(R.string.camestvenucommeca_desc), 3470, Movie.OSS_2))
-        replyList.add(Reply(R.raw.caneprenaitpasbeaucoupplusdetemps, context.getString(R.string.caneprenaitpasbeaucoupplusdetemps_title), context.getString(R.string.caneprenaitpasbeaucoupplusdetemps_desc), 3328, Movie.OSS_2))
-        replyList.add(Reply(R.raw.capeutsefairesoushuitaine, context.getString(R.string.capeutsefairesoushuitaine_title), context.getString(R.string.capeutsefairesoushuitaine_desc), 5735, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cavabiensepasser, context.getString(R.string.cavabiensepasser_title), context.getString(R.string.cavabiensepasser_desc), 2245, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ceestrigolo, context.getString(R.string.ceestrigolo_title), context.getString(R.string.ceestrigolo_desc), 3456, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cequivacestquejesuisla, context.getString(R.string.cequivacestquejesuisla_title), context.getString(R.string.cequivacestquejesuisla_desc), 2800, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cestlesquelsdechinois, context.getString(R.string.cestlesquelsdechinois_title), context.getString(R.string.cestlesquelsdechinois_desc), 2855, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cestpas69lanneedelajeunesse, context.getString(R.string.cestpas69lanneedelajeunesse_title), context.getString(R.string.cestpas69lanneedelajeunesse_desc), 2455, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cesttellementbeaucequildit, context.getString(R.string.cesttellementbeaucequildit_title), context.getString(R.string.cesttellementbeaucequildit_desc), 5393, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cetaitquandmemesonpere, context.getString(R.string.cetaitquandmemesonpere_title), context.getString(R.string.cetaitquandmemesonpere_desc), 2315, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cetteavionseratoncercueil, context.getString(R.string.cetteavionseratoncercueil_title), context.getString(R.string.cetteavionseratoncercueil_desc), 2715, Movie.OSS_2))
-        replyList.add(Reply(R.raw.chacundoitvaincresesdemons, context.getString(R.string.chacundoitvaincresesdemons_title), context.getString(R.string.chacundoitvaincresesdemons_desc), 5437, Movie.OSS_2))
-        replyList.add(Reply(R.raw.changerlemonde, context.getString(R.string.changerlemonde_title), context.getString(R.string.changerlemonde_desc), 2430, Movie.OSS_2))
-        replyList.add(Reply(R.raw.changerlemondecroco, context.getString(R.string.changerlemondecroco_title), context.getString(R.string.changerlemondecroco_desc), 3095, Movie.OSS_2))
-        replyList.add(Reply(R.raw.chinoisdechine, context.getString(R.string.chinoisdechine_title), context.getString(R.string.chinoisdechine_desc), 2863, Movie.OSS_2))
-        replyList.add(Reply(R.raw.commenttuparlesdetonpere, context.getString(R.string.commenttuparlesdetonpere_title), context.getString(R.string.commenttuparlesdetonpere_desc), 2300, Movie.OSS_2))
-        replyList.add(Reply(R.raw.commentvousavezfaitca, context.getString(R.string.commentvousavezfaitca_title), context.getString(R.string.commentvousavezfaitca_desc), 3408, Movie.OSS_2))
-        replyList.add(Reply(R.raw.completementcretincegamin, context.getString(R.string.completementcretincegamin_title), context.getString(R.string.completementcretincegamin_desc), 2152, Movie.OSS_2))
-        replyList.add(Reply(R.raw.costumenazi, context.getString(R.string.costumenazi_title), context.getString(R.string.costumenazi_desc), 3525, Movie.OSS_2))
-        replyList.add(Reply(R.raw.daucunontdesaventures, context.getString(R.string.daucunontdesaventures_title), context.getString(R.string.daucunontdesaventures_desc), 2935, Movie.OSS_2))
-        replyList.add(Reply(R.raw.debarasserdemoiparhasard, context.getString(R.string.debarasserdemoiparhasard_title), context.getString(R.string.debarasserdemoiparhasard_desc), 2370, Movie.OSS_2))
-        replyList.add(Reply(R.raw.denigrementsystematique, context.getString(R.string.denigrementsystematique_title), context.getString(R.string.denigrementsystematique_desc), 2335, Movie.OSS_2))
-        replyList.add(Reply(R.raw.derrieretoiunchinois, context.getString(R.string.derrieretoiunchinois_title), context.getString(R.string.derrieretoiunchinois_desc), 5150, Movie.OSS_2))
-        replyList.add(Reply(R.raw.dutempsarotir, context.getString(R.string.dutempsarotir_title), context.getString(R.string.dutempsarotir_desc), 3245, Movie.OSS_2))
-        replyList.add(Reply(R.raw.elleestbonnecellela, context.getString(R.string.elleestbonnecellela_title), context.getString(R.string.elleestbonnecellela_desc), 2092, Movie.OSS_2))
-        replyList.add(Reply(R.raw.embryondepiste, context.getString(R.string.embryondepiste_title), context.getString(R.string.embryondepiste_desc), 2861, Movie.OSS_2))
-        replyList.add(Reply(R.raw.enrevanchepurlesdrinks, context.getString(R.string.enrevanchepurlesdrinks_title), context.getString(R.string.enrevanchepurlesdrinks_desc), 3385, Movie.OSS_2))
-        replyList.add(Reply(R.raw.entreleschasseursetlesfreres, context.getString(R.string.entreleschasseursetlesfreres_title), context.getString(R.string.entreleschasseursetlesfreres_desc), 5177, Movie.OSS_2))
-        replyList.add(Reply(R.raw.etaproposdequoijedisaisca, context.getString(R.string.etaproposdequoijedisaisca_title), context.getString(R.string.etaproposdequoijedisaisca_desc), 2480, Movie.OSS_2))
-        replyList.add(Reply(R.raw.etlevraimonde, context.getString(R.string.etlevraimonde_title), context.getString(R.string.etlevraimonde_desc), 2460, Movie.OSS_2))
-        replyList.add(Reply(R.raw.etsivousnouspiquer, context.getString(R.string.etsivousnouspiquer_title), context.getString(R.string.etsivousnouspiquer_desc), 5372, Movie.OSS_2))
-        replyList.add(Reply(R.raw.faisattentionauxcroco, context.getString(R.string.faisattentionauxcroco_title), context.getString(R.string.faisattentionauxcroco_desc), 3115, Movie.OSS_2))
-        replyList.add(Reply(R.raw.faislesdeux, context.getString(R.string.faislesdeux_title), context.getString(R.string.faislesdeux_desc), 2032, Movie.OSS_2))
-        replyList.add(Reply(R.raw.faitesimples, context.getString(R.string.faitesimples_title), context.getString(R.string.faitesimples_desc), 3145, Movie.OSS_2))
-        replyList.add(Reply(R.raw.fautabsolumentquejapellearmand, context.getString(R.string.fautabsolumentquejapellearmand_title), context.getString(R.string.fautabsolumentquejapellearmand_desc), 3462, Movie.OSS_2))
-        replyList.add(Reply(R.raw.fermeetacleenplus, context.getString(R.string.fermeetacleenplus_title), context.getString(R.string.fermeetacleenplus_desc), 2725, Movie.OSS_2))
-        replyList.add(Reply(R.raw.fleuveacrocodile, context.getString(R.string.fleuveacrocodile_title), context.getString(R.string.fleuveacrocodile_desc), 3035, Movie.OSS_2))
-        replyList.add(Reply(R.raw.habilebill, context.getString(R.string.habilebill_title), context.getString(R.string.habilebill_desc), 5123, Movie.OSS_2))
-        replyList.add(Reply(R.raw.hahahbureau, context.getString(R.string.hahahbureau_title), context.getString(R.string.hahahbureau_desc), 2075, Movie.OSS_2))
-        replyList.add(Reply(R.raw.hellomotherfucker, context.getString(R.string.hellomotherfucker_title), context.getString(R.string.hellomotherfucker_desc), 5100, Movie.OSS_2))
-        replyList.add(Reply(R.raw.histoiredamour, context.getString(R.string.histoiredamour_title), context.getString(R.string.histoiredamour_desc), 2925, Movie.OSS_2))
-        replyList.add(Reply(R.raw.humourjuif, context.getString(R.string.humourjuif_title), context.getString(R.string.humourjuif_desc), 5826, Movie.OSS_2))
-        replyList.add(Reply(R.raw.humourpasrigolo, context.getString(R.string.humourpasrigolo_title), context.getString(R.string.humourpasrigolo_desc), 2060, Movie.OSS_2))
-        replyList.add(Reply(R.raw.imfuckinggreat, context.getString(R.string.imfuckinggreat_title), context.getString(R.string.imfuckinggreat_desc), 5110, Movie.OSS_2))
-        replyList.add(Reply(R.raw.interditlessaucisses, context.getString(R.string.interditlessaucisses_title), context.getString(R.string.interditlessaucisses_desc), 2970, Movie.OSS_2))
-        replyList.add(Reply(R.raw.interetderessembleraunefemme, context.getString(R.string.interetderessembleraunefemme_title), context.getString(R.string.interetderessembleraunefemme_desc), 2005, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jacquesaditaditpasdecharcuterie, context.getString(R.string.jacquesaditaditpasdecharcuterie_title), context.getString(R.string.jacquesaditaditpasdecharcuterie_desc), 2985, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jaibesoindevitamines, context.getString(R.string.jaibesoindevitamines_title), context.getString(R.string.jaibesoindevitamines_desc), 3210, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jaimecequisepasse, context.getString(R.string.jaimecequisepasse_title), context.getString(R.string.jaimecequisepasse_desc), 2625, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jaiprisduvsp, context.getString(R.string.jaiprisduvsp_title), context.getString(R.string.jaiprisduvsp_desc), 2676, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jecouds, context.getString(R.string.jecouds_title), context.getString(R.string.jecouds_desc), 3410, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jehaismonpere, context.getString(R.string.jehaismonpere_title), context.getString(R.string.jehaismonpere_desc), 2290, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jemedoutebien, context.getString(R.string.jemedoutebien_title), context.getString(R.string.jemedoutebien_desc), 2375, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jesuisjuif, context.getString(R.string.jesuisjuif_title), context.getString(R.string.jesuisjuif_desc), 2995, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jevouscroyaismort, context.getString(R.string.jevouscroyaismort_title), context.getString(R.string.jevouscroyaismort_desc), 4905, Movie.OSS_2))
-        replyList.add(Reply(R.raw.joyeuxnoel, context.getString(R.string.joyeuxnoel_title), context.getString(R.string.joyeuxnoel_desc), 5618, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jugeunefemme, context.getString(R.string.jugeunefemme_title), context.getString(R.string.jugeunefemme_desc), 3155, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lafrancedugeneraldegaulle, context.getString(R.string.lafrancedugeneraldegaulle_title), context.getString(R.string.lafrancedugeneraldegaulle_desc), 2130, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lajeviensdetueruncroco, context.getString(R.string.lajeviensdetueruncroco_title), context.getString(R.string.lajeviensdetueruncroco_desc), 3165, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lanneeprochaine, context.getString(R.string.lanneeprochaine_title), context.getString(R.string.lanneeprochaine_desc), 2445, Movie.OSS_2))
-        replyList.add(Reply(R.raw.laroutedebrasilia, context.getString(R.string.laroutedebrasilia_title), context.getString(R.string.laroutedebrasilia_desc), 2665, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lavousetesenvacances, context.getString(R.string.lavousetesenvacances_title), context.getString(R.string.lavousetesenvacances_desc), 2438, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lemondechangebienvite, context.getString(R.string.lemondechangebienvite_title), context.getString(R.string.lemondechangebienvite_desc), 3177, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lesreservoirssontenfeu, context.getString(R.string.lesreservoirssontenfeu_title), context.getString(R.string.lesreservoirssontenfeu_desc), 2822, Movie.OSS_2))
-        replyList.add(Reply(R.raw.loueur, context.getString(R.string.loueur_title), context.getString(R.string.loueur_desc), 3505, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lsd, context.getString(R.string.lsd_title), context.getString(R.string.lsd_desc), 2410, Movie.OSS_2))
-        replyList.add(Reply(R.raw.maisyaquoiquiva, context.getString(R.string.maisyaquoiquiva_title), context.getString(R.string.maisyaquoiquiva_desc), 2797, Movie.OSS_2))
-        replyList.add(Reply(R.raw.meredefamille, context.getString(R.string.meredefamille_title), context.getString(R.string.meredefamille_desc), 2210, Movie.OSS_2))
-        replyList.add(Reply(R.raw.moiquisuisridicule, context.getString(R.string.moiquisuisridicule_title), context.getString(R.string.moiquisuisridicule_desc), 3212, Movie.OSS_2))
-        replyList.add(Reply(R.raw.monsieurpompidou, context.getString(R.string.monsieurpompidou_title), context.getString(R.string.monsieurpompidou_desc), 5190, Movie.OSS_2))
-        replyList.add(Reply(R.raw.musiqueplage, context.getString(R.string.musiqueplage_title), context.getString(R.string.musiqueplage_desc), 2535, Movie.OSS_2))
-        replyList.add(Reply(R.raw.nazidanslhotel, context.getString(R.string.nazidanslhotel_title), context.getString(R.string.nazidanslhotel_desc), 3486, Movie.OSS_2))
-        replyList.add(Reply(R.raw.nebougezpasoujeloccis, context.getString(R.string.nebougezpasoujeloccis_title), context.getString(R.string.nebougezpasoujeloccis_desc), 5133, Movie.OSS_2))
-        replyList.add(Reply(R.raw.onapasditquonfaisaitcommeca, context.getString(R.string.onapasditquonfaisaitcommeca_title), context.getString(R.string.onapasditquonfaisaitcommeca_desc), 2260, Movie.OSS_2))
-        replyList.add(Reply(R.raw.onvapasserlanuitici, context.getString(R.string.onvapasserlanuitici_title), context.getString(R.string.onvapasserlanuitici_desc), 3058, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ouestheinreich, context.getString(R.string.ouestheinreich_title), context.getString(R.string.ouestheinreich_desc), 2145, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ouiplage, context.getString(R.string.ouiplage_title), context.getString(R.string.ouiplage_desc), 2350, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ouvert, context.getString(R.string.ouvert_title), context.getString(R.string.ouvert_desc), 2785, Movie.OSS_2))
-        replyList.add(Reply(R.raw.parcequelleestjuif, context.getString(R.string.parcequelleestjuif_title), context.getString(R.string.parcequelleestjuif_desc), 3535, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pasbienlinteretderessembleraunhomme, context.getString(R.string.pasbienlinteretderessembleraunhomme_title), context.getString(R.string.pasbienlinteretderessembleraunhomme_desc), 2782, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pascequejeveuxentendre, context.getString(R.string.pascequejeveuxentendre_title), context.getString(R.string.pascequejeveuxentendre_desc), 2270, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pasdesoutiengorges, context.getString(R.string.pasdesoutiengorges_title), context.getString(R.string.pasdesoutiengorges_desc), 2748, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pasdobjection, context.getString(R.string.pasdobjection_title), context.getString(R.string.pasdobjection_desc), 3050, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pasenvoyerpt, context.getString(R.string.pasenvoyerpt_title), context.getString(R.string.pasenvoyerpt_desc), 5680, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pasjuif, context.getString(R.string.pasjuif_title), context.getString(R.string.pasjuif_desc), 2963, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pauvtype, context.getString(R.string.pauvtype_title), context.getString(R.string.pauvtype_desc), 3275, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pleindemicrobes, context.getString(R.string.pleindemicrobes_title), context.getString(R.string.pleindemicrobes_desc), 3083, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pommedamour, context.getString(R.string.pommedamour_title), context.getString(R.string.pommedamour_desc), 5275, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pourrencontrermrlee, context.getString(R.string.pourrencontrermrlee_title), context.getString(R.string.pourrencontrermrlee_desc), 5775, Movie.OSS_2))
-        replyList.add(Reply(R.raw.purgribouillage, context.getString(R.string.purgribouillage_title), context.getString(R.string.purgribouillage_desc), 4872, Movie.OSS_2))
-        replyList.add(Reply(R.raw.quelleperiode, context.getString(R.string.quelleperiode_title), context.getString(R.string.quelleperiode_desc), 5705, Movie.OSS_2))
-        replyList.add(Reply(R.raw.quesepassetilbill, context.getString(R.string.quesepassetilbill_title), context.getString(R.string.quesepassetilbill_desc), 5113, Movie.OSS_2))
-        replyList.add(Reply(R.raw.questcequejedisaisdeja, context.getString(R.string.questcequejedisaisdeja_title), context.getString(R.string.questcequejedisaisdeja_desc), 2475, Movie.OSS_2))
-        replyList.add(Reply(R.raw.rarementdesmeresdefamille, context.getString(R.string.rarementdesmeresdefamille_title), context.getString(R.string.rarementdesmeresdefamille_desc), 2220, Movie.OSS_2))
-        replyList.add(Reply(R.raw.remettretonslip, context.getString(R.string.remettretonslip_title), context.getString(R.string.remettretonslip_desc), 3125, Movie.OSS_2))
-        replyList.add(Reply(R.raw.rireheinreich, context.getString(R.string.rireheinreich_title), context.getString(R.string.rireheinreich_desc), 2000, Movie.OSS_2))
-        replyList.add(Reply(R.raw.salirsouliers, context.getString(R.string.salirsouliers_title), context.getString(R.string.salirsouliers_desc), 2085, Movie.OSS_2))
-        replyList.add(Reply(R.raw.secouperlescheveux, context.getString(R.string.secouperlescheveux_title), context.getString(R.string.secouperlescheveux_desc), 2690, Movie.OSS_2))
-        replyList.add(Reply(R.raw.serpentjenemangepas, context.getString(R.string.serpentjenemangepas_title), context.getString(R.string.serpentjenemangepas_desc), 5285, Movie.OSS_2))
-        replyList.add(Reply(R.raw.sinonyaaussilesboules, context.getString(R.string.sinonyaaussilesboules_title), context.getString(R.string.sinonyaaussilesboules_desc), 3440, Movie.OSS_2))
-        replyList.add(Reply(R.raw.situationclarifiee, context.getString(R.string.situationclarifiee_title), context.getString(R.string.situationclarifiee_desc), 4970, Movie.OSS_2))
-        replyList.add(Reply(R.raw.soireetranquille, context.getString(R.string.soireetranquille_title), context.getString(R.string.soireetranquille_desc), 2673, Movie.OSS_2))
-        replyList.add(Reply(R.raw.sortidesoncontexte, context.getString(R.string.sortidesoncontexte_title), context.getString(R.string.sortidesoncontexte_desc), 2640, Movie.OSS_2))
-        replyList.add(Reply(R.raw.torturepsychologique, context.getString(R.string.torturepsychologique_title), context.getString(R.string.torturepsychologique_desc), 2325, Movie.OSS_2))
-        replyList.add(Reply(R.raw.touslamemeidee, context.getString(R.string.touslamemeidee_title), context.getString(R.string.touslamemeidee_desc), 3562, Movie.OSS_2))
-        replyList.add(Reply(R.raw.trainsdaterissages, context.getString(R.string.trainsdaterissages_title), context.getString(R.string.trainsdaterissages_desc), 2795, Movie.OSS_2))
-        replyList.add(Reply(R.raw.transistor, context.getString(R.string.transistor_title), context.getString(R.string.transistor_desc), 2150, Movie.OSS_2))
-        replyList.add(Reply(R.raw.trouverunhotel, context.getString(R.string.trouverunhotel_title), context.getString(R.string.trouverunhotel_desc), 3340, Movie.OSS_2))
-        replyList.add(Reply(R.raw.tuesamericantuescontrelesnazis, context.getString(R.string.tuesamericantuescontrelesnazis_title), context.getString(R.string.tuesamericantuescontrelesnazis_desc), 5127, Movie.OSS_2))
-        replyList.add(Reply(R.raw.tumasfichuunedecestrouilles, context.getString(R.string.tumasfichuunedecestrouilles_title), context.getString(R.string.tumasfichuunedecestrouilles_desc), 5103, Movie.OSS_2))
-        replyList.add(Reply(R.raw.tupeuxpasmedireca, context.getString(R.string.tupeuxpasmedireca_title), context.getString(R.string.tupeuxpasmedireca_desc), 2477, Movie.OSS_2))
-        replyList.add(Reply(R.raw.unbanalaccidentdetrapeze, context.getString(R.string.unbanalaccidentdetrapeze_title), context.getString(R.string.unbanalaccidentdetrapeze_desc), 5550, Movie.OSS_2))
-        replyList.add(Reply(R.raw.unedictature, context.getString(R.string.unedictature_title), context.getString(R.string.unedictature_desc), 2110, Movie.OSS_2))
-        replyList.add(Reply(R.raw.unepetitetable, context.getString(R.string.unepetitetable_title), context.getString(R.string.unepetitetable_desc), 3068, Movie.OSS_2))
-        replyList.add(Reply(R.raw.unepeudemorale, context.getString(R.string.unepeudemorale_title), context.getString(R.string.unepeudemorale_desc), 3265, Movie.OSS_2))
-        replyList.add(Reply(R.raw.usezdevoscharmes, context.getString(R.string.usezdevoscharmes_title), context.getString(R.string.usezdevoscharmes_desc), 2240, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vexe, context.getString(R.string.vexe_title), context.getString(R.string.vexe_desc), 3014, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vieuxjardinier, context.getString(R.string.vieuxjardinier_title), context.getString(R.string.vieuxjardinier_desc), 4840, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vivredanslurine, context.getString(R.string.vivredanslurine_title), context.getString(R.string.vivredanslurine_desc), 1980, Movie.OSS_2))
-        replyList.add(Reply(R.raw.voilacadeaudenoel, context.getString(R.string.voilacadeaudenoel_title), context.getString(R.string.voilacadeaudenoel_desc), 3425, Movie.OSS_2))
-        replyList.add(Reply(R.raw.voilacommentcavasepasser, context.getString(R.string.voilacommentcavasepasser_title), context.getString(R.string.voilacommentcavasepasser_desc), 3060, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vousavezcequejemesuisdit, context.getString(R.string.vousavezcequejemesuisdit_title), context.getString(R.string.vousavezcequejemesuisdit_desc), 2200, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vousfaitesdesquiches, context.getString(R.string.vousfaitesdesquiches_title), context.getString(R.string.vousfaitesdesquiches_desc), 2400, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vousmontez, context.getString(R.string.vousmontez_title), context.getString(R.string.vousmontez_desc), 4813, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vousnaimezpasleshommes, context.getString(R.string.vousnaimezpasleshommes_title), context.getString(R.string.vousnaimezpasleshommes_desc), 2955, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vouspensezquecestmieux, context.getString(R.string.vouspensezquecestmieux_title), context.getString(R.string.vouspensezquecestmieux_desc), 2365, Movie.OSS_2))
-        replyList.add(Reply(R.raw.youresofrench, context.getString(R.string.youresofrench_title), context.getString(R.string.youresofrench_desc), 2040, Movie.OSS_2))
-        replyList.add(Reply(R.raw.double117, context.getString(R.string.double117_title), context.getString(R.string.double117_desc), 1305, Movie.OSS_2))
-        replyList.add(Reply(R.raw.envouloiracarlota, context.getString(R.string.envouloiracarlota_title), context.getString(R.string.envouloiracarlota_desc), 1075, Movie.OSS_2))
-        replyList.add(Reply(R.raw.epatant, context.getString(R.string.epatant_title), context.getString(R.string.epatant_desc), 1515, Movie.OSS_2))
-        replyList.add(Reply(R.raw.excusezcesmanieres, context.getString(R.string.excusezcesmanieres_title), context.getString(R.string.excusezcesmanieres_desc), 1285, Movie.OSS_2))
-        replyList.add(Reply(R.raw.faireequipeaveclemossad, context.getString(R.string.faireequipeaveclemossad_title), context.getString(R.string.faireequipeaveclemossad_desc), 1315, Movie.OSS_2))
-        replyList.add(Reply(R.raw.habile2, context.getString(R.string.habile2_title), context.getString(R.string.habile2_desc), 442, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jecoute, context.getString(R.string.jecoute_title), context.getString(R.string.jecoute_desc), 1310, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lemossad, context.getString(R.string.lemossad_title), context.getString(R.string.lemossad_desc), 1325, Movie.OSS_2))
-        replyList.add(Reply(R.raw.meilleuragentfrancais, context.getString(R.string.meilleuragentfrancais_title), context.getString(R.string.meilleuragentfrancais_desc), 1360, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ouhpardon, context.getString(R.string.ouhpardon_title), context.getString(R.string.ouhpardon_desc), 1550, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ouii, context.getString(R.string.ouii_title), context.getString(R.string.ouii_desc), 1545, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pasamoideledire, context.getString(R.string.pasamoideledire_title), context.getString(R.string.pasamoideledire_desc), 1360, Movie.OSS_2))
-        replyList.add(Reply(R.raw.portequelquechosedelourd, context.getString(R.string.portequelquechosedelourd_title), context.getString(R.string.portequelquechosedelourd_desc), 1455, Movie.OSS_2))
-        replyList.add(Reply(R.raw.quandjedisnimportequi, context.getString(R.string.quandjedisnimportequi_title), context.getString(R.string.quandjedisnimportequi_desc), 1530, Movie.OSS_2))
-        replyList.add(Reply(R.raw.quellehistoirecaaussi, context.getString(R.string.quellehistoirecaaussi_title), context.getString(R.string.quellehistoirecaaussi_desc), 1495, Movie.OSS_2))
-        replyList.add(Reply(R.raw.secretaireaussijolie, context.getString(R.string.secretaireaussijolie_title), context.getString(R.string.secretaireaussijolie_desc), 1435, Movie.OSS_2))
-        replyList.add(Reply(R.raw.secretairedequialors, context.getString(R.string.secretairedequialors_title), context.getString(R.string.secretairedequialors_desc), 1445, Movie.OSS_2))
-        replyList.add(Reply(R.raw.allezyhubert, context.getString(R.string.allezyhubert_title), context.getString(R.string.allezyhubert_desc), 4310, Movie.OSS_2))
-        replyList.add(Reply(R.raw.aumoinsilneconnaitpasmavraieidentite, context.getString(R.string.aumoinsilneconnaitpasmavraieidentite_title), context.getString(R.string.aumoinsilneconnaitpasmavraieidentite_desc), 3645, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bingo, context.getString(R.string.bingo_title), context.getString(R.string.bingo_desc), 3875, Movie.OSS_2))
-        replyList.add(Reply(R.raw.bravovousconduisezcommeunhomme, context.getString(R.string.bravovousconduisezcommeunhomme_title), context.getString(R.string.bravovousconduisezcommeunhomme_desc), 4370, Movie.OSS_2))
-        replyList.add(Reply(R.raw.carlota, context.getString(R.string.carlota_title), context.getString(R.string.carlota_desc), 3970, Movie.OSS_2))
-        replyList.add(Reply(R.raw.casuffit, context.getString(R.string.casuffit_title), context.getString(R.string.casuffit_desc), 3823, Movie.OSS_2))
-        replyList.add(Reply(R.raw.cestpasmoi, context.getString(R.string.cestpasmoi_title), context.getString(R.string.cestpasmoi_desc), 4100, Movie.OSS_2))
-        replyList.add(Reply(R.raw.charmantprogramme, context.getString(R.string.charmantprogramme_title), context.getString(R.string.charmantprogramme_desc), 3850, Movie.OSS_2))
-        replyList.add(Reply(R.raw.charmantvoyage, context.getString(R.string.charmantvoyage_title), context.getString(R.string.charmantvoyage_desc), 1270, Movie.OSS_2))
-        replyList.add(Reply(R.raw.chauvequipeut, context.getString(R.string.chauvequipeut_title), context.getString(R.string.chauvequipeut_desc), 4285, Movie.OSS_2))
-        replyList.add(Reply(R.raw.clashhubertdolores, context.getString(R.string.clashhubertdolores_title), context.getString(R.string.clashhubertdolores_desc), 4430, Movie.OSS_2))
-        replyList.add(Reply(R.raw.doublefeminin, context.getString(R.string.doublefeminin_title), context.getString(R.string.doublefeminin_desc), 4403, Movie.OSS_2))
-        replyList.add(Reply(R.raw.etcasepassebiencereportage, context.getString(R.string.etcasepassebiencereportage_title), context.getString(R.string.etcasepassebiencereportage_desc), 3907, Movie.OSS_2))
-        replyList.add(Reply(R.raw.etcomment, context.getString(R.string.etcomment_title), context.getString(R.string.etcomment_desc), 4384, Movie.OSS_2))
-        replyList.add(Reply(R.raw.etsilecinquiemereich, context.getString(R.string.etsilecinquiemereich_title), context.getString(R.string.etsilecinquiemereich_desc), 3790, Movie.OSS_2))
-        replyList.add(Reply(R.raw.evenementsordide, context.getString(R.string.evenementsordide_title), context.getString(R.string.evenementsordide_desc), 3680, Movie.OSS_2))
-        replyList.add(Reply(R.raw.evidemmentcestunarcdebebe, context.getString(R.string.evidemmentcestunarcdebebe_title), context.getString(R.string.evidemmentcestunarcdebebe_desc), 4325, Movie.OSS_2))
-        replyList.add(Reply(R.raw.faistreschaudnon, context.getString(R.string.faistreschaudnon_title), context.getString(R.string.faistreschaudnon_desc), 4452, Movie.OSS_2))
-        replyList.add(Reply(R.raw.grottesdenazis, context.getString(R.string.grottesdenazis_title), context.getString(R.string.grottesdenazis_desc), 3890, Movie.OSS_2))
-        replyList.add(Reply(R.raw.gutenhacht, context.getString(R.string.gutenhacht_title), context.getString(R.string.gutenhacht_desc), 3960, Movie.OSS_2))
-        replyList.add(Reply(R.raw.heinriechunpostiche, context.getString(R.string.heinriechunpostiche_title), context.getString(R.string.heinriechunpostiche_desc), 3667, Movie.OSS_2))
-        replyList.add(Reply(R.raw.histoiredemeilleuragent, context.getString(R.string.histoiredemeilleuragent_title), context.getString(R.string.histoiredemeilleuragent_desc), 4070, Movie.OSS_2))
-        replyList.add(Reply(R.raw.hitlerjedetesetcetype, context.getString(R.string.hitlerjedetesetcetype_title), context.getString(R.string.hitlerjedetesetcetype_desc), 3855, Movie.OSS_2))
-        replyList.add(Reply(R.raw.humournazi, context.getString(R.string.humournazi_title), context.getString(R.string.humournazi_desc), 3922, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jaiquandmemeunrempart, context.getString(R.string.jaiquandmemeunrempart_title), context.getString(R.string.jaiquandmemeunrempart_desc), 4427, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jaivujesaisquicest, context.getString(R.string.jaivujesaisquicest_title), context.getString(R.string.jaivujesaisquicest_desc), 4103, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jemhabillemal, context.getString(R.string.jemhabillemal_title), context.getString(R.string.jemhabillemal_desc), 4443, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jesuisfreidriech, context.getString(R.string.jesuisfreidriech_title), context.getString(R.string.jesuisfreidriech_desc), 3665, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jevoisbiencequivousplaitdanslenazisme, context.getString(R.string.jevoisbiencequivousplaitdanslenazisme_title), context.getString(R.string.jevoisbiencequivousplaitdanslenazisme_desc), 3750, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lachezmoivousmefaitesmal, context.getString(R.string.lachezmoivousmefaitesmal_title), context.getString(R.string.lachezmoivousmefaitesmal_desc), 3830, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lapartienestpeutetrepasencoreperdue, context.getString(R.string.lapartienestpeutetrepasencoreperdue_title), context.getString(R.string.lapartienestpeutetrepasencoreperdue_desc), 4298, Movie.OSS_2))
-        replyList.add(Reply(R.raw.lecinquiemereich, context.getString(R.string.lecinquiemereich_title), context.getString(R.string.lecinquiemereich_desc), 4320, Movie.OSS_2))
-        replyList.add(Reply(R.raw.mavolontedechangerlemonde, context.getString(R.string.mavolontedechangerlemonde_title), context.getString(R.string.mavolontedechangerlemonde_desc), 3670, Movie.OSS_2))
-        replyList.add(Reply(R.raw.monfich, context.getString(R.string.monfich_title), context.getString(R.string.monfich_desc), 4108, Movie.OSS_2))
-        replyList.add(Reply(R.raw.monmonde, context.getString(R.string.monmonde_title), context.getString(R.string.monmonde_desc), 3705, Movie.OSS_2))
-        replyList.add(Reply(R.raw.oripeauxdelahaine, context.getString(R.string.oripeauxdelahaine_title), context.getString(R.string.oripeauxdelahaine_desc), 3965, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pannedescence, context.getString(R.string.pannedescence_title), context.getString(R.string.pannedescence_desc), 4498, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pourlinstantjesuisenphasedanalyse, context.getString(R.string.pourlinstantjesuisenphasedanalyse_title), context.getString(R.string.pourlinstantjesuisenphasedanalyse_desc), 3612, Movie.OSS_2))
-        replyList.add(Reply(R.raw.pourquoimoi, context.getString(R.string.pourquoimoi_title), context.getString(R.string.pourquoimoi_desc), 3955, Movie.OSS_2))
-        replyList.add(Reply(R.raw.quelonconnaitmieuxsouslenomdeoss117, context.getString(R.string.quelonconnaitmieuxsouslenomdeoss117_title), context.getString(R.string.quelonconnaitmieuxsouslenomdeoss117_desc), 3647, Movie.OSS_2))
-        replyList.add(Reply(R.raw.riseesetquolibets, context.getString(R.string.riseesetquolibets_title), context.getString(R.string.riseesetquolibets_desc), 3820, Movie.OSS_2))
-        replyList.add(Reply(R.raw.unebonnedemieheuredevantnous, context.getString(R.string.unebonnedemieheuredevantnous_title), context.getString(R.string.unebonnedemieheuredevantnous_desc), 3868, Movie.OSS_2))
-        replyList.add(Reply(R.raw.utopiste, context.getString(R.string.utopiste_title), context.getString(R.string.utopiste_desc), 3730, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vosarcsetvosfleches, context.getString(R.string.vosarcsetvosfleches_title), context.getString(R.string.vosarcsetvosfleches_desc), 4287, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vousmelepaieriez, context.getString(R.string.vousmelepaieriez_title), context.getString(R.string.vousmelepaieriez_desc), 4088, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vousnemeplaisezpascesttout, context.getString(R.string.vousnemeplaisezpascesttout_title), context.getString(R.string.vousnemeplaisezpascesttout_desc), 4420, Movie.OSS_2))
-        replyList.add(Reply(R.raw.voussavezcequejaimerais, context.getString(R.string.voussavezcequejaimerais_title), context.getString(R.string.voussavezcequejaimerais_desc), 4413, Movie.OSS_2))
-        replyList.add(Reply(R.raw.vousvousmoquez, context.getString(R.string.vousvousmoquez_title), context.getString(R.string.vousvousmoquez_desc), 3913, Movie.OSS_2))
-        replyList.add(Reply(R.raw.enfinmoijedisca, context.getString(R.string.enfinmoijedisca_title), context.getString(R.string.enfinmoijedisca_desc), 1290, Movie.OSS_2))
-        replyList.add(Reply(R.raw.desglacesalabanane, context.getString(R.string.desglacesalabanane_title), context.getString(R.string.desglacesalabanane_desc), 4055, Movie.OSS_2))
-        replyList.add(Reply(R.raw.ilfautquelafranceoublie, context.getString(R.string.ilfautquelafranceoublie_title), context.getString(R.string.ilfautquelafranceoublie_desc), 5712, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jaccepteauneseulecondition, context.getString(R.string.jaccepteauneseulecondition_title), context.getString(R.string.jaccepteauneseulecondition_desc), 5767, Movie.OSS_2))
-        replyList.add(Reply(R.raw.jememettraisdansdebeauxdraps, context.getString(R.string.jememettraisdansdebeauxdraps_title), context.getString(R.string.jememettraisdansdebeauxdraps_desc), 5787, Movie.OSS_2))
+        replyList.add(
+            Reply(
+                R.raw.cestgentil,
+                context.getString(R.string.cestgentil_title),
+                context.getString(R.string.cestgentil_desc),
+                161,
+                Movie.OSS_1,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.mrleeteditbonjour,
+                context.getString(R.string.mrleeteditbonjour_title),
+                context.getString(R.string.mrleeteditbonjour_desc),
+                158,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.CHINESE_BROTHERS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ahahah,
+                context.getString(R.string.ahahah_title),
+                context.getString(R.string.ahahah_desc),
+                750,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ahautempspourmoi,
+                context.getString(R.string.ahautempspourmoi_title),
+                context.getString(R.string.ahautempspourmoi_desc),
+                246,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ahelleestpasmalcellela,
+                context.getString(R.string.ahelleestpasmalcellela_title),
+                context.getString(R.string.ahelleestpasmalcellela_desc),
+                305,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ahmafoi,
+                context.getString(R.string.ahmafoi_title),
+                context.getString(R.string.ahmafoi_desc),
+                250,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.arrogancedevotrebeaute,
+                context.getString(R.string.arrogancedevotrebeaute_title),
+                context.getString(R.string.arrogancedevotrebeaute_desc),
+                980,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bahvlaautrechose,
+                context.getString(R.string.bahvlaautrechose_title),
+                context.getString(R.string.bahvlaautrechose_desc),
+                449,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bonjourbonjour,
+                context.getString(R.string.bonjourbonjour_title),
+                context.getString(R.string.bonjourbonjour_desc),
+                300,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.borgeborgeborge,
+                context.getString(R.string.borgeborgeborge_title),
+                context.getString(R.string.borgeborgeborge_desc),
+                332,
+                Movie.OSS_2,
+                listOf(MovieCharacter.MAYEUX)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bresiliennes,
+                context.getString(R.string.bresiliennes_title),
+                context.getString(R.string.bresiliennes_desc),
+                795,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cochinchine,
+                context.getString(R.string.cochinchine_title),
+                context.getString(R.string.cochinchine_desc),
+                672,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.commeunlundi,
+                context.getString(R.string.commeunlundi_title),
+                context.getString(R.string.commeunlundi_desc),
+                405,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.enfaitilladit,
+                context.getString(R.string.enfaitilladit_title),
+                context.getString(R.string.enfaitilladit_desc),
+                465,
+                Movie.OSS_2,
+                listOf(MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.enfileconfortable,
+                context.getString(R.string.enfileconfortable_title),
+                context.getString(R.string.enfileconfortable_desc),
+                1036,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.enpleindansledos,
+                context.getString(R.string.enpleindansledos_title),
+                context.getString(R.string.enpleindansledos_desc),
+                695,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.erreursurlapersonne,
+                context.getString(R.string.erreursurlapersonne_title),
+                context.getString(R.string.erreursurlapersonne_desc),
+                705,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.etborgeilenditquoi,
+                context.getString(R.string.etborgeilenditquoi_title),
+                context.getString(R.string.etborgeilenditquoi_desc),
+                330,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.MAYEUX)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.explorerunepartie,
+                context.getString(R.string.explorerunepartie_title),
+                context.getString(R.string.explorerunepartie_desc),
+                251,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.faireuncourrier,
+                context.getString(R.string.faireuncourrier_title),
+                context.getString(R.string.faireuncourrier_desc),
+                517,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.franquart,
+                context.getString(R.string.franquart_title),
+                context.getString(R.string.franquart_desc),
+                350,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.guetapens,
+                context.getString(R.string.guetapens_title),
+                context.getString(R.string.guetapens_desc),
+                632,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ilssontperdus,
+                context.getString(R.string.ilssontperdus_title),
+                context.getString(R.string.ilssontperdus_desc),
+                177,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jtapelleraisbill,
+                context.getString(R.string.jtapelleraisbill_title),
+                context.getString(R.string.jtapelleraisbill_desc),
+                830,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.kissmyass,
+                context.getString(R.string.kissmyass_title),
+                context.getString(R.string.kissmyass_desc),
+                835,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lesptfontcatresbien,
+                context.getString(R.string.lesptfontcatresbien_title),
+                context.getString(R.string.lesptfontcatresbien_desc),
+                490,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lessalesjaunes,
+                context.getString(R.string.lessalesjaunes_title),
+                context.getString(R.string.lessalesjaunes_desc),
+                240,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lessalesrougesnanlessalesjaunes,
+                context.getString(R.string.lessalesrougesnanlessalesjaunes_title),
+                context.getString(R.string.lessalesrougesnanlessalesjaunes_desc),
+                239,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.CHINESE_PRINCESS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.maisjevousenprie,
+                context.getString(R.string.maisjevousenprie_title),
+                context.getString(R.string.maisjevousenprie_desc),
+                970,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.malcsmfsoab,
+                context.getString(R.string.malcsmfsoab_title),
+                context.getString(R.string.malcsmfsoab_desc),
+                800,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.memepas,
+                context.getString(R.string.memepas_title),
+                context.getString(R.string.memepas_desc),
+                1016,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.montehubert,
+                context.getString(R.string.montehubert_title),
+                context.getString(R.string.montehubert_desc),
+                685,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.obregado,
+                context.getString(R.string.obregado_title),
+                context.getString(R.string.obregado_desc),
+                610,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.onafrolelacatastrophe,
+                context.getString(R.string.onafrolelacatastrophe_title),
+                context.getString(R.string.onafrolelacatastrophe_desc),
+                210,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.plaitil,
+                context.getString(R.string.plaitil_title),
+                context.getString(R.string.plaitil_desc),
+                655,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pointdevue,
+                context.getString(R.string.pointdevue_title),
+                context.getString(R.string.pointdevue_desc),
+                710,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.procedurehabituelle,
+                context.getString(R.string.procedurehabituelle_title),
+                context.getString(R.string.procedurehabituelle_desc),
+                498,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.quelputainchaleur,
+                context.getString(R.string.quelputainchaleur_title),
+                context.getString(R.string.quelputainchaleur_desc),
+                772,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.sacrehubert,
+                context.getString(R.string.sacrehubert_title),
+                context.getString(R.string.sacrehubert_desc),
+                735,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.semefierdeschinois,
+                context.getString(R.string.semefierdeschinois_title),
+                context.getString(R.string.semefierdeschinois_desc),
+                230,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.technologieamericaine,
+                context.getString(R.string.technologieamericaine_title),
+                context.getString(R.string.technologieamericaine_desc),
+                432,
+                Movie.OSS_2,
+                listOf(MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.toctoctoc,
+                context.getString(R.string.toctoctoc_title),
+                context.getString(R.string.toctoctoc_desc),
+                386,
+                Movie.OSS_2,
+                listOf(MovieCharacter.LEDENTU)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.tuastuemonfrere,
+                context.getString(R.string.tuastuemonfrere_title),
+                context.getString(R.string.tuastuemonfrere_desc),
+                645,
+                Movie.OSS_2,
+                listOf(MovieCharacter.CHINESE_BROTHERS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vousfaitesdusport,
+                context.getString(R.string.vousfaitesdusport_title),
+                context.getString(R.string.vousfaitesdusport_desc),
+                1015,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.CARLOTA)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ahbahnoncestdommage,
+                context.getString(R.string.ahbahnoncestdommage_title),
+                context.getString(R.string.ahbahnoncestdommage_desc),
+                1650,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.atantotalors,
+                context.getString(R.string.atantotalors_title),
+                context.getString(R.string.atantotalors_desc),
+                1667,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.attachecaseaydeposer,
+                context.getString(R.string.attachecaseaydeposer_title),
+                context.getString(R.string.attachecaseaydeposer_desc),
+                1645,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bill,
+                context.getString(R.string.bill_title),
+                context.getString(R.string.bill_desc),
+                1890,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bravomemeconclusion,
+                context.getString(R.string.bravomemeconclusion_title),
+                context.getString(R.string.bravomemeconclusion_desc),
+                1900,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cheers,
+                context.getString(R.string.cheers_title),
+                context.getString(R.string.cheers_desc),
+                1905,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.choublanc,
+                context.getString(R.string.choublanc_title),
+                context.getString(R.string.choublanc_desc),
+                1850,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.commentditonqueso,
+                context.getString(R.string.commentditonqueso_title),
+                context.getString(R.string.commentditonqueso_desc),
+                1860,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.eirflantier,
+                context.getString(R.string.eirflantier_title),
+                context.getString(R.string.eirflantier_desc),
+                1695,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.GERMANS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.entreallemands,
+                context.getString(R.string.entreallemands_title),
+                context.getString(R.string.entreallemands_desc),
+                1840,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.etraccourcissezmoicesjupes,
+                context.getString(R.string.etraccourcissezmoicesjupes_title),
+                context.getString(R.string.etraccourcissezmoicesjupes_desc),
+                1945,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.forcementuneassociation,
+                context.getString(R.string.forcementuneassociation_title),
+                context.getString(R.string.forcementuneassociation_desc),
+                1820,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jeconnaiscettetheorie,
+                context.getString(R.string.jeconnaiscettetheorie_title),
+                context.getString(R.string.jeconnaiscettetheorie_desc),
+                1845,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jesuiscertesfrancais,
+                context.getString(R.string.jesuiscertesfrancais_title),
+                context.getString(R.string.jesuiscertesfrancais_desc),
+                1875,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.joliepepette,
+                context.getString(R.string.joliepepette_title),
+                context.getString(R.string.joliepepette_desc),
+                1930,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lesallemands,
+                context.getString(R.string.lesallemands_title),
+                context.getString(R.string.lesallemands_desc),
+                1795,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.mercimaisjenemeserviraisquedelabrosseadents,
+                context.getString(R.string.mercimaisjenemeserviraisquedelabrosseadents_title),
+                context.getString(R.string.mercimaisjenemeserviraisquedelabrosseadents_desc),
+                1557,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.nanjepensaisplutotmaladroit,
+                context.getString(R.string.nanjepensaisplutotmaladroit_title),
+                context.getString(R.string.nanjepensaisplutotmaladroit_desc),
+                1605,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pasputuetoutesceschinetoques,
+                context.getString(R.string.pasputuetoutesceschinetoques_title),
+                context.getString(R.string.pasputuetoutesceschinetoques_desc),
+                1740,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.petitepartderesp,
+                context.getString(R.string.petitepartderesp_title),
+                context.getString(R.string.petitepartderesp_desc),
+                1620,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pyjamabrosseadents,
+                context.getString(R.string.pyjamabrosseadents_title),
+                context.getString(R.string.pyjamabrosseadents_desc),
+                1555,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.tresbellemission,
+                context.getString(R.string.tresbellemission_title),
+                context.getString(R.string.tresbellemission_desc),
+                1732,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.yalapiscine,
+                context.getString(R.string.yalapiscine_title),
+                context.getString(R.string.yalapiscine_desc),
+                1655,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ymettreunboncoup,
+                context.getString(R.string.ymettreunboncoup_title),
+                context.getString(R.string.ymettreunboncoup_desc),
+                1660,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.alaviealamort,
+                context.getString(R.string.alaviealamort_title),
+                context.getString(R.string.alaviealamort_desc),
+                3110,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HEINRICH)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.allerdeguiser,
+                context.getString(R.string.allerdeguiser_title),
+                context.getString(R.string.allerdeguiser_desc),
+                3360,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.analysepolitique,
+                context.getString(R.string.analysepolitique_title),
+                context.getString(R.string.analysepolitique_desc),
+                2105,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.attentionauxraccourcis,
+                context.getString(R.string.attentionauxraccourcis_title),
+                context.getString(R.string.attentionauxraccourcis_desc),
+                2345,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.attentionheinriech,
+                context.getString(R.string.attentionheinriech_title),
+                context.getString(R.string.attentionheinriech_desc),
+                3100,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.aurevoirlesenfants,
+                context.getString(R.string.aurevoirlesenfants_title),
+                context.getString(R.string.aurevoirlesenfants_desc),
+                2190,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.aveclescomplimentsdemrlee,
+                context.getString(R.string.aveclescomplimentsdemrlee_title),
+                context.getString(R.string.aveclescomplimentsdemrlee_desc),
+                2730,
+                Movie.OSS_2,
+                listOf(MovieCharacter.CHINESE_BROTHERS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bandedehippiessympatique,
+                context.getString(R.string.bandedehippiessympatique_title),
+                context.getString(R.string.bandedehippiessympatique_desc),
+                2680,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bivouaquer,
+                context.getString(R.string.bivouaquer_title),
+                context.getString(R.string.bivouaquer_desc),
+                3050,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bravootresdrolebravo,
+                context.getString(R.string.bravootresdrolebravo_title),
+                context.getString(R.string.bravootresdrolebravo_desc),
+                3278,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cacuitpas,
+                context.getString(R.string.cacuitpas_title),
+                context.getString(R.string.cacuitpas_desc),
+                3225,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cadeaudenoel2,
+                context.getString(R.string.cadeaudenoel2_title),
+                context.getString(R.string.cadeaudenoel2_desc),
+                3430,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cafait200kilos,
+                context.getString(R.string.cafait200kilos_title),
+                context.getString(R.string.cafait200kilos_desc),
+                3142,
+                Movie.OSS_2,
+                listOf(MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.camestvenucommeca,
+                context.getString(R.string.camestvenucommeca_title),
+                context.getString(R.string.camestvenucommeca_desc),
+                3470,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.caneprenaitpasbeaucoupplusdetemps,
+                context.getString(R.string.caneprenaitpasbeaucoupplusdetemps_title),
+                context.getString(R.string.caneprenaitpasbeaucoupplusdetemps_desc),
+                3328,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.capeutsefairesoushuitaine,
+                context.getString(R.string.capeutsefairesoushuitaine_title),
+                context.getString(R.string.capeutsefairesoushuitaine_desc),
+                5735,
+                Movie.OSS_2,
+                listOf(MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cavabiensepasser,
+                context.getString(R.string.cavabiensepasser_title),
+                context.getString(R.string.cavabiensepasser_desc),
+                2245,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ceestrigolo,
+                context.getString(R.string.ceestrigolo_title),
+                context.getString(R.string.ceestrigolo_desc),
+                3456,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cequivacestquejesuisla,
+                context.getString(R.string.cequivacestquejesuisla_title),
+                context.getString(R.string.cequivacestquejesuisla_desc),
+                2800,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cestlesquelsdechinois,
+                context.getString(R.string.cestlesquelsdechinois_title),
+                context.getString(R.string.cestlesquelsdechinois_desc),
+                2855,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cestpas69lanneedelajeunesse,
+                context.getString(R.string.cestpas69lanneedelajeunesse_title),
+                context.getString(R.string.cestpas69lanneedelajeunesse_desc),
+                2455,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cesttellementbeaucequildit,
+                context.getString(R.string.cesttellementbeaucequildit_title),
+                context.getString(R.string.cesttellementbeaucequildit_desc),
+                5393,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cetaitquandmemesonpere,
+                context.getString(R.string.cetaitquandmemesonpere_title),
+                context.getString(R.string.cetaitquandmemesonpere_desc),
+                2315,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cetteavionseratoncercueil,
+                context.getString(R.string.cetteavionseratoncercueil_title),
+                context.getString(R.string.cetteavionseratoncercueil_desc),
+                2715,
+                Movie.OSS_2,
+                listOf(MovieCharacter.CHINESE_BROTHERS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.chacundoitvaincresesdemons,
+                context.getString(R.string.chacundoitvaincresesdemons_title),
+                context.getString(R.string.chacundoitvaincresesdemons_desc),
+                5437,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.changerlemonde,
+                context.getString(R.string.changerlemonde_title),
+                context.getString(R.string.changerlemonde_desc),
+                2430,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.changerlemondecroco,
+                context.getString(R.string.changerlemondecroco_title),
+                context.getString(R.string.changerlemondecroco_desc),
+                3095,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HEINRICH)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.chinoisdechine,
+                context.getString(R.string.chinoisdechine_title),
+                context.getString(R.string.chinoisdechine_desc),
+                2863,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.commenttuparlesdetonpere,
+                context.getString(R.string.commenttuparlesdetonpere_title),
+                context.getString(R.string.commenttuparlesdetonpere_desc),
+                2300,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.commentvousavezfaitca,
+                context.getString(R.string.commentvousavezfaitca_title),
+                context.getString(R.string.commentvousavezfaitca_desc),
+                3408,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.completementcretincegamin,
+                context.getString(R.string.completementcretincegamin_title),
+                context.getString(R.string.completementcretincegamin_desc),
+                2152,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.costumenazi,
+                context.getString(R.string.costumenazi_title),
+                context.getString(R.string.costumenazi_desc),
+                3525,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.daucunontdesaventures,
+                context.getString(R.string.daucunontdesaventures_title),
+                context.getString(R.string.daucunontdesaventures_desc),
+                2935,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.debarasserdemoiparhasard,
+                context.getString(R.string.debarasserdemoiparhasard_title),
+                context.getString(R.string.debarasserdemoiparhasard_desc),
+                2370,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.denigrementsystematique,
+                context.getString(R.string.denigrementsystematique_title),
+                context.getString(R.string.denigrementsystematique_desc),
+                2335,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.derrieretoiunchinois,
+                context.getString(R.string.derrieretoiunchinois_title),
+                context.getString(R.string.derrieretoiunchinois_desc),
+                5150,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.dutempsarotir,
+                context.getString(R.string.dutempsarotir_title),
+                context.getString(R.string.dutempsarotir_desc),
+                3245,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.elleestbonnecellela,
+                context.getString(R.string.elleestbonnecellela_title),
+                context.getString(R.string.elleestbonnecellela_desc),
+                2092,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.embryondepiste,
+                context.getString(R.string.embryondepiste_title),
+                context.getString(R.string.embryondepiste_desc),
+                2861,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.enrevanchepurlesdrinks,
+                context.getString(R.string.enrevanchepurlesdrinks_title),
+                context.getString(R.string.enrevanchepurlesdrinks_desc),
+                3385,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.entreleschasseursetlesfreres,
+                context.getString(R.string.entreleschasseursetlesfreres_title),
+                context.getString(R.string.entreleschasseursetlesfreres_desc),
+                5177,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.etaproposdequoijedisaisca,
+                context.getString(R.string.etaproposdequoijedisaisca_title),
+                context.getString(R.string.etaproposdequoijedisaisca_desc),
+                2480,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.HEINRICH)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.etlevraimonde,
+                context.getString(R.string.etlevraimonde_title),
+                context.getString(R.string.etlevraimonde_desc),
+                2460,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.etsivousnouspiquer,
+                context.getString(R.string.etsivousnouspiquer_title),
+                context.getString(R.string.etsivousnouspiquer_desc),
+                5372,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.faisattentionauxcroco,
+                context.getString(R.string.faisattentionauxcroco_title),
+                context.getString(R.string.faisattentionauxcroco_desc),
+                3115,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.faislesdeux,
+                context.getString(R.string.faislesdeux_title),
+                context.getString(R.string.faislesdeux_desc),
+                2032,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.faitesimples,
+                context.getString(R.string.faitesimples_title),
+                context.getString(R.string.faitesimples_desc),
+                3145,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.fautabsolumentquejapellearmand,
+                context.getString(R.string.fautabsolumentquejapellearmand_title),
+                context.getString(R.string.fautabsolumentquejapellearmand_desc),
+                3462,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.fermeetacleenplus,
+                context.getString(R.string.fermeetacleenplus_title),
+                context.getString(R.string.fermeetacleenplus_desc),
+                2725,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.fleuveacrocodile,
+                context.getString(R.string.fleuveacrocodile_title),
+                context.getString(R.string.fleuveacrocodile_desc),
+                3035,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.habilebill,
+                context.getString(R.string.habilebill_title),
+                context.getString(R.string.habilebill_desc),
+                5123,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.hahahbureau,
+                context.getString(R.string.hahahbureau_title),
+                context.getString(R.string.hahahbureau_desc),
+                2075,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.hellomotherfucker,
+                context.getString(R.string.hellomotherfucker_title),
+                context.getString(R.string.hellomotherfucker_desc),
+                5100,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.histoiredamour,
+                context.getString(R.string.histoiredamour_title),
+                context.getString(R.string.histoiredamour_desc),
+                2925,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.humourjuif,
+                context.getString(R.string.humourjuif_title),
+                context.getString(R.string.humourjuif_desc),
+                5826,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.humourpasrigolo,
+                context.getString(R.string.humourpasrigolo_title),
+                context.getString(R.string.humourpasrigolo_desc),
+                2060,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.imfuckinggreat,
+                context.getString(R.string.imfuckinggreat_title),
+                context.getString(R.string.imfuckinggreat_desc),
+                5110,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.interditlessaucisses,
+                context.getString(R.string.interditlessaucisses_title),
+                context.getString(R.string.interditlessaucisses_desc),
+                2970,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.interetderessembleraunefemme,
+                context.getString(R.string.interetderessembleraunefemme_title),
+                context.getString(R.string.interetderessembleraunefemme_desc),
+                2005,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jacquesaditaditpasdecharcuterie,
+                context.getString(R.string.jacquesaditaditpasdecharcuterie_title),
+                context.getString(R.string.jacquesaditaditpasdecharcuterie_desc),
+                2985,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jaibesoindevitamines,
+                context.getString(R.string.jaibesoindevitamines_title),
+                context.getString(R.string.jaibesoindevitamines_desc),
+                3210,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jaimecequisepasse,
+                context.getString(R.string.jaimecequisepasse_title),
+                context.getString(R.string.jaimecequisepasse_desc),
+                2625,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jaiprisduvsp,
+                context.getString(R.string.jaiprisduvsp_title),
+                context.getString(R.string.jaiprisduvsp_desc),
+                2676,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jecouds,
+                context.getString(R.string.jecouds_title),
+                context.getString(R.string.jecouds_desc),
+                3410,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jehaismonpere,
+                context.getString(R.string.jehaismonpere_title),
+                context.getString(R.string.jehaismonpere_desc),
+                2290,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HEINRICH)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jemedoutebien,
+                context.getString(R.string.jemedoutebien_title),
+                context.getString(R.string.jemedoutebien_desc),
+                2375,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jesuisjuif,
+                context.getString(R.string.jesuisjuif_title),
+                context.getString(R.string.jesuisjuif_desc),
+                2995,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jevouscroyaismort,
+                context.getString(R.string.jevouscroyaismort_title),
+                context.getString(R.string.jevouscroyaismort_desc),
+                4905,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.joyeuxnoel,
+                context.getString(R.string.joyeuxnoel_title),
+                context.getString(R.string.joyeuxnoel_desc),
+                5618,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jugeunefemme,
+                context.getString(R.string.jugeunefemme_title),
+                context.getString(R.string.jugeunefemme_desc),
+                3155,
+                Movie.OSS_2,
+                listOf(MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lafrancedugeneraldegaulle,
+                context.getString(R.string.lafrancedugeneraldegaulle_title),
+                context.getString(R.string.lafrancedugeneraldegaulle_desc),
+                2130,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lajeviensdetueruncroco,
+                context.getString(R.string.lajeviensdetueruncroco_title),
+                context.getString(R.string.lajeviensdetueruncroco_desc),
+                3165,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lanneeprochaine,
+                context.getString(R.string.lanneeprochaine_title),
+                context.getString(R.string.lanneeprochaine_desc),
+                2445,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.laroutedebrasilia,
+                context.getString(R.string.laroutedebrasilia_title),
+                context.getString(R.string.laroutedebrasilia_desc),
+                2665,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lavousetesenvacances,
+                context.getString(R.string.lavousetesenvacances_title),
+                context.getString(R.string.lavousetesenvacances_desc),
+                2438,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lemondechangebienvite,
+                context.getString(R.string.lemondechangebienvite_title),
+                context.getString(R.string.lemondechangebienvite_desc),
+                3177,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lesreservoirssontenfeu,
+                context.getString(R.string.lesreservoirssontenfeu_title),
+                context.getString(R.string.lesreservoirssontenfeu_desc),
+                2822,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.loueur,
+                context.getString(R.string.loueur_title),
+                context.getString(R.string.loueur_desc),
+                3505,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lsd,
+                context.getString(R.string.lsd_title),
+                context.getString(R.string.lsd_desc),
+                2410,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BEACH_WOMAN)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.maisyaquoiquiva,
+                context.getString(R.string.maisyaquoiquiva_title),
+                context.getString(R.string.maisyaquoiquiva_desc),
+                2797,
+                Movie.OSS_2,
+                listOf(MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.meredefamille,
+                context.getString(R.string.meredefamille_title),
+                context.getString(R.string.meredefamille_desc),
+                2210,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.moiquisuisridicule,
+                context.getString(R.string.moiquisuisridicule_title),
+                context.getString(R.string.moiquisuisridicule_desc),
+                3212,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.monsieurpompidou,
+                context.getString(R.string.monsieurpompidou_title),
+                context.getString(R.string.monsieurpompidou_desc),
+                5190,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.musiqueplage,
+                context.getString(R.string.musiqueplage_title),
+                context.getString(R.string.musiqueplage_desc),
+                2535,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BEACH)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.nazidanslhotel,
+                context.getString(R.string.nazidanslhotel_title),
+                context.getString(R.string.nazidanslhotel_desc),
+                3486,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.nebougezpasoujeloccis,
+                context.getString(R.string.nebougezpasoujeloccis_title),
+                context.getString(R.string.nebougezpasoujeloccis_desc),
+                5133,
+                Movie.OSS_2,
+                listOf(MovieCharacter.CARLOTA)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.onapasditquonfaisaitcommeca,
+                context.getString(R.string.onapasditquonfaisaitcommeca_title),
+                context.getString(R.string.onapasditquonfaisaitcommeca_desc),
+                2260,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.onvapasserlanuitici,
+                context.getString(R.string.onvapasserlanuitici_title),
+                context.getString(R.string.onvapasserlanuitici_desc),
+                3058,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ouestheinreich,
+                context.getString(R.string.ouestheinreich_title),
+                context.getString(R.string.ouestheinreich_desc),
+                2145,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ouiplage,
+                context.getString(R.string.ouiplage_title),
+                context.getString(R.string.ouiplage_desc),
+                2350,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ouvert,
+                context.getString(R.string.ouvert_title),
+                context.getString(R.string.ouvert_desc),
+                2785,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.parcequelleestjuif,
+                context.getString(R.string.parcequelleestjuif_title),
+                context.getString(R.string.parcequelleestjuif_desc),
+                3535,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pasbienlinteretderessembleraunhomme,
+                context.getString(R.string.pasbienlinteretderessembleraunhomme_title),
+                context.getString(R.string.pasbienlinteretderessembleraunhomme_desc),
+                2782,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pascequejeveuxentendre,
+                context.getString(R.string.pascequejeveuxentendre_title),
+                context.getString(R.string.pascequejeveuxentendre_desc),
+                2270,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pasdesoutiengorges,
+                context.getString(R.string.pasdesoutiengorges_title),
+                context.getString(R.string.pasdesoutiengorges_desc),
+                2748,
+                Movie.OSS_2,
+                listOf(MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pasdobjection,
+                context.getString(R.string.pasdobjection_title),
+                context.getString(R.string.pasdobjection_desc),
+                3050,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pasenvoyerpt,
+                context.getString(R.string.pasenvoyerpt_title),
+                context.getString(R.string.pasenvoyerpt_desc),
+                5680,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pasjuif,
+                context.getString(R.string.pasjuif_title),
+                context.getString(R.string.pasjuif_desc),
+                2963,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pauvtype,
+                context.getString(R.string.pauvtype_title),
+                context.getString(R.string.pauvtype_desc),
+                3275,
+                Movie.OSS_2,
+                listOf(MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pleindemicrobes,
+                context.getString(R.string.pleindemicrobes_title),
+                context.getString(R.string.pleindemicrobes_desc),
+                3083,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pommedamour,
+                context.getString(R.string.pommedamour_title),
+                context.getString(R.string.pommedamour_desc),
+                5275,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BEACH_MAN)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pourrencontrermrlee,
+                context.getString(R.string.pourrencontrermrlee_title),
+                context.getString(R.string.pourrencontrermrlee_desc),
+                5775,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.purgribouillage,
+                context.getString(R.string.purgribouillage_title),
+                context.getString(R.string.purgribouillage_desc),
+                4872,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.quelleperiode,
+                context.getString(R.string.quelleperiode_title),
+                context.getString(R.string.quelleperiode_desc),
+                5705,
+                Movie.OSS_2,
+                listOf(MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.quesepassetilbill,
+                context.getString(R.string.quesepassetilbill_title),
+                context.getString(R.string.quesepassetilbill_desc),
+                5113,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.questcequejedisaisdeja,
+                context.getString(R.string.questcequejedisaisdeja_title),
+                context.getString(R.string.questcequejedisaisdeja_desc),
+                2475,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.rarementdesmeresdefamille,
+                context.getString(R.string.rarementdesmeresdefamille_title),
+                context.getString(R.string.rarementdesmeresdefamille_desc),
+                2220,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.remettretonslip,
+                context.getString(R.string.remettretonslip_title),
+                context.getString(R.string.remettretonslip_desc),
+                3125,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.rireheinreich,
+                context.getString(R.string.rireheinreich_title),
+                context.getString(R.string.rireheinreich_desc),
+                2000,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.salirsouliers,
+                context.getString(R.string.salirsouliers_title),
+                context.getString(R.string.salirsouliers_desc),
+                2085,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.secouperlescheveux,
+                context.getString(R.string.secouperlescheveux_title),
+                context.getString(R.string.secouperlescheveux_desc),
+                2690,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.serpentjenemangepas,
+                context.getString(R.string.serpentjenemangepas_title),
+                context.getString(R.string.serpentjenemangepas_desc),
+                5285,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.sinonyaaussilesboules,
+                context.getString(R.string.sinonyaaussilesboules_title),
+                context.getString(R.string.sinonyaaussilesboules_desc),
+                3440,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.situationclarifiee,
+                context.getString(R.string.situationclarifiee_title),
+                context.getString(R.string.situationclarifiee_desc),
+                4970,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.soireetranquille,
+                context.getString(R.string.soireetranquille_title),
+                context.getString(R.string.soireetranquille_desc),
+                2673,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.sortidesoncontexte,
+                context.getString(R.string.sortidesoncontexte_title),
+                context.getString(R.string.sortidesoncontexte_desc),
+                2640,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.torturepsychologique,
+                context.getString(R.string.torturepsychologique_title),
+                context.getString(R.string.torturepsychologique_desc),
+                2325,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.touslamemeidee,
+                context.getString(R.string.touslamemeidee_title),
+                context.getString(R.string.touslamemeidee_desc),
+                3562,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.trainsdaterissages,
+                context.getString(R.string.trainsdaterissages_title),
+                context.getString(R.string.trainsdaterissages_desc),
+                2795,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.transistor,
+                context.getString(R.string.transistor_title),
+                context.getString(R.string.transistor_desc),
+                2150,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.trouverunhotel,
+                context.getString(R.string.trouverunhotel_title),
+                context.getString(R.string.trouverunhotel_desc),
+                3340,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.tuesamericantuescontrelesnazis,
+                context.getString(R.string.tuesamericantuescontrelesnazis_title),
+                context.getString(R.string.tuesamericantuescontrelesnazis_desc),
+                5127,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.tumasfichuunedecestrouilles,
+                context.getString(R.string.tumasfichuunedecestrouilles_title),
+                context.getString(R.string.tumasfichuunedecestrouilles_desc),
+                5103,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.tupeuxpasmedireca,
+                context.getString(R.string.tupeuxpasmedireca_title),
+                context.getString(R.string.tupeuxpasmedireca_desc),
+                2477,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.unbanalaccidentdetrapeze,
+                context.getString(R.string.unbanalaccidentdetrapeze_title),
+                context.getString(R.string.unbanalaccidentdetrapeze_desc),
+                5550,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.unedictature,
+                context.getString(R.string.unedictature_title),
+                context.getString(R.string.unedictature_desc),
+                2110,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.unepetitetable,
+                context.getString(R.string.unepetitetable_title),
+                context.getString(R.string.unepetitetable_desc),
+                3068,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.unepeudemorale,
+                context.getString(R.string.unepeudemorale_title),
+                context.getString(R.string.unepeudemorale_desc),
+                3265,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.usezdevoscharmes,
+                context.getString(R.string.usezdevoscharmes_title),
+                context.getString(R.string.usezdevoscharmes_desc),
+                2240,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vexe,
+                context.getString(R.string.vexe_title),
+                context.getString(R.string.vexe_desc),
+                3014,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vieuxjardinier,
+                context.getString(R.string.vieuxjardinier_title),
+                context.getString(R.string.vieuxjardinier_desc),
+                4840,
+                Movie.OSS_2,
+                listOf(MovieCharacter.BRESILIAN_NURSE)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vivredanslurine,
+                context.getString(R.string.vivredanslurine_title),
+                context.getString(R.string.vivredanslurine_desc),
+                1980,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.voilacadeaudenoel,
+                context.getString(R.string.voilacadeaudenoel_title),
+                context.getString(R.string.voilacadeaudenoel_desc),
+                3425,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.voilacommentcavasepasser,
+                context.getString(R.string.voilacommentcavasepasser_title),
+                context.getString(R.string.voilacommentcavasepasser_desc),
+                3060,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vousavezcequejemesuisdit,
+                context.getString(R.string.vousavezcequejemesuisdit_title),
+                context.getString(R.string.vousavezcequejemesuisdit_desc),
+                2200,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vousfaitesdesquiches,
+                context.getString(R.string.vousfaitesdesquiches_title),
+                context.getString(R.string.vousfaitesdesquiches_desc),
+                2400,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BEACH_WOMAN)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vousmontez,
+                context.getString(R.string.vousmontez_title),
+                context.getString(R.string.vousmontez_desc),
+                4813,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BRESILIAN_NURSE)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vousnaimezpasleshommes,
+                context.getString(R.string.vousnaimezpasleshommes_title),
+                context.getString(R.string.vousnaimezpasleshommes_desc),
+                2955,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vouspensezquecestmieux,
+                context.getString(R.string.vouspensezquecestmieux_title),
+                context.getString(R.string.vouspensezquecestmieux_desc),
+                2365,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.youresofrench,
+                context.getString(R.string.youresofrench_title),
+                context.getString(R.string.youresofrench_desc),
+                2040,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.BILL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.double117,
+                context.getString(R.string.double117_title),
+                context.getString(R.string.double117_desc),
+                1305,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ISRAELI_AGENTS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.envouloiracarlota,
+                context.getString(R.string.envouloiracarlota_title),
+                context.getString(R.string.envouloiracarlota_desc),
+                1075,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.epatant,
+                context.getString(R.string.epatant_title),
+                context.getString(R.string.epatant_desc),
+                1515,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.excusezcesmanieres,
+                context.getString(R.string.excusezcesmanieres_title),
+                context.getString(R.string.excusezcesmanieres_desc),
+                1285,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ISRAELI_AGENTS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.faireequipeaveclemossad,
+                context.getString(R.string.faireequipeaveclemossad_title),
+                context.getString(R.string.faireequipeaveclemossad_desc),
+                1315,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ISRAELI_AGENTS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.habile2,
+                context.getString(R.string.habile2_title),
+                context.getString(R.string.habile2_desc),
+                442,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jecoute,
+                context.getString(R.string.jecoute_title),
+                context.getString(R.string.jecoute_desc),
+                1310,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lemossad,
+                context.getString(R.string.lemossad_title),
+                context.getString(R.string.lemossad_desc),
+                1325,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ISRAELI_AGENTS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.meilleuragentfrancais,
+                context.getString(R.string.meilleuragentfrancais_title),
+                context.getString(R.string.meilleuragentfrancais_desc),
+                1360,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ISRAELI_AGENTS)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ouhpardon,
+                context.getString(R.string.ouhpardon_title),
+                context.getString(R.string.ouhpardon_desc),
+                1550,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ouii,
+                context.getString(R.string.ouii_title),
+                context.getString(R.string.ouii_desc),
+                1545,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pasamoideledire,
+                context.getString(R.string.pasamoideledire_title),
+                context.getString(R.string.pasamoideledire_desc),
+                1360,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.portequelquechosedelourd,
+                context.getString(R.string.portequelquechosedelourd_title),
+                context.getString(R.string.portequelquechosedelourd_desc),
+                1455,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.quandjedisnimportequi,
+                context.getString(R.string.quandjedisnimportequi_title),
+                context.getString(R.string.quandjedisnimportequi_desc),
+                1530,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.quellehistoirecaaussi,
+                context.getString(R.string.quellehistoirecaaussi_title),
+                context.getString(R.string.quellehistoirecaaussi_desc),
+                1495,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.secretaireaussijolie,
+                context.getString(R.string.secretaireaussijolie_title),
+                context.getString(R.string.secretaireaussijolie_desc),
+                1435,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.secretairedequialors,
+                context.getString(R.string.secretairedequialors_title),
+                context.getString(R.string.secretairedequialors_desc),
+                1445,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.allezyhubert,
+                context.getString(R.string.allezyhubert_title),
+                context.getString(R.string.allezyhubert_desc),
+                4310,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.aumoinsilneconnaitpasmavraieidentite,
+                context.getString(R.string.aumoinsilneconnaitpasmavraieidentite_title),
+                context.getString(R.string.aumoinsilneconnaitpasmavraieidentite_desc),
+                3645,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bingo,
+                context.getString(R.string.bingo_title),
+                context.getString(R.string.bingo_desc),
+                3875,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.bravovousconduisezcommeunhomme,
+                context.getString(R.string.bravovousconduisezcommeunhomme_title),
+                context.getString(R.string.bravovousconduisezcommeunhomme_desc),
+                4370,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.carlota,
+                context.getString(R.string.carlota_title),
+                context.getString(R.string.carlota_desc),
+                3970,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.CARLOTA)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.casuffit,
+                context.getString(R.string.casuffit_title),
+                context.getString(R.string.casuffit_desc),
+                3823,
+                Movie.OSS_2,
+                listOf(MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.cestpasmoi,
+                context.getString(R.string.cestpasmoi_title),
+                context.getString(R.string.cestpasmoi_desc),
+                4100,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.charmantprogramme,
+                context.getString(R.string.charmantprogramme_title),
+                context.getString(R.string.charmantprogramme_desc),
+                3850,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.charmantvoyage,
+                context.getString(R.string.charmantvoyage_title),
+                context.getString(R.string.charmantvoyage_desc),
+                1270,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.chauvequipeut,
+                context.getString(R.string.chauvequipeut_title),
+                context.getString(R.string.chauvequipeut_desc),
+                4285,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.clashhubertdolores,
+                context.getString(R.string.clashhubertdolores_title),
+                context.getString(R.string.clashhubertdolores_desc),
+                4430,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.doublefeminin,
+                context.getString(R.string.doublefeminin_title),
+                context.getString(R.string.doublefeminin_desc),
+                4403,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.etcasepassebiencereportage,
+                context.getString(R.string.etcasepassebiencereportage_title),
+                context.getString(R.string.etcasepassebiencereportage_desc),
+                3907,
+                Movie.OSS_2,
+                listOf(MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.etcomment,
+                context.getString(R.string.etcomment_title),
+                context.getString(R.string.etcomment_desc),
+                4384,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.etsilecinquiemereich,
+                context.getString(R.string.etsilecinquiemereich_title),
+                context.getString(R.string.etsilecinquiemereich_desc),
+                3790,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.evenementsordide,
+                context.getString(R.string.evenementsordide_title),
+                context.getString(R.string.evenementsordide_desc),
+                3680,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.evidemmentcestunarcdebebe,
+                context.getString(R.string.evidemmentcestunarcdebebe_title),
+                context.getString(R.string.evidemmentcestunarcdebebe_desc),
+                4325,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.faistreschaudnon,
+                context.getString(R.string.faistreschaudnon_title),
+                context.getString(R.string.faistreschaudnon_desc),
+                4452,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.grottesdenazis,
+                context.getString(R.string.grottesdenazis_title),
+                context.getString(R.string.grottesdenazis_desc),
+                3890,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.gutenhacht,
+                context.getString(R.string.gutenhacht_title),
+                context.getString(R.string.gutenhacht_desc),
+                3960,
+                Movie.OSS_2,
+                listOf(MovieCharacter.CARLOTA)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.heinriechunpostiche,
+                context.getString(R.string.heinriechunpostiche_title),
+                context.getString(R.string.heinriechunpostiche_desc),
+                3667,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.histoiredemeilleuragent,
+                context.getString(R.string.histoiredemeilleuragent_title),
+                context.getString(R.string.histoiredemeilleuragent_desc),
+                4070,
+                Movie.OSS_2,
+                listOf(MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.hitlerjedetesetcetype,
+                context.getString(R.string.hitlerjedetesetcetype_title),
+                context.getString(R.string.hitlerjedetesetcetype_desc),
+                3855,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.humournazi,
+                context.getString(R.string.humournazi_title),
+                context.getString(R.string.humournazi_desc),
+                3922,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jaiquandmemeunrempart,
+                context.getString(R.string.jaiquandmemeunrempart_title),
+                context.getString(R.string.jaiquandmemeunrempart_desc),
+                4427,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jaivujesaisquicest,
+                context.getString(R.string.jaivujesaisquicest_title),
+                context.getString(R.string.jaivujesaisquicest_desc),
+                4103,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jemhabillemal,
+                context.getString(R.string.jemhabillemal_title),
+                context.getString(R.string.jemhabillemal_desc),
+                4443,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jesuisfreidriech,
+                context.getString(R.string.jesuisfreidriech_title),
+                context.getString(R.string.jesuisfreidriech_desc),
+                3665,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HEINRICH)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jevoisbiencequivousplaitdanslenazisme,
+                context.getString(R.string.jevoisbiencequivousplaitdanslenazisme_title),
+                context.getString(R.string.jevoisbiencequivousplaitdanslenazisme_desc),
+                3750,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lachezmoivousmefaitesmal,
+                context.getString(R.string.lachezmoivousmefaitesmal_title),
+                context.getString(R.string.lachezmoivousmefaitesmal_desc),
+                3830,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lapartienestpeutetrepasencoreperdue,
+                context.getString(R.string.lapartienestpeutetrepasencoreperdue_title),
+                context.getString(R.string.lapartienestpeutetrepasencoreperdue_desc),
+                4298,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.lecinquiemereich,
+                context.getString(R.string.lecinquiemereich_title),
+                context.getString(R.string.lecinquiemereich_desc),
+                4320,
+                Movie.OSS_2,
+                listOf(MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.mavolontedechangerlemonde,
+                context.getString(R.string.mavolontedechangerlemonde_title),
+                context.getString(R.string.mavolontedechangerlemonde_desc),
+                3670,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HEINRICH)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.monfich,
+                context.getString(R.string.monfich_title),
+                context.getString(R.string.monfich_desc),
+                4108,
+                Movie.OSS_2,
+                listOf(MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.monmonde,
+                context.getString(R.string.monmonde_title),
+                context.getString(R.string.monmonde_desc),
+                3705,
+                Movie.OSS_2,
+                listOf(MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.oripeauxdelahaine,
+                context.getString(R.string.oripeauxdelahaine_title),
+                context.getString(R.string.oripeauxdelahaine_desc),
+                3965,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pannedescence,
+                context.getString(R.string.pannedescence_title),
+                context.getString(R.string.pannedescence_desc),
+                4498,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pourlinstantjesuisenphasedanalyse,
+                context.getString(R.string.pourlinstantjesuisenphasedanalyse_title),
+                context.getString(R.string.pourlinstantjesuisenphasedanalyse_desc),
+                3612,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.pourquoimoi,
+                context.getString(R.string.pourquoimoi_title),
+                context.getString(R.string.pourquoimoi_desc),
+                3955,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.quelonconnaitmieuxsouslenomdeoss117,
+                context.getString(R.string.quelonconnaitmieuxsouslenomdeoss117_title),
+                context.getString(R.string.quelonconnaitmieuxsouslenomdeoss117_desc),
+                3647,
+                Movie.OSS_2,
+                listOf(MovieCharacter.VON_ZIMMEL)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.riseesetquolibets,
+                context.getString(R.string.riseesetquolibets_title),
+                context.getString(R.string.riseesetquolibets_desc),
+                3820,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.unebonnedemieheuredevantnous,
+                context.getString(R.string.unebonnedemieheuredevantnous_title),
+                context.getString(R.string.unebonnedemieheuredevantnous_desc),
+                3868,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.utopiste,
+                context.getString(R.string.utopiste_title),
+                context.getString(R.string.utopiste_desc),
+                3730,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vosarcsetvosfleches,
+                context.getString(R.string.vosarcsetvosfleches_title),
+                context.getString(R.string.vosarcsetvosfleches_desc),
+                4287,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vousmelepaieriez,
+                context.getString(R.string.vousmelepaieriez_title),
+                context.getString(R.string.vousmelepaieriez_desc),
+                4088,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vousnemeplaisezpascesttout,
+                context.getString(R.string.vousnemeplaisezpascesttout_title),
+                context.getString(R.string.vousnemeplaisezpascesttout_desc),
+                4420,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.voussavezcequejaimerais,
+                context.getString(R.string.voussavezcequejaimerais_title),
+                context.getString(R.string.voussavezcequejaimerais_desc),
+                4413,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.vousvousmoquez,
+                context.getString(R.string.vousvousmoquez_title),
+                context.getString(R.string.vousvousmoquez_desc),
+                3913,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.enfinmoijedisca,
+                context.getString(R.string.enfinmoijedisca_title),
+                context.getString(R.string.enfinmoijedisca_desc),
+                1290,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.desglacesalabanane,
+                context.getString(R.string.desglacesalabanane_title),
+                context.getString(R.string.desglacesalabanane_desc),
+                4055,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.DOLORES)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.ilfautquelafranceoublie,
+                context.getString(R.string.ilfautquelafranceoublie_title),
+                context.getString(R.string.ilfautquelafranceoublie_desc),
+                5712,
+                Movie.OSS_2,
+                listOf(MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jaccepteauneseulecondition,
+                context.getString(R.string.jaccepteauneseulecondition_title),
+                context.getString(R.string.jaccepteauneseulecondition_desc),
+                5767,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ARMAND)
+            )
+        )
+        replyList.add(
+            Reply(
+                R.raw.jememettraisdansdebeauxdraps,
+                context.getString(R.string.jememettraisdansdebeauxdraps_title),
+                context.getString(R.string.jememettraisdansdebeauxdraps_desc),
+                5787,
+                Movie.OSS_2,
+                listOf(MovieCharacter.HUBERT, MovieCharacter.ARMAND)
+            )
+        )
 
         return replyList
 

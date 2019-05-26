@@ -43,19 +43,21 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
             viewModel.getAllReply(args.favorite)
         }
 
+        sharedViewModel.onCharacterFilterUpdated.observeSafe(this) {
+            viewModel.updateCharacterFilter(it)
+            viewModel.getAllReply(args.favorite)
+        }
+
         viewModel.replyFavoriteUpdated.observeSafe(this) {
             viewModel.getAllReply(args.favorite)
         }
 
         viewModel.replyListLiveData.observeSafe(this) {
-            replyListAdapter.setItems(it)
-        }
-
-        viewModel.viewState.observeSafe(this) {
-            if (it.displayingPlaceholder) {
+            if (it.isEmpty()) {
                 displayPlaceholder()
             } else {
                 displayReplyList()
+                replyListAdapter.setItems(it)
             }
         }
     }

@@ -10,6 +10,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.ui.setupWithNavController
 import fr.legrand.oss117soundboard.R
+import fr.legrand.oss117soundboard.data.entity.FilterType
+import fr.legrand.oss117soundboard.presentation.component.dialog.DialogComponent
 import fr.legrand.oss117soundboard.presentation.navigator.MainNavigator
 import fr.legrand.oss117soundboard.presentation.ui.base.BaseVMActivity
 import fr.legrand.oss117soundboard.presentation.ui.base.hideKeyboard
@@ -32,6 +34,8 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
     @Inject
     lateinit var mainNavigator: MainNavigator
+    @Inject
+    lateinit var dialogComponent: DialogComponent
 
     override fun getLayoutId() = R.layout.activity_main
     override fun getNavHostId() = fragment_container.id
@@ -59,8 +63,6 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             main_activity_fab_stop_listen.hide()
         }
 
-
-
         initializeSearch()
     }
 
@@ -71,6 +73,23 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        replySharedViewModel.availableFilters.observeSafe(this) {
+            val subMenu = menu.findItem(R.id.menu_filter).subMenu
+            subMenu.clear()
+            it.forEach { filter ->
+                subMenu.add(
+                    R.id.menu_filter_type_group,
+                    filter.hashCode(), 0, filter.getDisplayName(this)
+                ).apply {
+                    isCheckable = true
+                    setOnMenuItemClickListener {
+                        displayFilterDialog(filter.getType()) { selected -> isChecked = selected.isNotEmpty() }
+                        true
+                    }
+                }
+            }
+            subMenu.setGroupCheckable(R.id.menu_filter_type_group, true, false)
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -108,5 +127,28 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             }
 
         })
+    }
+
+    private fun displayFilterDialog(filter: FilterType, onFilterSelected: (IntArray) -> Unit) {
+        when (filter) {
+            FilterType.CHARACTERS -> dialogComponent.displayMultiChoiceDialog(
+                title = R.string.filter_characters,
+                choices = replySharedViewModel.characterFilters.map { it.getDisplayName(this) },
+                selected = replySharedViewModel.characterFilters.mapIndexedNotNull { index, character ->
+                    if (character.selected) {
+                        index
+                    } else {
+                        null
+                    }
+                }.toIntArray(),
+                positiveText = R.string.confirm,
+                onPositiveClick = {
+                    onFilterSelected(it)
+                    replySharedViewModel.selectCharacterFilters(it)
+                },
+                negativeText = R.string.cancel,
+                onNegativeClick = {}
+            )
+        }
     }
 }

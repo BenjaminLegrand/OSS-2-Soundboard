@@ -3,6 +3,7 @@ package fr.legrand.oss117soundboard.presentation.ui.reply.item
 import android.content.Context
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.entity.Reply
+import fr.legrand.oss117soundboard.presentation.ui.main.item.MovieCharacterViewData
 
 /**
  * Created by Benjamin on 30/09/2017.
@@ -12,6 +13,7 @@ data class ReplyViewData(private val reply: Reply) {
 
     var isExpanded: Boolean = false
     private val movieViewData = MovieViewData(reply.movie)
+    private val charactersViewData = reply.characters.map { MovieCharacterViewData(it) }
 
     fun getFormattedDescription() = String.format("%s%s%s", "\"", reply.description, "\"")
 
@@ -26,9 +28,7 @@ data class ReplyViewData(private val reply: Reply) {
     fun isFavorite() = reply.isFavorite
 
     fun getDisplayName() = reply.name
-
-    fun getMovieViewData() = movieViewData
-
-    fun getMovieType() = reply.movie.value
+    
+    fun getCharactersViewData() = charactersViewData
 
 }

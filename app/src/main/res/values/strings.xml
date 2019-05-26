@@ -24,6 +24,8 @@
     <string name="others_label">Autres</string>
     <string name="most_listened_reply_format">%s (%d)</string>
 
+    <string name="filter_reply">Filtrer</string>
+    <string name="filter_characters">Personnages</string>
 
     <string name="unknown_movie">Film inconnu</string>
     <string name="oss_2_movie_name">OSS 117 : Rio ne répond plus</string>
@@ -57,7 +59,7 @@
         vanté les charmes. Et je tenais à vérifier ce qu\'on dit sur les Brésiliennes.
     </string>
     <string name="cochinchine_title">J\'ai vécu en Cochinchine !</string>
-    <string name="cochinchine_desc">Mais non ! Mais je vous jure que non ! J\'ai même longtemps vécu en Conchinchine.
+    <string name="cochinchine_desc">Mais non ! Mais je vous jure que non ! J\'ai même longtemps vécu en Cochinchine.
     </string>
     <string name="commeunlundi_title">Comme un Lundi !</string>
     <string name="commeunlundi_desc">Ma foi, comme un Lundi, frais dans la matinée, soleil l\'après-midi, la recette des
@@ -681,7 +683,7 @@
     <string name="rireheinreich_title">Rire photo Heinrich</string>
     <string name="rireheinreich_desc">Oh ! Ahahah !</string>
     <string name="salirsouliers_title">Ne pas salir leurs souliers</string>
-    <string name="salirsouliers_desc">Ah, comment font-donc les gens ici pour ne pas salir leurs souliers ?</string>
+    <string name="salirsouliers_desc">Ah, comment font donc les gens ici pour ne pas salir leurs souliers ?</string>
     <string name="secouperlescheveux_title">La vie se chargera de leur couper les cheveux</string>
     <string name="secouperlescheveux_desc">Tôt ou tard, la vie se chargera de leur couper les cheveux.</string>
     <string name="serpentjenemangepas_title">Je ne mange pas de ce pain-là !</string>

@@ -10,6 +10,6 @@ class MovieTypeConverter {
 
     @TypeConverter
     fun toValue(movie: Movie): String {
-        return movie.value
+        return movie.name
     }
 }
