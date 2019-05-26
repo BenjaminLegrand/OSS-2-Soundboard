@@ -20,6 +20,10 @@ class ReplySharedViewModel @Inject constructor(
     val onSearchRequested = MutableLiveData<String>()
     val onReplyListened = SingleLiveEvent<Boolean>()
 
+    init {
+        requestSearch(NO_SEARCH)
+    }
+
     fun requestSearch(search: String) {
         onSearchRequested.postValue(search)
     }

@@ -58,8 +58,6 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
                 displayReplyList()
             }
         }
-
-        viewModel.getAllReply(args.favorite)
     }
 
     private fun displayPlaceholder() {
