@@ -118,6 +118,20 @@ class ContentRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun releaseRunningPlayers(): Completable {
+        return Completable.defer {
+            mediaPlayerManager.releaseAllRunningPlayer()
+            Completable.complete()
+        }
+
+    }
+
+    override fun isPlayerRunning(): Single<Boolean> {
+        return Single.defer {
+            Single.just(mediaPlayerManager.isPlayerCurrentlyRunning())
+        }
+    }
+
     override fun getReplySort(): Single<SortType> {
         return Single.fromCallable { sharedPrefManager.getReplySort() }
     }
@@ -126,4 +140,6 @@ class ContentRepositoryImpl @Inject constructor(
     private fun increaseTotalReplyTime(duration: Long) {
         sharedPrefManager.increaseTotalReplyTime(duration)
     }
+
+
 }

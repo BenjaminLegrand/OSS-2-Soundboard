@@ -6,10 +6,4 @@
         android:icon="@drawable/ic_search"
         android:title="@string/search_reply"
         app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/menu_stop_listen"
-        android:icon="@drawable/ic_stop_listen"
-        android:title="@string/stop_listen"
-        app:showAsAction="ifRoom" />
 </menu>

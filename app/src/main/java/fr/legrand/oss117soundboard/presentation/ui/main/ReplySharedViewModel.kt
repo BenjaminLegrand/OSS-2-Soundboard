@@ -18,7 +18,8 @@ class ReplySharedViewModel @Inject constructor(
 ) : ViewModel() {
 
     val onSearchRequested = MutableLiveData<String>()
-    val onReplyListened = SingleLiveEvent<Boolean>()
+    val onReplyListenFinished = MutableLiveData<Boolean>()
+    val onListenRequested = SingleLiveEvent<Boolean>()
 
     init {
         requestSearch(NO_SEARCH)
@@ -29,13 +30,26 @@ class ReplySharedViewModel @Inject constructor(
     }
 
     fun listenToReply(replyId: Int) {
+        onListenRequested.postValue(true)
         contentRepository.playSoundMedia(replyId).subscribeOn(Schedulers.io())
-            .subscribeBy(onError = { Timber.e(it) }, onComplete = { onReplyListened.postValue(true) })
+            .subscribeBy(onError = { Timber.e(it) }, onComplete = { isPlayerRunning() })
     }
 
     fun listenToRandomReply() {
+        onListenRequested.postValue(true)
         contentRepository.listenToRandomReply().subscribeOn(Schedulers.io())
-            .subscribeBy(onComplete = { onReplyListened.postValue(true) }, onError = { Timber.e(it) })
+            .subscribeBy(onComplete = { isPlayerRunning() }, onError = { Timber.e(it) })
+    }
+
+    private fun isPlayerRunning() {
+        contentRepository.isPlayerRunning().subscribeOn(Schedulers.io())
+            .subscribeBy(onSuccess = {
+                if (!it) {
+                    onReplyListenFinished.postValue(true)
+                }
+            }, onError = {
+                //Nothing to do
+            })
     }
 
     companion object {

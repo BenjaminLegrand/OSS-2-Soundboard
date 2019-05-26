@@ -11,6 +11,7 @@ import fr.legrand.oss117soundboard.data.entity.Reply
 data class ReplyViewData(private val reply: Reply) {
 
     var isExpanded: Boolean = false
+    private val movieViewData = MovieViewData(reply.movie)
 
     fun getFormattedDescription() = String.format("%s%s%s", "\"", reply.description, "\"")
 
@@ -25,5 +26,9 @@ data class ReplyViewData(private val reply: Reply) {
     fun isFavorite() = reply.isFavorite
 
     fun getDisplayName() = reply.name
+
+    fun getMovieViewData() = movieViewData
+
+    fun getMovieType() = reply.movie.value
 
 }

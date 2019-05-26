@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import fr.legrand.oss117soundboard.R
-import fr.legrand.oss117soundboard.data.values.SortType
 import fr.legrand.oss117soundboard.presentation.component.dialog.DialogComponent
 import fr.legrand.oss117soundboard.presentation.ui.base.BaseVMFragment
 import fr.legrand.oss117soundboard.presentation.ui.main.ReplySharedViewModel
@@ -50,7 +49,7 @@ class SettingsFragment : BaseVMFragment<SettingsViewModel>() {
             }
         }
 
-        sharedViewModel.onReplyListened.observeSafe(this) {
+        sharedViewModel.onReplyListenFinished.observeSafe(this) {
             viewModel.updateAllReplyData()
         }
 

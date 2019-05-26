@@ -34,4 +34,8 @@ interface ContentRepository {
     fun playSoundMedia(replyId: Int): Completable
 
     fun listenToRandomReply(): Completable
+
+    fun releaseRunningPlayers() : Completable
+
+    fun isPlayerRunning() : Single<Boolean>
 }

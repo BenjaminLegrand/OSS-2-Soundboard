@@ -9,14 +9,13 @@ import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.tabs.TabLayout
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.presentation.navigator.MainNavigator
 import fr.legrand.oss117soundboard.presentation.ui.base.BaseVMActivity
 import fr.legrand.oss117soundboard.presentation.ui.base.hideKeyboard
 import fr.legrand.oss117soundboard.presentation.utils.StringUtils
 import fr.legrand.oss117soundboard.presentation.utils.hide
+import fr.legrand.oss117soundboard.presentation.utils.observeSafe
 import fr.legrand.oss117soundboard.presentation.utils.show
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -48,6 +47,20 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
         replySharedViewModel = ViewModelProviders.of(this, viewModelFactory)[ReplySharedViewModel::class.java]
 
+        replySharedViewModel.onReplyListenFinished.observeSafe(this) {
+            main_activity_fab_stop_listen.hide()
+        }
+        replySharedViewModel.onListenRequested.observeSafe(this) {
+            main_activity_fab_stop_listen.show()
+        }
+
+        main_activity_fab_stop_listen.setOnClickListener {
+            viewModel.releaseRunningPlayers()
+            main_activity_fab_stop_listen.hide()
+        }
+
+
+
         initializeSearch()
     }
 
@@ -75,7 +88,6 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
                     activity_main_layout_search.show()
                 }
             }
-            R.id.menu_stop_listen -> viewModel.releaseRunningPlayers()
         }
         return super.onOptionsItemSelected(item)
     }

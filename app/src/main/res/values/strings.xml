@@ -19,11 +19,15 @@
     <string name="random_order">Aléatoire</string>
     <string name="alphabetical_order">Ordre alphabétique</string>
     <string name="movie_order">Ordre du film</string>
-    <string name="stop_listen">Arrêter</string>
     <string name="settings_label">Paramètres</string>
     <string name="stats_label">Statistiques</string>
     <string name="others_label">Autres</string>
     <string name="most_listened_reply_format">%s (%d)</string>
+
+
+    <string name="unknown_movie">Film inconnu</string>
+    <string name="oss_2_movie_name">OSS 117 : Rio ne répond plus</string>
+    <string name="oss_1_movie_name">OSS 117 : Le Caire, nid d\'espions</string>
 
     <!-- Replies names and description -->
     <string name="cestgentil_title">C\'est gentil</string>
