@@ -8,15 +8,24 @@
     <dimen name="setting_title_padding">16dp</dimen>
     <dimen name="base_margin">8dp</dimen>
     <dimen name="base_double_margin">16dp</dimen>
-    <dimen name="search_margin">12dp</dimen>
+    <dimen name="base_double_padding">16dp</dimen>
+    <dimen name="search_margin">8dp</dimen>
     <dimen name="setting_title_text_size">16sp</dimen>
     <dimen name="base_separator_height">1dp</dimen>
     <dimen name="setting_data_margin">24dp</dimen>
     <dimen name="base_padding">8dp</dimen>
+    <dimen name="search_padding">12dp</dimen>
     <dimen name="settings_min_clickable_height">48dp</dimen>
     <dimen name="min_clickable_size">48dp</dimen>
     <dimen name="reply_title_text_size">17sp</dimen>
     <dimen name="base_half_padding">4dp</dimen>
     <dimen name="toggle_icon_padding">12dp</dimen>
     <dimen name="reply_button_text_size">12sp</dimen>
+    <dimen name="reset_search_icon_size">36dp</dimen>
+    <dimen name="search_area_height">48dp</dimen>
+    <dimen name="reset_search_icon_padding">6dp</dimen>
+    <dimen name="search_area_elevation">6dp</dimen>
+    <dimen name="search_area_content_elevation">8dp</dimen>
+    <dimen name="reset_search_end_margin">10dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
 </resources>

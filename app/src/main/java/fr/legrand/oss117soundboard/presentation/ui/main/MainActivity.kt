@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
-import android.view.MenuItem
-import androidx.core.view.isVisible
+import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.ui.setupWithNavController
 import fr.legrand.oss117soundboard.R
@@ -63,7 +62,12 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             main_activity_fab_stop_listen.hide()
         }
 
-        navController.addOnDestinationChangedListener { _, _, _ ->
+        navController.addOnDestinationChangedListener { _, dest, _ ->
+            if (dest.id == R.id.settings_fragment) {
+                activity_main_search_group.hide()
+            } else {
+                activity_main_search_group.show()
+            }
             invalidateOptionsMenu()
         }
 
@@ -85,8 +89,8 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             subMenu.clear()
             it.forEach { filter ->
                 subMenu.add(
-                    R.id.menu_filter_type_group,
-                    filter.hashCode(), 0, filter.getDisplayName(this)
+                        R.id.menu_filter_type_group,
+                        filter.hashCode(), 0, filter.getDisplayName(this)
                 ).apply {
                     isCheckable = true
 
@@ -114,26 +118,19 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_search -> {
-                if (activity_main_layout_search.isVisible) {
-                    activity_main_layout_search.hide()
-                    activity_main_search.setText("")
-                    item.icon = getDrawable(R.drawable.ic_search)
-                    hideKeyboard(main_activity_root_layout)
-                    replySharedViewModel.requestSearch(ReplySharedViewModel.NO_SEARCH)
-                } else {
-                    item.icon = getDrawable(R.drawable.ic_close)
-                    activity_main_layout_search.show()
-                }
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-
     private fun initializeSearch() {
+        activity_reset_search.setOnClickListener {
+            activity_main_search.text.clear()
+            clearSearchFocus()
+
+        }
+        activity_main_search.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                clearSearchFocus()
+                return@setOnEditorActionListener true
+            }
+            false
+        }
         activity_main_search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
 
@@ -150,6 +147,11 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
         })
     }
 
+    private fun clearSearchFocus() {
+        activity_main_search.clearFocus()
+        hideKeyboard(main_activity_root_layout)
+    }
+
 
     private fun resetFilters() {
         replySharedViewModel.resetFilters()
@@ -160,40 +162,40 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
     private fun displayFilterDialog(filter: FilterType, onFilterSelected: (IntArray) -> Unit) {
         when (filter) {
             FilterType.CHARACTERS -> dialogComponent.displayMultiChoiceDialog(
-                title = R.string.filter_characters,
-                choices = replySharedViewModel.characterFilters.map { it.getDisplayName(this) },
-                selected = replySharedViewModel.characterFilters.mapIndexedNotNull { index, character ->
-                    if (character.selected) {
-                        index
-                    } else {
-                        null
-                    }
-                }.toIntArray(),
-                positiveText = R.string.confirm,
-                onPositiveClick = {
-                    onFilterSelected(it)
-                    replySharedViewModel.selectCharacterFilters(it)
-                },
-                negativeText = R.string.cancel,
-                onNegativeClick = {}
+                    title = R.string.filter_characters,
+                    choices = replySharedViewModel.characterFilters.map { it.getDisplayName(this) },
+                    selected = replySharedViewModel.characterFilters.mapIndexedNotNull { index, character ->
+                        if (character.selected) {
+                            index
+                        } else {
+                            null
+                        }
+                    }.toIntArray(),
+                    positiveText = R.string.confirm,
+                    onPositiveClick = {
+                        onFilterSelected(it)
+                        replySharedViewModel.selectCharacterFilters(it)
+                    },
+                    negativeText = R.string.cancel,
+                    onNegativeClick = {}
             )
             FilterType.MOVIES -> dialogComponent.displayMultiChoiceDialog(
-                title = R.string.filter_movies,
-                choices = replySharedViewModel.movieFilters.map { it.getDisplayName(this) },
-                selected = replySharedViewModel.movieFilters.mapIndexedNotNull { index, character ->
-                    if (character.selected) {
-                        index
-                    } else {
-                        null
-                    }
-                }.toIntArray(),
-                positiveText = R.string.confirm,
-                onPositiveClick = {
-                    onFilterSelected(it)
-                    replySharedViewModel.selectMovieFilters(it)
-                },
-                negativeText = R.string.cancel,
-                onNegativeClick = {}
+                    title = R.string.filter_movies,
+                    choices = replySharedViewModel.movieFilters.map { it.getDisplayName(this) },
+                    selected = replySharedViewModel.movieFilters.mapIndexedNotNull { index, character ->
+                        if (character.selected) {
+                            index
+                        } else {
+                            null
+                        }
+                    }.toIntArray(),
+                    positiveText = R.string.confirm,
+                    onPositiveClick = {
+                        onFilterSelected(it)
+                        replySharedViewModel.selectMovieFilters(it)
+                    },
+                    negativeText = R.string.cancel,
+                    onNegativeClick = {}
             )
         }
     }

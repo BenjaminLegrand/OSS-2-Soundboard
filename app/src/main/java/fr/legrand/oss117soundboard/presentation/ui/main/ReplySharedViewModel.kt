@@ -17,7 +17,7 @@ import javax.inject.Inject
  */
 
 class ReplySharedViewModel @Inject constructor(
-    private val contentRepository: ContentRepository
+        private val contentRepository: ContentRepository
 ) : ViewModel() {
 
     val onSearchRequested = MutableLiveData<String>()
@@ -45,13 +45,13 @@ class ReplySharedViewModel @Inject constructor(
     fun listenToReply(replyId: Int) {
         onListenRequested.postValue(true)
         contentRepository.playSoundMedia(replyId).subscribeOn(Schedulers.io())
-            .subscribeBy(onError = { Timber.e(it) }, onComplete = { isPlayerRunning() })
+                .subscribeBy(onError = { Timber.e(it) }, onComplete = { isPlayerRunning() })
     }
 
     fun listenToRandomReply() {
         onListenRequested.postValue(true)
         contentRepository.listenToRandomReply().subscribeOn(Schedulers.io())
-            .subscribeBy(onComplete = { isPlayerRunning() }, onError = { Timber.e(it) })
+                .subscribeBy(onComplete = { isPlayerRunning() }, onError = { Timber.e(it) })
     }
 
 
@@ -75,43 +75,43 @@ class ReplySharedViewModel @Inject constructor(
 
     private fun getCharacterFilterData() {
         contentRepository.getAllCharacters().subscribeOn(Schedulers.io())
-            .subscribeBy(onSuccess = {
-                characterFilters.clear()
-                characterFilters.addAll(it.map { MovieCharacterViewData(it) })
-            }, onError = {
-                //Nothing to do
-            })
+                .subscribeBy(onSuccess = {
+                    characterFilters.clear()
+                    characterFilters.addAll(it.map { MovieCharacterViewData(it) })
+                }, onError = {
+                    //Nothing to do
+                })
     }
 
     private fun getMovieFilterData() {
         contentRepository.getAllMovies().subscribeOn(Schedulers.io())
-            .subscribeBy(onSuccess = {
-                movieFilters.clear()
-                movieFilters.addAll(it.map { MovieViewData(it) })
-            }, onError = {
-                //Nothing to do
-            })
+                .subscribeBy(onSuccess = {
+                    movieFilters.clear()
+                    movieFilters.addAll(it.map { MovieViewData(it) })
+                }, onError = {
+                    //Nothing to do
+                })
     }
 
     private fun initFilters() {
         contentRepository.getAllFilters().subscribeOn(Schedulers.io())
-            .subscribeBy(onSuccess = {
-                availableFilters.postValue(it.map { FilterViewData(it) })
-            }, onError = {
-                //Nothing to do
-            })
+                .subscribeBy(onSuccess = {
+                    availableFilters.postValue(it.map { FilterViewData(it) })
+                }, onError = {
+                    //Nothing to do
+                })
     }
 
 
     private fun isPlayerRunning() {
         contentRepository.isPlayerRunning().subscribeOn(Schedulers.io())
-            .subscribeBy(onSuccess = {
-                if (!it) {
-                    onReplyListenFinished.postValue(true)
-                }
-            }, onError = {
-                //Nothing to do
-            })
+                .subscribeBy(onSuccess = {
+                    if (!it) {
+                        onReplyListenFinished.postValue(true)
+                    }
+                }, onError = {
+                    //Nothing to do
+                })
     }
 
     fun resetFilters() {

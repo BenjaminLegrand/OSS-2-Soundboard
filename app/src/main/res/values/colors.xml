@@ -11,5 +11,5 @@
     <color name="base_separator_color">#E0E0E0</color>
     <color name="base_background_color">#FAFAFA</color>
     <color name="settings_text_pressed">#BDBDBD</color>
-    <color name="hint_color">#E0E0E0</color>
+    <color name="hint_color">#fff</color>
 </resources>

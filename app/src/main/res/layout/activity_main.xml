@@ -1,62 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:id="@+id/main_activity_root_layout"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   android:background="@color/base_background_color">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_activity_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_background_color"
+    android:animateLayoutChanges="true"
+    android:clipToPadding="false">
 
     <androidx.appcompat.widget.Toolbar
-            android:id="@+id/activity_main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/activity_main_layout_search"
-            app:title="@string/app_name"
-            app:titleTextColor="@color/white"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_main_layout_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/activity_main_toolbar"
-            app:layout_constraintBottom_toTopOf="@id/fragment_container"
-            android:background="@color/colorPrimary"
-            android:visibility="gone">
-
-        <EditText
-                android:id="@+id/activity_main_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/search_margin"
-                android:layout_marginEnd="@dimen/search_margin"
-                android:layout_marginBottom="@dimen/search_margin"
-                android:backgroundTint="@color/white"
-                android:hint="@string/search_reply"
-                android:textColorHint="@color/hint_color"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:imeOptions="actionDone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+        android:id="@+id/activity_main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/activity_main_search_area"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/activity_main_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_double_margin"
+        android:background="@null"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/base_padding"
+        android:elevation="@dimen/search_area_content_elevation"
+        android:hint="@string/search_reply"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:outlineProvider="none"
+        android:textColor="@android:color/secondary_text_light"
+        android:textColorHint="@android:color/tertiary_text_light"
+        app:layout_constraintBottom_toBottomOf="@id/activity_main_search_area"
+        app:layout_constraintEnd_toStartOf="@id/activity_reset_search"
+        app:layout_constraintStart_toStartOf="@id/activity_main_search_area"
+        app:layout_constraintTop_toTopOf="@id/activity_main_search_area" />
+
+    <ImageView
+        android:id="@+id/activity_reset_search"
+        android:layout_width="@dimen/reset_search_icon_size"
+        android:layout_height="@dimen/reset_search_icon_size"
+        android:layout_marginEnd="@dimen/reset_search_end_margin"
+        android:background="@drawable/settings_text_ripple"
+        android:elevation="@dimen/search_area_content_elevation"
+        android:outlineProvider="none"
+        android:padding="@dimen/reset_search_icon_padding"
+        android:src="@drawable/ic_close"
+        android:tint="@android:color/secondary_text_light"
+        app:layout_constraintBottom_toBottomOf="@id/activity_main_search_area"
+        app:layout_constraintEnd_toEndOf="@id/activity_main_search_area"
+        app:layout_constraintStart_toEndOf="@id/activity_main_search"
+        app:layout_constraintTop_toTopOf="@id/activity_main_search_area" />
+
+    <View
+        android:id="@+id/activity_main_search_area"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/search_area_height"
+        android:layout_marginStart="@dimen/base_margin"
+        android:layout_marginTop="@dimen/base_margin"
+        android:layout_marginEnd="@dimen/base_margin"
+        android:layout_marginBottom="@dimen/base_margin"
+        android:background="@drawable/search_background"
+        android:elevation="@dimen/search_area_elevation"
+        app:layout_constraintBottom_toTopOf="@id/fragment_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_toolbar" />
+
 
     <fragment
-            android:id="@+id/fragment_container"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_main_layout_search"
-            app:layout_constraintBottom_toTopOf="@id/main_activity_bottom_view"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/main_activity_graph"/>
+        android:id="@+id/fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_bottom_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_search_area"
+        app:navGraph="@navigation/main_activity_graph" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main_activity_fab_stop_listen"
@@ -70,13 +95,19 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/main_activity_bottom_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:itemBackground="@color/colorPrimary"
-            app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
-            app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
-            app:menu="@menu/bottom_navigation_items"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_container"/>
+        android:id="@+id/main_activity_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_container"
+        app:menu="@menu/bottom_navigation_items" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/activity_main_search_group"
+        android:layout_width="wrap_content"
+        app:constraint_referenced_ids="activity_main_search,activity_main_search_area,activity_reset_search"
+        android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

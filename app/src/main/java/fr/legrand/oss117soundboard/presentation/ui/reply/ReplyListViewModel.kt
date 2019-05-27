@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 
 class ReplyListViewModel @Inject constructor(
-    private val contentRepository: ContentRepository
+        private val contentRepository: ContentRepository
 ) : ViewModel() {
 
     private val disposable = CompositeDisposable()
@@ -40,19 +40,20 @@ class ReplyListViewModel @Inject constructor(
     }
 
     fun getAllReply(favorite: Boolean) {
+        disposable.clear()
         val obs = if (currentSearch == ReplySharedViewModel.NO_SEARCH) {
             contentRepository.getAllReply(favorite)
         } else {
             contentRepository.getReplyWithSearch(currentSearch, favorite)
         }
         disposable.add(obs.subscribeOn(Schedulers.io()).subscribeBy(
-            onNext = {
-                val result = applyFilters(it.map { ReplyViewData(it) })
-                replyListLiveData.postValue(result)
-            },
-            onError = {
+                onNext = {
+                    val result = applyFilters(it.map { ReplyViewData(it) })
+                    replyListLiveData.postValue(result)
+                },
+                onError = {
 
-            }
+                }
         ))
     }
 
@@ -83,12 +84,12 @@ class ReplyListViewModel @Inject constructor(
 
     fun updateFavoriteReply(replyId: Int, addToFavorite: Boolean) {
         disposable.add(
-            contentRepository.updateFavoriteReply(
-                replyId,
-                addToFavorite
-            ).subscribeOn(Schedulers.io()).subscribe {
-                replyFavoriteUpdated.postValue(true)
-            })
+                contentRepository.updateFavoriteReply(
+                        replyId,
+                        addToFavorite
+                ).subscribeOn(Schedulers.io()).subscribe {
+                    replyFavoriteUpdated.postValue(true)
+                })
     }
 
     fun updateCharacterFilter(filters: List<MovieCharacterViewData>) {
