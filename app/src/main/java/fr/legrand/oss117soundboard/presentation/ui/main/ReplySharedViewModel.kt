@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
 import fr.legrand.oss117soundboard.presentation.ui.main.item.FilterViewData
 import fr.legrand.oss117soundboard.presentation.ui.main.item.MovieCharacterViewData
+import fr.legrand.oss117soundboard.presentation.ui.reply.item.MovieViewData
 import fr.legrand.oss117soundboard.presentation.utils.SingleLiveEvent
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -25,13 +26,16 @@ class ReplySharedViewModel @Inject constructor(
 
     val availableFilters = MutableLiveData<List<FilterViewData>>()
     val onCharacterFilterUpdated = MutableLiveData<List<MovieCharacterViewData>>()
+    val onMovieFilterUpdated = MutableLiveData<List<MovieViewData>>()
 
     val characterFilters = mutableListOf<MovieCharacterViewData>()
+    val movieFilters = mutableListOf<MovieViewData>()
 
     init {
         requestSearch(NO_SEARCH)
         initFilters()
         getCharacterFilterData()
+        getMovieFilterData()
     }
 
     fun requestSearch(search: String) {
@@ -60,11 +64,30 @@ class ReplySharedViewModel @Inject constructor(
         onCharacterFilterUpdated.postValue(filter)
     }
 
+    fun selectMovieFilters(selected: IntArray) {
+        val filter = movieFilters.filterIndexed { index, character ->
+            val result = index in selected
+            character.selected = result
+            result
+        }
+        onMovieFilterUpdated.postValue(filter)
+    }
+
     private fun getCharacterFilterData() {
         contentRepository.getAllCharacters().subscribeOn(Schedulers.io())
             .subscribeBy(onSuccess = {
                 characterFilters.clear()
                 characterFilters.addAll(it.map { MovieCharacterViewData(it) })
+            }, onError = {
+                //Nothing to do
+            })
+    }
+
+    private fun getMovieFilterData() {
+        contentRepository.getAllMovies().subscribeOn(Schedulers.io())
+            .subscribeBy(onSuccess = {
+                movieFilters.clear()
+                movieFilters.addAll(it.map { MovieViewData(it) })
             }, onError = {
                 //Nothing to do
             })

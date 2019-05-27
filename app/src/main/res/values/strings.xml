@@ -26,8 +26,8 @@
 
     <string name="filter_reply">Filtrer</string>
     <string name="filter_characters">Personnages</string>
+    <string name="filter_movies">Films</string>
 
-    <string name="unknown_movie">Film inconnu</string>
     <string name="oss_2_movie_name">OSS 117 : Rio ne répond plus</string>
     <string name="oss_1_movie_name">OSS 117 : Le Caire, nid d\'espions</string>
 
@@ -746,7 +746,7 @@
         israëlienne flirter avec un fils de nazi. Mais excusez-moi d\'avoir encore un peu de morale.
     </string>
     <string name="unepetitetable_title">Une petite table</string>
-    <string name="unepetitetable_desc">Doloères soyez gentille, arrangez-nous une petite table, essayez de nous faire un
+    <string name="unepetitetable_desc">Dolorès soyez gentille, arrangez-nous une petite table, essayez de nous faire un
         truc mignon.
     </string>
     <string name="unedictature_title">Une dictature</string>

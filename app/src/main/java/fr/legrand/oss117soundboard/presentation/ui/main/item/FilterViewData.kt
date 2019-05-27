@@ -8,6 +8,7 @@ class FilterViewData(private val filterType: FilterType) {
 
     fun getDisplayName(context: Context): String = when (filterType) {
         FilterType.CHARACTERS -> context.getString(R.string.filter_characters)
+        FilterType.MOVIES -> context.getString(R.string.filter_movies)
     }
 
     fun getType() = filterType

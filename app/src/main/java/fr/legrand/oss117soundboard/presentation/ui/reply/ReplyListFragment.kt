@@ -48,6 +48,11 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
             viewModel.getAllReply(args.favorite)
         }
 
+        sharedViewModel.onMovieFilterUpdated.observeSafe(this) {
+            viewModel.updateMovieFilter(it)
+            viewModel.getAllReply(args.favorite)
+        }
+
         viewModel.replyFavoriteUpdated.observeSafe(this) {
             viewModel.getAllReply(args.favorite)
         }

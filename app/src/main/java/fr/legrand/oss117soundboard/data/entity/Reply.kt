@@ -18,7 +18,7 @@ data class Reply(
     @ColumnInfo
     var isFavorite: Boolean = false,
     @ColumnInfo
-    var movie: Movie = Movie.UNKNOWN,
+    var movie: Movie = Movie.OSS_1,
     @ColumnInfo
     var characters: MutableList<MovieCharacter> = mutableListOf(),
     @ColumnInfo

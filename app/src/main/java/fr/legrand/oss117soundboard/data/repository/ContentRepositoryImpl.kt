@@ -1,6 +1,7 @@
 package fr.legrand.oss117soundboard.data.repository
 
 import fr.legrand.oss117soundboard.data.entity.FilterType
+import fr.legrand.oss117soundboard.data.entity.Movie
 import fr.legrand.oss117soundboard.data.entity.MovieCharacter
 import fr.legrand.oss117soundboard.data.entity.Reply
 import fr.legrand.oss117soundboard.data.manager.file.FileManager
@@ -102,6 +103,9 @@ class ContentRepositoryImpl @Inject constructor(
 
     override fun getAllFilters(): Single<List<FilterType>> =
         Single.defer { Single.just(FilterType.values().toList()) }
+
+    override fun getAllMovies(): Single<List<Movie>> =
+        Single.defer { Single.just(Movie.values().toList()) }
 
     override fun getAllCharacters(): Single<List<MovieCharacter>> =
         Single.defer { Single.just(MovieCharacter.values().toList()) }

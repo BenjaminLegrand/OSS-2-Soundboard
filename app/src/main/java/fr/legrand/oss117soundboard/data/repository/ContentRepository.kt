@@ -1,6 +1,7 @@
 package fr.legrand.oss117soundboard.data.repository
 
 import fr.legrand.oss117soundboard.data.entity.FilterType
+import fr.legrand.oss117soundboard.data.entity.Movie
 import fr.legrand.oss117soundboard.data.entity.MovieCharacter
 import fr.legrand.oss117soundboard.data.entity.Reply
 import fr.legrand.oss117soundboard.data.values.SortType
@@ -44,4 +45,6 @@ interface ContentRepository {
     fun getAllFilters(): Single<List<FilterType>>
 
     fun getAllCharacters(): Single<List<MovieCharacter>>
+
+    fun getAllMovies(): Single<List<Movie>>
 }

@@ -26,7 +26,7 @@ constructor(private val context: Context) : FileManager {
                 context.getString(R.string.cestgentil_title),
                 context.getString(R.string.cestgentil_desc),
                 161,
-                Movie.OSS_1,
+                Movie.OSS_2,
                 listOf(MovieCharacter.HUBERT)
             )
         )

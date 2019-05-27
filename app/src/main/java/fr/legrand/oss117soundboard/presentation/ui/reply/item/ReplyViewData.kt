@@ -28,7 +28,9 @@ data class ReplyViewData(private val reply: Reply) {
     fun isFavorite() = reply.isFavorite
 
     fun getDisplayName() = reply.name
-    
+
+    fun getMovieViewData() = movieViewData
+
     fun getCharactersViewData() = charactersViewData
 
 }

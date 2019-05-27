@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
 import fr.legrand.oss117soundboard.presentation.ui.main.ReplySharedViewModel
 import fr.legrand.oss117soundboard.presentation.ui.main.item.MovieCharacterViewData
+import fr.legrand.oss117soundboard.presentation.ui.reply.item.MovieViewData
 import fr.legrand.oss117soundboard.presentation.ui.reply.item.ReplyViewData
 import fr.legrand.oss117soundboard.presentation.utils.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
@@ -27,6 +28,7 @@ class ReplyListViewModel @Inject constructor(
     val replyFavoriteUpdated = SingleLiveEvent<Boolean>()
 
     private val characterFilters = mutableListOf<MovieCharacterViewData>()
+    private val movieFilters = mutableListOf<MovieViewData>()
     private var currentSearch = ReplySharedViewModel.NO_SEARCH
 
     override fun onCleared() {
@@ -45,7 +47,7 @@ class ReplyListViewModel @Inject constructor(
         }
         disposable.add(obs.subscribeOn(Schedulers.io()).subscribeBy(
             onNext = {
-                val result = applyFilter(it.map { ReplyViewData(it) })
+                val result = applyFilters(it.map { ReplyViewData(it) })
                 replyListLiveData.postValue(result)
             },
             onError = {
@@ -54,15 +56,28 @@ class ReplyListViewModel @Inject constructor(
         ))
     }
 
-    private fun applyFilter(replies: List<ReplyViewData>): List<ReplyViewData> {
+    private fun applyFilters(replies: List<ReplyViewData>): List<ReplyViewData> {
+        val characterFiltered = applyCharacterFilters(replies)
+        return applyMovieFilters(characterFiltered)
+    }
+
+    private fun applyCharacterFilters(replies: List<ReplyViewData>): List<ReplyViewData> {
         if (characterFilters.isEmpty()) return replies
-        val filterValues = characterFilters.map { it.getValue() }
+        val characterFilterValues = characterFilters.map { it.getValue() }
         return replies.filter {
-            var filtered = false
+            var filteredCharacter = false
             it.getCharactersViewData().forEach {
-                filtered = filtered || it.getValue() in filterValues
+                filteredCharacter = filteredCharacter || it.getValue() in characterFilterValues
             }
-            filtered
+            filteredCharacter
+        }
+    }
+
+    private fun applyMovieFilters(replies: List<ReplyViewData>): List<ReplyViewData> {
+        if (movieFilters.isEmpty()) return replies
+        val movieFilterValues = movieFilters.map { it.getValue() }
+        return replies.filter {
+            it.getMovieViewData().getValue() in movieFilterValues
         }
     }
 
@@ -79,5 +94,10 @@ class ReplyListViewModel @Inject constructor(
     fun updateCharacterFilter(filters: List<MovieCharacterViewData>) {
         characterFilters.clear()
         characterFilters.addAll(filters)
+    }
+
+    fun updateMovieFilter(filters: List<MovieViewData>) {
+        movieFilters.clear()
+        movieFilters.addAll(filters)
     }
 }

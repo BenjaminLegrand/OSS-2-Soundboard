@@ -149,6 +149,24 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
                 negativeText = R.string.cancel,
                 onNegativeClick = {}
             )
+            FilterType.MOVIES -> dialogComponent.displayMultiChoiceDialog(
+                title = R.string.filter_movies,
+                choices = replySharedViewModel.movieFilters.map { it.getDisplayName(this) },
+                selected = replySharedViewModel.movieFilters.mapIndexedNotNull { index, character ->
+                    if (character.selected) {
+                        index
+                    } else {
+                        null
+                    }
+                }.toIntArray(),
+                positiveText = R.string.confirm,
+                onPositiveClick = {
+                    onFilterSelected(it)
+                    replySharedViewModel.selectMovieFilters(it)
+                },
+                negativeText = R.string.cancel,
+                onNegativeClick = {}
+            )
         }
     }
 }
