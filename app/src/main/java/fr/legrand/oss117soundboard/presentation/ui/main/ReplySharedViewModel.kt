@@ -114,6 +114,14 @@ class ReplySharedViewModel @Inject constructor(
             })
     }
 
+    fun resetFilters() {
+        //Called directly from Activity, we can use the setValue method on LiveData
+        characterFilters.forEach { it.selected = false }
+        onCharacterFilterUpdated.value = characterFilters
+        movieFilters.forEach { it.selected = false }
+        onMovieFilterUpdated.value = movieFilters
+    }
+
     companion object {
         const val NO_SEARCH = ""
     }

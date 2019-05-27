@@ -63,6 +63,10 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             main_activity_fab_stop_listen.hide()
         }
 
+        navController.addOnDestinationChangedListener { _, _, _ ->
+            invalidateOptionsMenu()
+        }
+
         initializeSearch()
     }
 
@@ -72,6 +76,9 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        if (navController.currentDestination?.id == R.id.settings_fragment) {
+            return super.onCreateOptionsMenu(menu)
+        }
         menuInflater.inflate(R.menu.menu_main, menu)
         replySharedViewModel.availableFilters.observeSafe(this) {
             val subMenu = menu.findItem(R.id.menu_filter).subMenu
@@ -82,13 +89,27 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
                     filter.hashCode(), 0, filter.getDisplayName(this)
                 ).apply {
                     isCheckable = true
+
+                    isChecked = when (filter.getType()) {
+                        FilterType.CHARACTERS -> replySharedViewModel.onCharacterFilterUpdated.value?.any { it.selected } == true
+                        FilterType.MOVIES -> replySharedViewModel.onMovieFilterUpdated.value?.any { it.selected } == true
+                    }
+
                     setOnMenuItemClickListener {
                         displayFilterDialog(filter.getType()) { selected -> isChecked = selected.isNotEmpty() }
                         true
                     }
                 }
             }
-            subMenu.setGroupCheckable(R.id.menu_filter_type_group, true, false)
+
+            //Reset item
+            subMenu.add(R.id.menu_filter_type_group, 0, subMenu.size(), getString(R.string.reset_filters)).apply {
+                isCheckable = false
+                setOnMenuItemClickListener {
+                    resetFilters()
+                    true
+                }
+            }
         }
         return super.onCreateOptionsMenu(menu)
     }
@@ -128,6 +149,13 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
         })
     }
+
+
+    private fun resetFilters() {
+        replySharedViewModel.resetFilters()
+        invalidateOptionsMenu()
+    }
+
 
     private fun displayFilterDialog(filter: FilterType, onFilterSelected: (IntArray) -> Unit) {
         when (filter) {
