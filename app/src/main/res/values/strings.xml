@@ -29,6 +29,9 @@
         <item quantity="other">%d répliques</item>
         <item quantity="one">%d réplique</item>
     </plurals>
+    <string name="share">Partager</string>
+    <string name="ringtone">Utiliser comme sonnerie</string>
+    <string name="share_title">Partager avec…</string>
 
     <string name="filter_reply">Filtrer</string>
     <string name="filter_characters">Personnages</string>

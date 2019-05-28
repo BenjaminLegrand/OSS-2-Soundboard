@@ -1,5 +1,7 @@
 package fr.legrand.oss117soundboard.presentation.ui.reply
 
+import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
@@ -11,6 +13,7 @@ import fr.legrand.oss117soundboard.presentation.utils.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -27,6 +30,7 @@ class ReplyListViewModel @Inject constructor(
     val replyListLiveData = MutableLiveData<List<ReplyViewData>>()
     val replyFavoriteUpdated = SingleLiveEvent<Boolean>()
     val resultsIndicator = SingleLiveEvent<Int>()
+    val replyShareData = SingleLiveEvent<Pair<Uri, String>>()
 
     private val characterFilters = mutableListOf<MovieCharacterViewData>()
     private val movieFilters = mutableListOf<MovieViewData>()
@@ -53,7 +57,7 @@ class ReplyListViewModel @Inject constructor(
                     replyListLiveData.postValue(result)
                 },
                 onError = {
-
+                    Timber.e(it)
                 }
         ))
     }
@@ -71,7 +75,28 @@ class ReplyListViewModel @Inject constructor(
                     resultsIndicator.postValue(result.size)
                 },
                 onError = {
+                    Timber.e(it)
+                }
+        ))
+    }
 
+    fun generateReplyShareData(replyId: Int) {
+        disposable.add(contentRepository.generateShareData(replyId).subscribeOn(Schedulers.io()).subscribeBy(
+                onSuccess = {
+                    replyShareData.postValue(it)
+                },
+                onError = {
+                    Timber.e(it)
+                }
+        ))
+    }
+
+    fun setReplyAsRingtone(replyId: Int) {
+        disposable.add(contentRepository.setReplyAsRingtone(replyId).subscribeOn(Schedulers.io()).subscribeBy(
+                onComplete = {
+                },
+                onError = {
+                    Timber.e(it)
                 }
         ))
     }
@@ -120,4 +145,5 @@ class ReplyListViewModel @Inject constructor(
         movieFilters.clear()
         movieFilters.addAll(filters)
     }
+
 }

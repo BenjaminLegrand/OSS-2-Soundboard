@@ -10,12 +10,12 @@ import javax.inject.Singleton
 class StorageManagerImpl @Inject constructor(context: Context) : StorageManager {
 
     private val roomManager: RoomManager =
-        Room.databaseBuilder(context, AppDatabase::class.java, "database").build().roomManager()
+            Room.databaseBuilder(context, AppDatabase::class.java, "database").build().roomManager()
 
     override fun getMostListenedReply(): Reply = roomManager.getMostListenedReply()
 
     override fun getReplyWithSearch(search: String, fromFavorite: Boolean) =
-        roomManager.getReplyWithSearch(search.toLowerCase(), fromFavorite)
+            roomManager.getReplyWithSearch(search.toLowerCase(), fromFavorite)
 
     override fun getAllReply(fromFavorite: Boolean) = roomManager.getAllReply(fromFavorite)
 
@@ -32,4 +32,7 @@ class StorageManagerImpl @Inject constructor(context: Context) : StorageManager 
     }
 
     override fun getAllReply(): List<Reply> = roomManager.getAllReply()
+
+    override fun getReplyById(replyId: Int): Reply = roomManager.getReplyById(replyId)
+
 }

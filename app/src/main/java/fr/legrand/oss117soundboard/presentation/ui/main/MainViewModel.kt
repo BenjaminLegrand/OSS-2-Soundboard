@@ -1,12 +1,10 @@
 package fr.legrand.oss117soundboard.presentation.ui.main
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
-import fr.legrand.oss117soundboard.presentation.ui.main.item.FilterViewData
-import fr.legrand.oss117soundboard.presentation.ui.main.item.MovieCharacterViewData
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -14,7 +12,7 @@ import javax.inject.Inject
  */
 
 class MainViewModel @Inject constructor(
-    private val contentRepository: ContentRepository
+        private val contentRepository: ContentRepository
 ) : ViewModel() {
 
 
@@ -24,21 +22,20 @@ class MainViewModel @Inject constructor(
     }
 
 
-
     private fun initAllReply() {
         contentRepository.initAllReply().subscribeOn(Schedulers.io())
-            .subscribeBy(onComplete = {
-            }, onError = {
-                //Nothing to do
-            })
+                .subscribeBy(onComplete = {
+                }, onError = {
+                    Timber.e(it)
+                })
     }
 
     fun releaseRunningPlayers() {
         contentRepository.releaseRunningPlayers().subscribeOn(Schedulers.io())
-            .subscribeBy(onComplete = {
-            }, onError = {
-                //Nothing to do
-            })
+                .subscribeBy(onComplete = {
+                }, onError = {
+                    Timber.e(it)
+                })
     }
 
     override fun onCleared() {

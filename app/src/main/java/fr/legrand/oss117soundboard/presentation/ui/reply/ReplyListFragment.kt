@@ -1,12 +1,15 @@
 package fr.legrand.oss117soundboard.presentation.ui.reply
 
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.legrand.oss117soundboard.R
+import fr.legrand.oss117soundboard.presentation.navigator.MainNavigator
 import fr.legrand.oss117soundboard.presentation.ui.base.BaseVMFragment
 import fr.legrand.oss117soundboard.presentation.ui.main.ReplySharedViewModel
 import fr.legrand.oss117soundboard.presentation.ui.reply.ui.ReplyListAdapter
@@ -25,6 +28,9 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
     override val viewModelClass = ReplyListViewModel::class
     @Inject
     lateinit var replyListAdapter: ReplyListAdapter
+
+    @Inject
+    lateinit var mainNavigator: MainNavigator
 
     private val args by navArgs<ReplyListFragmentArgs>()
     private lateinit var sharedViewModel: ReplySharedViewModel
@@ -83,6 +89,10 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
             }
         }
 
+        viewModel.replyShareData.observeSafe(this) {
+            mainNavigator.shareReply(it.first, it.second)
+        }
+
         search_results_start_indicator.setOnClickListener {
             findNavController().navigate(R.id.action_global_favorite_reply_fragment)
         }
@@ -124,6 +134,22 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
         }
         replyListAdapter.onFavoriteClickListener = { id, favorite ->
             viewModel.updateFavoriteReply(id, favorite)
+        }
+
+        replyListAdapter.onShareClickListener = { id ->
+            viewModel.generateReplyShareData(id)
+        }
+
+        replyListAdapter.onRingtoneClickListener = {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (Settings.System.canWrite(context)) {
+                    viewModel.setReplyAsRingtone(it)
+                }else{
+                    mainNavigator.requestStartSettingsWritePermission()
+                }
+            } else {
+                viewModel.setReplyAsRingtone(it)
+            }
         }
     }
 }

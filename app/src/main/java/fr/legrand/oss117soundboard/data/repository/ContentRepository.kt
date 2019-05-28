@@ -1,5 +1,6 @@
 package fr.legrand.oss117soundboard.data.repository
 
+import android.net.Uri
 import fr.legrand.oss117soundboard.data.entity.FilterType
 import fr.legrand.oss117soundboard.data.entity.Movie
 import fr.legrand.oss117soundboard.data.entity.MovieCharacter
@@ -47,4 +48,7 @@ interface ContentRepository {
     fun getAllCharacters(): Single<List<MovieCharacter>>
 
     fun getAllMovies(): Single<List<Movie>>
+
+    fun generateShareData(replyId: Int): Single<Pair<Uri, String>>
+    fun setReplyAsRingtone(replyId: Int): Completable
 }

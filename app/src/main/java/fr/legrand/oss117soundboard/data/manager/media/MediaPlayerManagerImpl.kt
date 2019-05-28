@@ -1,9 +1,11 @@
 package fr.legrand.oss117soundboard.data.manager.media
 
 import android.content.Context
+import android.net.Uri
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+import com.google.android.exoplayer2.upstream.RawResourceDataSource
 import fr.legrand.oss117soundboard.data.entity.RunningPlayer
 import fr.legrand.oss117soundboard.presentation.utils.onStopListener
 import fr.legrand.oss117soundboard.presentation.utils.startMedia
@@ -20,7 +22,7 @@ private const val MULTI_LISTEN_NUMBER_LIMIT = 8
 
 @Singleton
 class MediaPlayerManagerImpl @Inject constructor(
-    private val context: Context
+        private val context: Context
 ) : MediaPlayerManager {
 
 
@@ -36,7 +38,7 @@ class MediaPlayerManagerImpl @Inject constructor(
             runningMediaPlayerList.add(RunningPlayer(simpleExoPlayer, mediaId))
 
             if (!multiListen && runningMediaPlayerList.isNotEmpty()
-                || runningMediaPlayerList.size >= MULTI_LISTEN_NUMBER_LIMIT
+                    || runningMediaPlayerList.size >= MULTI_LISTEN_NUMBER_LIMIT
             ) {
                 stopRunningPlayer(runningMediaPlayerList[0])
             }
