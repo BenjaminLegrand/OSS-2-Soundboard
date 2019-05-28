@@ -23,6 +23,12 @@
     <string name="stats_label">Statistiques</string>
     <string name="others_label">Autres</string>
     <string name="most_listened_reply_format">%s (%d)</string>
+    <string name="reset_filters">Réinitialiser</string>
+    <string name="results_indicator_zero">Chou blanc aussi</string>
+    <plurals name="results_indicator_other">
+        <item quantity="other">%d répliques</item>
+        <item quantity="one">%d réplique</item>
+    </plurals>
 
     <string name="filter_reply">Filtrer</string>
     <string name="filter_characters">Personnages</string>
@@ -781,7 +787,6 @@
     <string name="sortidesoncontexte_desc">Sorti de son contexte, un doigt dans les fesses, ça peut être… Je préfère que
         ce soit plus clair parce qu\'on a tendance parfois à se faire des idées…
     </string>
-    <string name="reset_filters">Réinitialiser</string>
 
 
 </resources>

@@ -28,4 +28,5 @@
     <dimen name="search_area_content_elevation">8dp</dimen>
     <dimen name="reset_search_end_margin">10dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="search_results_indicator_padding">12dp</dimen>
 </resources>

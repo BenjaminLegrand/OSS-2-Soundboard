@@ -68,6 +68,7 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             } else {
                 activity_main_search_group.show()
             }
+            clearSearchFocus()
             invalidateOptionsMenu()
         }
 

@@ -16,4 +16,18 @@
     <fragment android:id="@+id/settings_fragment"
               android:name="fr.legrand.oss117soundboard.presentation.ui.settings.SettingsFragment"
               android:label="SettingsFragment"/>
+    <action
+        android:id="@+id/action_global_favorite_reply_fragment"
+        app:destination="@id/favorite_reply_fragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    <action
+        android:id="@+id/action_global_all_reply_fragment"
+        app:destination="@id/all_reply_fragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 </navigation>

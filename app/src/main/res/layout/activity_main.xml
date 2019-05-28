@@ -4,8 +4,8 @@
     android:id="@+id/main_activity_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_background_color"
     android:animateLayoutChanges="true"
+    android:background="@color/base_background_color"
     android:clipToPadding="false">
 
     <androidx.appcompat.widget.Toolbar
@@ -44,7 +44,6 @@
         android:layout_width="@dimen/reset_search_icon_size"
         android:layout_height="@dimen/reset_search_icon_size"
         android:layout_marginEnd="@dimen/reset_search_end_margin"
-        android:background="@drawable/settings_text_ripple"
         android:elevation="@dimen/search_area_content_elevation"
         android:outlineProvider="none"
         android:padding="@dimen/reset_search_icon_padding"
@@ -108,6 +107,6 @@
     <androidx.constraintlayout.widget.Group
         android:id="@+id/activity_main_search_group"
         android:layout_width="wrap_content"
-        app:constraint_referenced_ids="activity_main_search,activity_main_search_area,activity_reset_search"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="activity_main_search,activity_main_search_area,activity_reset_search" />
 </androidx.constraintlayout.widget.ConstraintLayout>
