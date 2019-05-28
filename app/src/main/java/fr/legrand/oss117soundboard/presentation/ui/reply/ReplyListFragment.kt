@@ -3,6 +3,7 @@ package fr.legrand.oss117soundboard.presentation.ui.reply
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.legrand.oss117soundboard.R
@@ -57,13 +58,49 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
             viewModel.getAllReply(args.favorite)
         }
 
+        viewModel.resultsIndicator.observeSafe(this) {
+            val text = if (it == 0) {
+                getString(R.string.results_indicator_zero)
+            } else {
+                resources.getQuantityString(R.plurals.results_indicator_other, it, it)
+            }
+            if (args.favorite) {
+                search_results_end_indicator.text = text
+            } else {
+                search_results_start_indicator.text = text
+            }
+        }
+
         viewModel.replyListLiveData.observeSafe(this) {
             if (it.isEmpty()) {
+                checkSearchResultsIndicator()
                 displayPlaceholder()
             } else {
+                search_results_start_indicator.hide()
+                search_results_end_indicator.hide()
                 displayReplyList()
                 replyListAdapter.setItems(it)
             }
+        }
+
+        search_results_start_indicator.setOnClickListener {
+            findNavController().navigate(R.id.action_global_favorite_reply_fragment)
+        }
+        search_results_end_indicator.setOnClickListener {
+            findNavController().navigate(R.id.action_global_all_reply_fragment)
+        }
+    }
+
+    private fun checkSearchResultsIndicator() {
+        if (sharedViewModel.onSearchRequested.value?.isNotEmpty() == true) {
+            if (args.favorite) {
+                search_results_end_indicator.show()
+                search_results_start_indicator.hide()
+            } else {
+                search_results_start_indicator.show()
+                search_results_end_indicator.hide()
+            }
+            viewModel.getAllReplyNegated(args.favorite)
         }
     }
 

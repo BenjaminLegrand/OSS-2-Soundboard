@@ -12,6 +12,46 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/reply_view_holder" />
 
+    <TextView
+        android:id="@+id/search_results_start_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_margin"
+        android:layout_marginTop="@dimen/base_double_margin"
+        android:background="@drawable/search_results_indicator_background"
+        android:drawableStart="@drawable/chevron_double_left"
+        android:drawablePadding="@dimen/base_half_padding"
+        android:elevation="@dimen/search_area_content_elevation"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:padding="@dimen/search_results_indicator_padding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="28 résultats" />
+
+    <TextView
+        android:id="@+id/search_results_end_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_double_margin"
+        android:layout_marginEnd="@dimen/base_margin"
+        android:background="@drawable/search_results_indicator_background"
+        android:drawableEnd="@drawable/chevron_double_right"
+        android:drawablePadding="@dimen/base_half_padding"
+        android:elevation="@dimen/search_area_content_elevation"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:padding="@dimen/search_results_indicator_padding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="28 résultats" />
+
     <ImageView
         android:id="@+id/fragment_reply_list_placeholder_image"
         android:layout_width="wrap_content"

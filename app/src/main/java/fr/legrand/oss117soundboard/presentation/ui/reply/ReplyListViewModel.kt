@@ -26,6 +26,7 @@ class ReplyListViewModel @Inject constructor(
 
     val replyListLiveData = MutableLiveData<List<ReplyViewData>>()
     val replyFavoriteUpdated = SingleLiveEvent<Boolean>()
+    val resultsIndicator = SingleLiveEvent<Int>()
 
     private val characterFilters = mutableListOf<MovieCharacterViewData>()
     private val movieFilters = mutableListOf<MovieViewData>()
@@ -50,6 +51,24 @@ class ReplyListViewModel @Inject constructor(
                 onNext = {
                     val result = applyFilters(it.map { ReplyViewData(it) })
                     replyListLiveData.postValue(result)
+                },
+                onError = {
+
+                }
+        ))
+    }
+
+    fun getAllReplyNegated(favorite: Boolean) {
+        disposable.clear()
+        val obs = if (currentSearch == ReplySharedViewModel.NO_SEARCH) {
+            contentRepository.getAllReply(!favorite)
+        } else {
+            contentRepository.getReplyWithSearch(currentSearch, !favorite)
+        }
+        disposable.add(obs.subscribeOn(Schedulers.io()).subscribeBy(
+                onNext = {
+                    val result = applyFilters(it.map { ReplyViewData(it) })
+                    resultsIndicator.postValue(result.size)
                 },
                 onError = {
 
