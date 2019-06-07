@@ -116,12 +116,14 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
 
     private fun displayPlaceholder() {
         fragment_reply_list_recycler.hide()
-        fragment_reply_list_placeholder.show()
+        fragment_reply_list_placeholder_image.show()
+        fragment_reply_list_placeholder_text.show()
     }
 
     private fun displayReplyList() {
         fragment_reply_list_recycler.show()
-        fragment_reply_list_placeholder.hide()
+        fragment_reply_list_placeholder_image.hide()
+        fragment_reply_list_placeholder_text.hide()
     }
 
 

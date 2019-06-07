@@ -28,6 +28,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/card_view_padding"
+            android:paddingTop="@dimen/base_padding"
+            android:paddingBottom="@dimen/base_padding"
             android:paddingEnd="@dimen/card_view_padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textSize="@dimen/reply_title_text_size"

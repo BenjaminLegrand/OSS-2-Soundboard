@@ -17,7 +17,7 @@
     <dimen name="search_padding">12dp</dimen>
     <dimen name="settings_min_clickable_height">48dp</dimen>
     <dimen name="min_clickable_size">48dp</dimen>
-    <dimen name="reply_title_text_size">17sp</dimen>
+    <dimen name="reply_title_text_size">16sp</dimen>
     <dimen name="base_half_padding">4dp</dimen>
     <dimen name="base_half_margin">4dp</dimen>
     <dimen name="toggle_icon_padding">12dp</dimen>

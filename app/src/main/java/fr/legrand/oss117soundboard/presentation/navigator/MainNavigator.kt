@@ -30,7 +30,7 @@ constructor(private val baseActivity: BaseActivity) {
         share.type = "audio/*"
         share.putExtra(Intent.EXTRA_TEXT, content)
         share.putExtra(Intent.EXTRA_STREAM, fileUri)
-        baseActivity.startActivity(Intent.createChooser(share, baseActivity.getString(R.string.share_title)))
+        baseActivity.startActivity(share)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
