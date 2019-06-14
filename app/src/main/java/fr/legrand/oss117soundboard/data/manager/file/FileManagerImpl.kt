@@ -2801,182 +2801,182 @@ constructor(private val context: Context) : FileManager {
             )
         )
 
-        //First film
-        replyList.add(
-            Reply(
-                R.raw.oss1_generique,
-                context.getString(R.string.oss1_generique_title),
-                context.getString(R.string.oss1_generique_desc),
-                1,
-                Movie.OSS_1,
-                listOf(MovieCharacter.OTHERS)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.musique_allemande_menacante,
-                context.getString(R.string.musique_allemande_menacante_title),
-                context.getString(R.string.musique_allemande_menacante_desc),
-                15,
-                Movie.OSS_1,
-                listOf(MovieCharacter.OTHERS)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.depechez_vous_rubecht,
-                context.getString(R.string.depechez_vous_rubecht_title),
-                context.getString(R.string.depechez_vous_rubecht_desc),
-                48,
-                Movie.OSS_1,
-                listOf(MovieCharacter.VON_UMSPRUNG)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.vous_dormez_rubecht,
-                context.getString(R.string.vous_dormez_rubecht_title),
-                context.getString(R.string.vous_dormez_rubecht_desc),
-                70,
-                Movie.OSS_1,
-                listOf(MovieCharacter.VON_UMSPRUNG)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.vous_dormez,
-                context.getString(R.string.vous_dormez_title),
-                context.getString(R.string.vous_dormez_desc),
-                83,
-                Movie.OSS_1,
-                listOf(MovieCharacter.VON_UMSPRUNG)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.tu_n_es_pas_rubecht,
-                context.getString(R.string.tu_n_es_pas_rubecht_title),
-                context.getString(R.string.tu_n_es_pas_rubecht_desc),
-                86,
-                Movie.OSS_1,
-                listOf(MovieCharacter.VON_UMSPRUNG)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.t_es_ridicule,
-                context.getString(R.string.t_es_ridicule_title),
-                context.getString(R.string.t_es_ridicule_desc),
-                86,
-                Movie.OSS_1,
-                listOf(MovieCharacter.VON_UMSPRUNG)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.imbecile,
-                context.getString(R.string.imbecile_title),
-                context.getString(R.string.imbecile_desc),
-                95,
-                Movie.OSS_1,
-                listOf(MovieCharacter.VON_UMSPRUNG)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.fichu_avion,
-                context.getString(R.string.fichu_avion_title),
-                context.getString(R.string.fichu_avion_desc),
-                118,
-                Movie.OSS_1,
-                listOf(MovieCharacter.VON_UMSPRUNG)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.des_journaux,
-                context.getString(R.string.des_journaux_title),
-                context.getString(R.string.des_journaux_desc),
-                129,
-                Movie.OSS_1,
-                listOf(MovieCharacter.VON_UMSPRUNG)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.oss117,
-                context.getString(R.string.oss117_title),
-                context.getString(R.string.oss117_desc),
-                138,
-                Movie.OSS_1,
-                listOf(MovieCharacter.HUBERT)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.pour_vous_servir,
-                context.getString(R.string.pour_vous_servir_title),
-                context.getString(R.string.pour_vous_servir_desc),
-                139,
-                Movie.OSS_1,
-                listOf(MovieCharacter.HUBERT)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.aufviderzen,
-                context.getString(R.string.aufviderzen_title),
-                context.getString(R.string.aufviderzen_desc),
-                146,
-                Movie.OSS_1,
-                listOf(MovieCharacter.HUBERT)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.redresser_cet_avion,
-                context.getString(R.string.redresser_cet_avion_title),
-                context.getString(R.string.redresser_cet_avion_desc),
-                160,
-                Movie.OSS_1,
-                listOf(MovieCharacter.HUBERT)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.j_arrive,
-                context.getString(R.string.j_arrive_title),
-                context.getString(R.string.j_arrive_desc),
-                161,
-                Movie.OSS_1,
-                listOf(MovieCharacter.JACK)
-            )
-        )
-
-        replyList.add(
-            Reply(
-                R.raw.ahahaha_avion,
-                context.getString(R.string.ahahaha_avion_title),
-                context.getString(R.string.ahahaha_avion_desc),
-                161,
-                Movie.OSS_1,
-                listOf(MovieCharacter.JACK, MovieCharacter.HUBERT)
-            )
-        )
+//        //First film
+//        replyList.add(
+//            Reply(
+//                R.raw.oss1_generique,
+//                context.getString(R.string.oss1_generique_title),
+//                context.getString(R.string.oss1_generique_desc),
+//                1,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.OTHERS)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.musique_allemande_menacante,
+//                context.getString(R.string.musique_allemande_menacante_title),
+//                context.getString(R.string.musique_allemande_menacante_desc),
+//                15,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.OTHERS)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.depechez_vous_rubecht,
+//                context.getString(R.string.depechez_vous_rubecht_title),
+//                context.getString(R.string.depechez_vous_rubecht_desc),
+//                48,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.VON_UMSPRUNG)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.vous_dormez_rubecht,
+//                context.getString(R.string.vous_dormez_rubecht_title),
+//                context.getString(R.string.vous_dormez_rubecht_desc),
+//                70,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.VON_UMSPRUNG)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.vous_dormez,
+//                context.getString(R.string.vous_dormez_title),
+//                context.getString(R.string.vous_dormez_desc),
+//                83,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.VON_UMSPRUNG)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.tu_n_es_pas_rubecht,
+//                context.getString(R.string.tu_n_es_pas_rubecht_title),
+//                context.getString(R.string.tu_n_es_pas_rubecht_desc),
+//                86,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.VON_UMSPRUNG)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.t_es_ridicule,
+//                context.getString(R.string.t_es_ridicule_title),
+//                context.getString(R.string.t_es_ridicule_desc),
+//                86,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.VON_UMSPRUNG)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.imbecile,
+//                context.getString(R.string.imbecile_title),
+//                context.getString(R.string.imbecile_desc),
+//                95,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.VON_UMSPRUNG)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.fichu_avion,
+//                context.getString(R.string.fichu_avion_title),
+//                context.getString(R.string.fichu_avion_desc),
+//                118,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.VON_UMSPRUNG)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.des_journaux,
+//                context.getString(R.string.des_journaux_title),
+//                context.getString(R.string.des_journaux_desc),
+//                129,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.VON_UMSPRUNG)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.oss117,
+//                context.getString(R.string.oss117_title),
+//                context.getString(R.string.oss117_desc),
+//                138,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.HUBERT)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.pour_vous_servir,
+//                context.getString(R.string.pour_vous_servir_title),
+//                context.getString(R.string.pour_vous_servir_desc),
+//                139,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.HUBERT)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.aufviderzen,
+//                context.getString(R.string.aufviderzen_title),
+//                context.getString(R.string.aufviderzen_desc),
+//                146,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.HUBERT)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.redresser_cet_avion,
+//                context.getString(R.string.redresser_cet_avion_title),
+//                context.getString(R.string.redresser_cet_avion_desc),
+//                160,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.HUBERT)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.j_arrive,
+//                context.getString(R.string.j_arrive_title),
+//                context.getString(R.string.j_arrive_desc),
+//                161,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.JACK)
+//            )
+//        )
+//
+//        replyList.add(
+//            Reply(
+//                R.raw.ahahaha_avion,
+//                context.getString(R.string.ahahaha_avion_title),
+//                context.getString(R.string.ahahaha_avion_desc),
+//                161,
+//                Movie.OSS_1,
+//                listOf(MovieCharacter.JACK, MovieCharacter.HUBERT)
+//            )
+//        )
 
         return replyList
 

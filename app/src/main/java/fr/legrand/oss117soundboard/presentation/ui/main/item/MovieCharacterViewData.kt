@@ -27,8 +27,8 @@ class MovieCharacterViewData(private val movieCharacter: MovieCharacter) {
         MovieCharacter.BEACH_MAN -> context.getString(R.string.character_beach_man_name)
         MovieCharacter.BRESILIAN_NURSE -> context.getString(R.string.character_bresilian_nurse_name)
         MovieCharacter.ISRAELI_AGENTS -> context.getString(R.string.character_israeli_agents_name)
-        MovieCharacter.VON_UMSPRUNG -> context.getString(R.string.character_von_umpsrung_name)
-        MovieCharacter.JACK -> context.getString(R.string.character_jack_name)
+//TODO        MovieCharacter.VON_UMSPRUNG -> context.getString(R.string.character_von_umpsrung_name)
+//        MovieCharacter.JACK -> context.getString(R.string.character_jack_name)
         MovieCharacter.OTHERS -> context.getString(R.string.character_others_name)
     }
 }

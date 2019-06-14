@@ -17,7 +17,7 @@ enum class MovieCharacter{
     BEACH_MAN,
     BRESILIAN_NURSE,
     ISRAELI_AGENTS,
-    VON_UMSPRUNG,
-    JACK,
+//TODO    VON_UMSPRUNG,
+//    JACK,
     OTHERS
 }

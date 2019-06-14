@@ -8,7 +8,7 @@ class MovieViewData(private val movie: Movie) {
     var selected = false
 
     fun getDisplayName(context: Context): String = when (movie) {
-        Movie.OSS_1 -> context.getString(R.string.oss_1_movie_name)
+//TODO        Movie.OSS_1 -> context.getString(R.string.oss_1_movie_name)
         Movie.OSS_2 -> context.getString(R.string.oss_2_movie_name)
     }
 
