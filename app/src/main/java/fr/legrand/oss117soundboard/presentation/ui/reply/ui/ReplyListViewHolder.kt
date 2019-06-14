@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import fr.legrand.oss117soundboard.R
@@ -29,12 +30,15 @@ class ReplyListViewHolder(itemView: View, private val context: Context) : Recycl
     private val favoriteButton: Button = itemView.findViewById(R.id.reply_view_holder_favorite_button)
     private val descriptionToggle: ImageView = itemView.findViewById(R.id.reply_view_holder_description_toggle)
     private val collapseArea: View = itemView.findViewById(R.id.reply_view_holder_collapse_area)
+    private val overflow: ImageView = itemView.findViewById(R.id.reply_view_holder_overflow)
 
 
     fun bindReply(
             replyViewData: ReplyViewData,
             onListenClickListener: (Int) -> Unit,
-            onFavoriteClickListener: (Int, Boolean) -> Unit
+            onFavoriteClickListener: (Int, Boolean) -> Unit,
+            onReplySharedClickListener: (Int) -> Unit,
+            onReplyRingtoneClickListener: (Int) -> Unit
     ) {
         replyName.text = replyViewData.getDisplayName()
         replyDescription.text = replyViewData.getFormattedDescription()
@@ -88,6 +92,23 @@ class ReplyListViewHolder(itemView: View, private val context: Context) : Recycl
                     replyViewData.getId(),
                     !replyViewData.isFavorite()
             )
+        }
+
+        var popupMenu = PopupMenu(context, overflow)
+        overflow.setOnClickListener {
+            popupMenu.dismiss()
+            popupMenu = PopupMenu(context, overflow)
+            popupMenu.run {
+                setOnMenuItemClickListener {
+                    when (it.itemId) {
+                        R.id.reply_overflow_share -> onReplySharedClickListener(replyViewData.getId())
+                        R.id.reply_overflow_ringtone -> onReplyRingtoneClickListener(replyViewData.getId())
+                    }
+                    false
+                }
+                inflate(R.menu.reply_overflow_menu)
+                show()
+            }
         }
     }
 }

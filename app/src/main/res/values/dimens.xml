@@ -4,7 +4,7 @@
     <dimen name="card_view_margin_top_bottom">8dp</dimen>
     <dimen name="card_view_margin_side">16dp</dimen>
     <dimen name="card_view_padding">8dp</dimen>
-    <dimen name="button_margin">8dp</dimen>
+    <dimen name="button_margin">4dp</dimen>
     <dimen name="setting_title_padding">16dp</dimen>
     <dimen name="base_margin">8dp</dimen>
     <dimen name="base_double_margin">16dp</dimen>
@@ -17,8 +17,9 @@
     <dimen name="search_padding">12dp</dimen>
     <dimen name="settings_min_clickable_height">48dp</dimen>
     <dimen name="min_clickable_size">48dp</dimen>
-    <dimen name="reply_title_text_size">17sp</dimen>
+    <dimen name="reply_title_text_size">16sp</dimen>
     <dimen name="base_half_padding">4dp</dimen>
+    <dimen name="base_half_margin">4dp</dimen>
     <dimen name="toggle_icon_padding">12dp</dimen>
     <dimen name="reply_button_text_size">12sp</dimen>
     <dimen name="reset_search_icon_size">36dp</dimen>
@@ -29,4 +30,7 @@
     <dimen name="reset_search_end_margin">10dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="search_results_indicator_padding">12dp</dimen>
+    <dimen name="reply_view_holder_overflow_icon_size">36dp</dimen>
+    <dimen name="overflow_icon_padding">8dp</dimen>
+    <dimen name="overflow_horizontal_margin">6dp</dimen>
 </resources>

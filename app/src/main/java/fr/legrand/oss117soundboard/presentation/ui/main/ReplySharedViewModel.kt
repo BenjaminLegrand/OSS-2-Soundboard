@@ -79,7 +79,7 @@ class ReplySharedViewModel @Inject constructor(
                     characterFilters.clear()
                     characterFilters.addAll(it.map { MovieCharacterViewData(it) })
                 }, onError = {
-                    //Nothing to do
+                    Timber.e(it)
                 })
     }
 
@@ -89,7 +89,7 @@ class ReplySharedViewModel @Inject constructor(
                     movieFilters.clear()
                     movieFilters.addAll(it.map { MovieViewData(it) })
                 }, onError = {
-                    //Nothing to do
+                    Timber.e(it)
                 })
     }
 
@@ -98,7 +98,7 @@ class ReplySharedViewModel @Inject constructor(
                 .subscribeBy(onSuccess = {
                     availableFilters.postValue(it.map { FilterViewData(it) })
                 }, onError = {
-                    //Nothing to do
+                    Timber.e(it)
                 })
     }
 
@@ -110,7 +110,7 @@ class ReplySharedViewModel @Inject constructor(
                         onReplyListenFinished.postValue(true)
                     }
                 }, onError = {
-                    //Nothing to do
+                    Timber.e(it)
                 })
     }
 

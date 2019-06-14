@@ -29,6 +29,9 @@
         <item quantity="other">%d répliques</item>
         <item quantity="one">%d réplique</item>
     </plurals>
+    <string name="share">Partager</string>
+    <string name="ringtone">Utiliser comme sonnerie</string>
+    <string name="share_title">Partager avec…</string>
 
     <string name="filter_reply">Filtrer</string>
     <string name="filter_characters">Personnages</string>
@@ -36,6 +39,27 @@
 
     <string name="oss_2_movie_name">OSS 117 : Rio ne répond plus</string>
     <string name="oss_1_movie_name">OSS 117 : Le Caire, nid d\'espions</string>
+
+    <!--Characters-->
+    <string name="character_hubert_name">Hubert</string>
+    <string name="character_dolores_name">Dolorès</string>
+    <string name="character_armand_name">Armand</string>
+    <string name="character_heinrich_name">Heinrich</string>
+    <string name="character_bill_name">Bill</string>
+    <string name="character_von_zimmel_name">Von Zimmel</string>
+    <string name="character_chinese_brothers_name">Les Chinois</string>
+    <string name="character_germans_name">Les Allemands</string>
+    <string name="character_chinese_princess_name">Princesse Chinoise</string>
+    <string name="character_carlota_name">Carlota</string>
+    <string name="character_ledentu_name">Ledentu</string>
+    <string name="character_mayeux_name">Mayeux</string>
+    <string name="character_beach_woman_name">Femme plage</string>
+    <string name="character_beach_man_name">Homme plage</string>
+    <string name="character_bresilian_nurse_name">Infirmière</string>
+    <string name="character_israeli_agents_name">Agents israéliens</string>
+    <string name="character_others_name">Autres</string>
+    <string name="character_von_umpsrung_name">Colonel Von Umpsrung</string>
+    <string name="character_jack_name">Jack Jefferson</string>
 
     <!-- Replies names and description -->
     <string name="cestgentil_title">C\'est gentil</string>
@@ -787,6 +811,38 @@
     <string name="sortidesoncontexte_desc">Sorti de son contexte, un doigt dans les fesses, ça peut être… Je préfère que
         ce soit plus clair parce qu\'on a tendance parfois à se faire des idées…
     </string>
+    <string name="oss1_generique_title">Générique</string>
+    <string name="oss1_generique_desc">Générique OSS117 : Le Caire, nid d\'espions</string>
+    <string name="musique_allemande_menacante_title">Musique allemande menaçante</string>
+    <string name="musique_allemande_menacante_desc">Musique allemande menaçante</string>
+    <string name="depechez_vous_rubecht_title">Dépêchez vous Rubecht</string>
+    <string name="depechez_vous_rubecht_desc">Dépêchez vous Rubecht... Imbécile !</string>
+    <string name="vous_dormez_rubecht_title">Vous dormez Rubecht ?</string>
+    <string name="vous_dormez_rubecht_desc">Vous dormez Rubecht ?</string>
+    <string name="vous_dormez_title">Vous dormez...</string>
+    <string name="vous_dormez_desc">Vous dormez...</string>
+    <string name="tu_n_es_pas_rubecht_title">Tu n\'es pas Rubecht !</string>
+    <string name="tu_n_es_pas_rubecht_desc">Tu n\'es pas Rubecht ! Tu n\'es même pas Allemand !</string>
+    <string name="t_es_ridicule_title">T\'es ridicule</string>
+    <string name="t_es_ridicule_desc">T\'es ridicule, j\'ai une arme, et toi non.</string>
+    <string name="imbecile_title">Imbécile</string>
+    <string name="imbecile_desc">Imbécile</string>
+    <string name="fichu_avion_title">Fichu avion</string>
+    <string name="fichu_avion_desc">Vous allez piloter ce fichu avion et m\'amener en Amérique du Sud !</string>
+    <string name="des_journaux_title">Des journaux</string>
+    <string name="des_journaux_desc">Des journaux, des journauuux !</string>
+    <string name="oss117_title">OSS 117</string>
+    <string name="oss117_desc">OSS 117 !</string>
+    <string name="pour_vous_servir_title">Pour vous servir</string>
+    <string name="pour_vous_servir_desc">OSS 117, pour vous servir.</string>
+    <string name="aufviderzen_title">Aufviderzen</string>
+    <string name="aufviderzen_desc">Aufviderzen, Herr Colonel.</string>
+    <string name="redresser_cet_avion_title">Redresser cet avion</string>
+    <string name="redresser_cet_avion_desc">Alors, allons redresser cet avion.</string>
+    <string name="j_arrive_title">J\'arrive</string>
+    <string name="j_arrive_desc">J\'arrive.</string>
+    <string name="ahahaha_avion_title">Ahahahahah</string>
+    <string name="ahahaha_avion_desc">Hmm ahahaha ahah ahahahaahah ah hmmm</string>
 
 
 </resources>

@@ -29,4 +29,7 @@ interface RoomManager {
     @Query("UPDATE Reply SET listenCount = listenCount + 1 WHERE id = :replyId")
     fun incrementReplyListenCount(replyId: Int)
 
+    @Query("SELECT * FROM reply WHERE id == :id")
+    fun getReplyById(id: Int): Reply
+
 }

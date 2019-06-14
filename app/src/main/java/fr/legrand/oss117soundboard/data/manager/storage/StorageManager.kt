@@ -17,4 +17,6 @@ interface StorageManager {
 
     fun incrementReplyListenCount(replyId: Int)
 
+    fun getReplyById(replyId: Int): Reply
+
 }

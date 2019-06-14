@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path
+        name="shared_replies"
+        path="oss_soundboard/" />
+
+    <!--<external-path-->
+        <!--name="ringtone_replies"-->
+        <!--path="Ringtones/oss_soundboard/" />-->
+</paths>
