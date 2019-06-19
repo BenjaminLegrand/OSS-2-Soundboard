@@ -34,16 +34,19 @@ private const val MP3_MIME_TYPE = "audio/mp3"
 
 @Singleton
 class ContentRepositoryImpl @Inject constructor(
-        private val storageManager: StorageManager,
-        private val sharedPrefManager: SharedPrefManager,
-        private val fileManager: FileManager,
-        private val mediaPlayerManager: MediaPlayerManager,
-        private val context: Context
+    private val storageManager: StorageManager,
+    private val sharedPrefManager: SharedPrefManager,
+    private val fileManager: FileManager,
+    private val mediaPlayerManager: MediaPlayerManager,
+    private val context: Context
 ) : ContentRepository {
 
     private var startListenTimestamp = 0L
 
-    override fun getReplyWithSearch(search: String, fromFavorite: Boolean): Observable<List<Reply>> {
+    override fun getReplyWithSearch(
+        search: String,
+        fromFavorite: Boolean
+    ): Observable<List<Reply>> {
         return Observable.defer {
             val replyList = storageManager.getReplyWithSearch(search, fromFavorite)
             val result = when (sharedPrefManager.getReplySort()) {
@@ -57,10 +60,8 @@ class ContentRepositoryImpl @Inject constructor(
 
     override fun initAllReply(): Completable {
         return Completable.defer {
-            if (storageManager.getAllReply().isEmpty()) {
-                val replyList = fileManager.buildReplyListFromResource()
-                storageManager.saveReplyList(replyList)
-            }
+            storageManager.resetReplyList()
+            storageManager.saveReplyList(fileManager.buildReplyListFromResource())
             Completable.complete()
         }
     }
@@ -107,23 +108,24 @@ class ContentRepositoryImpl @Inject constructor(
                 startListenTimestamp = System.currentTimeMillis()
             }
 
-            mediaPlayerManager.playSoundMedia(replyId, sharedPrefManager.isMultiListenEnabled()).doOnComplete {
-                storageManager.incrementReplyListenCount(replyId)
-                if (!mediaPlayerManager.isPlayerCurrentlyRunning()) {
-                    increaseTotalReplyTime(System.currentTimeMillis() - startListenTimestamp)
+            mediaPlayerManager.playSoundMedia(replyId, sharedPrefManager.isMultiListenEnabled())
+                .doOnComplete {
+                    storageManager.incrementReplyListenCount(replyId)
+                    if (!mediaPlayerManager.isPlayerCurrentlyRunning()) {
+                        increaseTotalReplyTime(System.currentTimeMillis() - startListenTimestamp)
+                    }
                 }
-            }
         }
     }
 
     override fun getAllFilters(): Single<List<FilterType>> =
-            Single.defer { Single.just(FilterType.values().toList()) }
+        Single.defer { Single.just(FilterType.values().toList()) }
 
     override fun getAllMovies(): Single<List<Movie>> =
-            Single.defer { Single.just(Movie.values().toList()) }
+        Single.defer { Single.just(Movie.values().toList()) }
 
     override fun getAllCharacters(): Single<List<MovieCharacter>> =
-            Single.defer { Single.just(MovieCharacter.values().toList()) }
+        Single.defer { Single.just(MovieCharacter.values().toList()) }
 
 
     override fun getTotalReplyTime(): Observable<Long> {
@@ -166,21 +168,25 @@ class ContentRepositoryImpl @Inject constructor(
     override fun generateShareData(replyId: Int): Single<Pair<Uri, String>> = Single.defer {
         val inputStream = context.resources.openRawResource(replyId)
         val file = File(
-                context.filesDir
-                , SHARED_REPLY_FILEPATH).apply { parentFile.mkdirs() }
+            context.filesDir
+            , SHARED_REPLY_FILEPATH
+        ).apply { parentFile.mkdirs() }
         val fileOutputStream = FileOutputStream(file)
         fileOutputStream.write(inputStream.readBytes())
         Single.just(
-                Pair(FileProvider.getUriForFile(context, context.packageName, file),
-                        storageManager.getReplyById(replyId).name)
+            Pair(
+                FileProvider.getUriForFile(context, context.packageName, file),
+                storageManager.getReplyById(replyId).name
+            )
         )
     }
 
     override fun setReplyAsRingtone(replyId: Int): Completable = Completable.defer {
         val inputStream = context.resources.openRawResource(replyId)
         val file = File(
-                context.externalCacheDir
-                , RINGTONE_REPLY_FILEPATH).apply { parentFile.mkdirs() }
+            context.externalCacheDir
+            , RINGTONE_REPLY_FILEPATH
+        ).apply { parentFile.mkdirs() }
         val fileOutputStream = FileOutputStream(file)
         fileOutputStream.write(inputStream.readBytes())
 
@@ -196,8 +202,16 @@ class ContentRepositoryImpl @Inject constructor(
         }
 
         val mediaStoreContentUri = MediaStore.Audio.Media.INTERNAL_CONTENT_URI
-        context.contentResolver.delete(mediaStoreContentUri, MediaStore.MediaColumns.DATA + "='" + file.absolutePath + "'", null)
-        RingtoneManager.setActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE, context.contentResolver.insert(mediaStoreContentUri, contentValues))
+        context.contentResolver.delete(
+            mediaStoreContentUri,
+            MediaStore.MediaColumns.DATA + "='" + file.absolutePath + "'",
+            null
+        )
+        RingtoneManager.setActualDefaultRingtoneUri(
+            context,
+            RingtoneManager.TYPE_RINGTONE,
+            context.contentResolver.insert(mediaStoreContentUri, contentValues)
+        )
 
         Completable.complete()
     }

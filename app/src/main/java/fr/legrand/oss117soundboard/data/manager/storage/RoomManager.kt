@@ -32,4 +32,7 @@ interface RoomManager {
     @Query("SELECT * FROM reply WHERE id == :id")
     fun getReplyById(id: Int): Reply
 
+    @Query("DELETE FROM reply")
+    fun resetReplyList()
+
 }

@@ -2317,7 +2317,7 @@ constructor(private val context: Context) : FileManager {
                 context.getString(R.string.carlota_desc),
                 3970,
                 Movie.OSS_2,
-                listOf(MovieCharacter.HUBERT, MovieCharacter.CARLOTA)
+                listOf(MovieCharacter.HUBERT, MovieCharacter.CARLOTA, MovieCharacter.VON_ZIMMEL)
             )
         )
         replyList.add(

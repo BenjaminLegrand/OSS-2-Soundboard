@@ -18,54 +18,96 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="@id/reply_view_holder_description_toggle"
+            app:layout_constraintBottom_toTopOf="@id/reply_view_holder_description"
             app:layout_constraintEnd_toEndOf="@id/reply_view_holder_description_toggle"
             app:layout_constraintStart_toStartOf="@id/reply_view_holder_name"
             app:layout_constraintTop_toTopOf="@id/reply_view_holder_description_toggle" />
+
 
         <TextView
             android:id="@+id/reply_view_holder_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin"
             android:paddingStart="@dimen/card_view_padding"
-            android:paddingTop="@dimen/base_padding"
-            android:paddingBottom="@dimen/base_padding"
             android:paddingEnd="@dimen/card_view_padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textSize="@dimen/reply_title_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/reply_view_holder_description_toggle"
+            app:layout_constraintBottom_toTopOf="@id/reply_view_holder_characters"
             app:layout_constraintEnd_toStartOf="@id/reply_view_holder_description_toggle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/reply_view_holder_description_toggle"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Coucou" />
 
         <ImageView
             android:id="@+id/reply_view_holder_description_toggle"
             android:layout_width="@dimen/min_clickable_size"
-            android:layout_height="@dimen/min_clickable_size"
-            android:layout_marginEnd="@dimen/card_view_padding"
+            android:layout_height="0dp"
             android:padding="@dimen/toggle_icon_padding"
             android:src="@drawable/ic_toggle_down"
             app:layout_constraintBottom_toTopOf="@id/reply_view_holder_description"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/reply_view_holder_name"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/reply_view_holder_characters_icon"
+            android:layout_width="@dimen/reply_view_holder_icon_size"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/characters_icon_margin"
+            android:src="@drawable/ic_characters"
+            android:tint="@android:color/tertiary_text_light"
+            app:layout_constraintBottom_toBottomOf="@id/reply_view_holder_characters"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/reply_view_holder_characters"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/reply_view_holder_characters" />
+
+        <TextView
+            android:id="@+id/reply_view_holder_characters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin"
+            android:layout_marginBottom="@dimen/base_margin"
+            android:paddingStart="@dimen/base_padding"
+            android:paddingEnd="@dimen/base_padding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            app:layout_constraintBottom_toTopOf="@id/reply_view_holder_description"
+            app:layout_constraintEnd_toStartOf="@id/reply_view_holder_description_toggle"
+            app:layout_constraintStart_toEndOf="@id/reply_view_holder_characters_icon"
+            app:layout_constraintTop_toBottomOf="@id/reply_view_holder_name"
+            tools:text="Hubert, Dolorès" />
+
+        <ImageView
+            android:id="@+id/reply_view_holder_description_icon"
+            android:layout_width="@dimen/reply_view_holder_icon_size"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/characters_icon_margin"
+            android:src="@drawable/ic_description"
+            android:tint="@android:color/tertiary_text_light"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/reply_view_holder_description"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/reply_view_holder_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/reply_view_holder_description" />
+
         <TextView
             android:id="@+id/reply_view_holder_description"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/base_margin"
-            android:paddingStart="@dimen/card_view_padding"
-            android:paddingEnd="@dimen/card_view_padding"
+            android:paddingStart="@dimen/base_padding"
+            android:paddingEnd="@dimen/base_padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textStyle="italic"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/reply_view_holder_separator"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/reply_view_holder_description_toggle"
-            tools:text="Description" />
+            app:layout_constraintStart_toEndOf="@id/reply_view_holder_description_icon"
+            app:layout_constraintTop_toBottomOf="@id/reply_view_holder_characters"
+            tools:text="@string/allerdeguiser_desc" />
 
         <View
             android:id="@+id/reply_view_holder_separator"
@@ -109,13 +151,13 @@
             android:layout_width="@dimen/reply_view_holder_overflow_icon_size"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/overflow_horizontal_margin"
-            android:layout_marginEnd="@dimen/base_margin"
             android:layout_marginBottom="@dimen/overflow_horizontal_margin"
             android:background="@drawable/base_ripple"
             android:padding="@dimen/overflow_icon_padding"
             android:src="@drawable/ic_overflow"
             app:layout_constraintBottom_toBottomOf="@id/reply_view_holder_listen_button"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/reply_view_holder_description_toggle"
+            app:layout_constraintStart_toStartOf="@id/reply_view_holder_description_toggle"
             app:layout_constraintTop_toTopOf="@id/reply_view_holder_listen_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
