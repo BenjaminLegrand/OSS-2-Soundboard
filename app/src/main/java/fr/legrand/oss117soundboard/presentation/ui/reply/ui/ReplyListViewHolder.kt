@@ -4,12 +4,15 @@ import android.animation.AnimatorInflater
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.presentation.ui.reply.item.ReplyViewData
 import fr.legrand.oss117soundboard.presentation.utils.hide
@@ -21,6 +24,8 @@ import fr.legrand.oss117soundboard.presentation.utils.show
 
 private const val EXPANDED_ROTATION = 180f
 private const val COLLAPSED_ROTATION = 0f
+private const val EXPAND_COLLAPSE_ANIM_DURATION = 200L
+private const val ROTATION_DURATION = 300L
 
 class ReplyListViewHolder(itemView: View, private val context: Context) :
     RecyclerView.ViewHolder(itemView) {
@@ -39,9 +44,18 @@ class ReplyListViewHolder(itemView: View, private val context: Context) :
     private val collapseArea: View = itemView.findViewById(R.id.reply_view_holder_collapse_area)
     private val overflow: ImageView = itemView.findViewById(R.id.reply_view_holder_overflow)
 
+    private val rotateExpandAnimator =
+        (AnimatorInflater.loadAnimator(context, R.animator.rotate_expand) as ObjectAnimator).apply {
+            duration = ROTATION_DURATION
+        }
+    private val rotateCollapseAnimator =
+        (AnimatorInflater.loadAnimator(context, R.animator.rotate_collapse) as ObjectAnimator).apply {
+            duration = ROTATION_DURATION
+        }
 
     fun bindReply(
         replyViewData: ReplyViewData,
+        viewRoot: ViewGroup,
         onListenClickListener: (Int) -> Unit,
         onFavoriteClickListener: (Int, Boolean) -> Unit,
         onReplySharedClickListener: (Int) -> Unit,
@@ -67,13 +81,9 @@ class ReplyListViewHolder(itemView: View, private val context: Context) :
                 null
             )
         }
-
-        val rotateExpandAnimator =
-            AnimatorInflater.loadAnimator(context, R.animator.rotate_expand) as ObjectAnimator
         rotateExpandAnimator.target = descriptionToggle
-        val rotateCollapseAnimator =
-            AnimatorInflater.loadAnimator(context, R.animator.rotate_collapse) as ObjectAnimator
         rotateCollapseAnimator.target = descriptionToggle
+
 
         if (replyViewData.isExpanded) {
             replyDescription.show()
@@ -85,6 +95,9 @@ class ReplyListViewHolder(itemView: View, private val context: Context) :
             descriptionToggle.rotation = COLLAPSED_ROTATION
         }
         collapseArea.setOnClickListener {
+            TransitionManager.beginDelayedTransition(
+                viewRoot,
+                AutoTransition().apply { duration = EXPAND_COLLAPSE_ANIM_DURATION })
             if (replyDescription.isVisible) {
                 replyViewData.isExpanded = false
                 replyDescription.hide()
