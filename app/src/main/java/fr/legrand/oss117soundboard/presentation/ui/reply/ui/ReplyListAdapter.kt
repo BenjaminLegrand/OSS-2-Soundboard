@@ -20,14 +20,23 @@ constructor(private val activity: BaseActivity) : RecyclerView.Adapter<ReplyList
     var onShareClickListener: (Int) -> (Unit) = {}
     var onRingtoneClickListener: (Int) -> (Unit) = {}
     var onFavoriteClickListener: (Int, Boolean) -> (Unit) = { _, _ -> }
+    private lateinit var parentViewGroup : ViewGroup
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReplyListViewHolder {
+        parentViewGroup = parent
         val resultView = LayoutInflater.from(activity).inflate(R.layout.reply_view_holder, parent, false)
         return ReplyListViewHolder(resultView, activity)
     }
 
     override fun onBindViewHolder(holder: ReplyListViewHolder, position: Int) {
-        holder.bindReply(replyList[position], onListenClickListener, onFavoriteClickListener, onShareClickListener, onRingtoneClickListener)
+        holder.bindReply(
+            replyList[position],
+            parentViewGroup,
+            onListenClickListener,
+            onFavoriteClickListener,
+            onShareClickListener,
+            onRingtoneClickListener
+        )
     }
 
     override fun getItemCount(): Int {

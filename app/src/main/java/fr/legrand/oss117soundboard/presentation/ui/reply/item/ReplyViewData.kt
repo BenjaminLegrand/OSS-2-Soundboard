@@ -9,13 +9,14 @@ import fr.legrand.oss117soundboard.presentation.ui.main.item.MovieCharacterViewD
  * Created by Benjamin on 30/09/2017.
  */
 
+
 data class ReplyViewData(private val reply: Reply) {
 
     var isExpanded: Boolean = false
     private val movieViewData = MovieViewData(reply.movie)
     private val charactersViewData = reply.characters.map { MovieCharacterViewData(it) }
 
-    fun getFormattedDescription() = String.format("%s%s%s", "\"", reply.description, "\"")
+    fun getFormattedDescription() = reply.description
 
     fun getMostListenedText(context: Context): String = if (reply.listenCount == 0) {
         context.getString(R.string.no_listened_reply)
@@ -32,5 +33,8 @@ data class ReplyViewData(private val reply: Reply) {
     fun getMovieViewData() = movieViewData
 
     fun getCharactersViewData() = charactersViewData
+
+    fun getCharactersText(context: Context) =
+        charactersViewData.joinToString { it.getDisplayName(context) }
 
 }

@@ -66,7 +66,7 @@
     <string name="cestgentil_desc">C\'est gentil…</string>
     <string name="no_listened_reply">Aucune</string>
     <string name="mrleeteditbonjour_title">Mr Lee te dit bonjour</string>
-    <string name="mrleeteditbonjour_desc">Mr Lee te dit bonjour. - C\'est gentil. - Et au revoir aussi ! Ahahahahah…
+    <string name="mrleeteditbonjour_desc">- Mr Lee te dit bonjour.\n- C\'est gentil.\n- Et au revoir aussi ! Ahahahahah…
     </string>
     <string name="ahahah_title">Ahahah !</string>
     <string name="ahahah_desc">Ahahahahah ! You stupid son of a bitch !</string>
@@ -102,12 +102,12 @@
         confortable.
     </string>
     <string name="enpleindansledos_title">En plein dans le dos !</string>
-    <string name="enpleindansledos_desc">En plein dans le dos ! - T\'as vu ça ?</string>
+    <string name="enpleindansledos_desc">- En plein dans le dos !\n- T\'as vu ça ?</string>
     <string name="erreursurlapersonne_title">Erreur sur la personne</string>
     <string name="erreursurlapersonne_desc">Pas le moins du monde. Il aura fait une erreur sur la personne voilà tout.
     </string>
     <string name="etborgeilenditquoi_title">Et Borges, il en dit quoi ?</string>
-    <string name="etborgeilenditquoi_desc">Et Borges, il en dit quoi ? - Borges, Borges, Borges… Qu\'est-ce que tu veux
+    <string name="etborgeilenditquoi_desc">- Et Borges, il en dit quoi ?\n- Borges, Borges, Borges… Qu\'est-ce que tu veux
         qu\'il dise ? Il dit comme Favre… Et comme Duvernoy, d\'ailleurs.
     </string>
     <string name="explorerunepartie_title">Si intime soit-elle…</string>
@@ -123,18 +123,18 @@
     <string name="ilssontperdus_title">Ils sont perdus…</string>
     <string name="ilssontperdus_desc">Ils sont perdus…</string>
     <string name="jtapelleraisbill_title">Je t\'appellerai Bill</string>
-    <string name="jtapelleraisbill_desc">Je t\'appellerai Bill… Si l\'office du tourisme est fermé ! - Shut up, kiss my
-        ass. - D\'accord, faisons comme ça. Ravi de t\'avoir revu l\'ami.
+    <string name="jtapelleraisbill_desc">- Je t\'appellerai Bill… Si l\'office du tourisme est fermé !\n- Shut up, kiss my
+        ass.\n- D\'accord, faisons comme ça. Ravi de t\'avoir revu l\'ami.
     </string>
     <string name="kissmyass_title">Kiss My Ass !</string>
-    <string name="kissmyass_desc">Kiss my ass ! - D\'accord. Faisons comme ça.</string>
+    <string name="kissmyass_desc">- Kiss my ass !\n- D\'accord. Faisons comme ça.</string>
     <string name="lesptfontcatresbien_title"><![CDATA[Les P&T font ça très bien…]]></string>
     <string name="lesptfontcatresbien_desc"><![CDATA[Les P&T font ça très bien.]]></string>
     <string name="lessalesjaunes_title">Les sales jaunes !</string>
     <string name="lessalesjaunes_desc">Les sales jaunes !</string>
     <string name="lessalesrougesnanlessalesjaunes_title">Les sales rouges/jaunes</string>
-    <string name="lessalesrougesnanlessalesjaunes_desc">Les sales rouges… - Les sales jaunes ! - Non, les sales rouges.
-        - Ah au temps pour moi.
+    <string name="lessalesrougesnanlessalesjaunes_desc">- Les sales rouges…\n- Les sales jaunes !\n- Non, les sales rouges.
+       \n- Ah au temps pour moi.
     </string>
     <string name="maisjevousenprie_title">Mais je vous en prie…</string>
     <string name="maisjevousenprie_desc">Mais je vous en prie… D\'ailleurs ne dit-on pas qu\'une femme qui éclabousse un
@@ -148,7 +148,7 @@
     <string name="memepas_title">Même pas</string>
     <string name="memepas_desc">Même pas.</string>
     <string name="montehubert_title">Monte Yubeurt !</string>
-    <string name="montehubert_desc">Monte Yubeurt, ahahah ! - Bill Tremendous ! Ce vieux Bill !</string>
+    <string name="montehubert_desc">- Monte Yubeurt, ahahah !\n- Bill Tremendous ! Ce vieux Bill !</string>
     <string name="obregado_title">Obregado !</string>
     <string name="obregado_desc">Obregado ! Obregado…</string>
     <string name="onafrolelacatastrophe_title">On a frôlé la catastrophe</string>
@@ -156,11 +156,11 @@
     <string name="plaitil_title">Plaît-il ?</string>
     <string name="plaitil_desc">Plaît-il ?</string>
     <string name="pointdevue_title">De son point de vue…</string>
-    <string name="pointdevue_desc" tools:ignore="Typos">N\'oublions pas que de son point de vue nous nous ressemblons
-        tous… - You got a point there motherfucker.
+    <string name="pointdevue_desc" tools:ignore="Typos">- N\'oublions pas que de son point de vue nous nous ressemblons
+        tous…\n- You got a point there motherfucker.
     </string>
     <string name="procedurehabituelle_title">Procédure habituelle</string>
-    <string name="procedurehabituelle_desc">Procédure habituelle ? - Procédure habituelle.</string>
+    <string name="procedurehabituelle_desc">- Procédure habituelle ?\n- Procédure habituelle.</string>
     <string name="quelputainchaleur_title">Quelle poutain chaleur</string>
     <string name="quelputainchaleur_desc">Ah, quelle putain chaleur ! Oh !</string>
     <string name="sacrehubert_title">Sacré Yubert !</string>
@@ -176,7 +176,7 @@
     <string name="tuastuemonfrere_title">Tu as tué mon frère !</string>
     <string name="tuastuemonfrere_desc">Tu as tué mon frère à Gstaad. Tu vas mourir.</string>
     <string name="vousfaitesdusport_title">Vous faites du sport ?</string>
-    <string name="vousfaitesdusport_desc">Vous faites du sport ? - Même pas.</string>
+    <string name="vousfaitesdusport_desc">- Vous faites du sport ?\n- Même pas.</string>
     <string name="ahbahnoncestdommage_title">Ah bah non c\'est dommage…</string>
     <string name="ahbahnoncestdommage_desc">Ah bah non c\'est dommage, restons ensemble, venez voir l\'hôtel au moins.
     </string>
@@ -198,7 +198,7 @@
     <string name="commentditonqueso_title">Comment dit-on fromage?</string>
     <string name="commentditonqueso_desc">Comment dit-on fromage en Brésilien ?</string>
     <string name="eirflantier_title">Hërr Flantier !</string>
-    <string name="eirflantier_desc">Hërr Flantier ? - Oui.</string>
+    <string name="eirflantier_desc">- Hërr Flantier ?\n- Oui.</string>
     <string name="entreallemands_title">Mais enfin, entre Allemands…</string>
     <string name="entreallemands_desc">Oui. Oui mais enfin, entre Allemands…</string>
     <string name="etraccourcissezmoicesjupes_title">Raccourcissez-moi ces jupes !</string>
@@ -232,8 +232,8 @@
         responsabilité.
     </string>
     <string name="pyjamabrosseadents_title">Pyjama et brosse à dents</string>
-    <string name="pyjamabrosseadents_desc">Pyjama. Brosse à dents. - Merci mais je ne me servirai que de la brosse à
-        dents. - Vous faites ce que vous voulez, bonne nuit.
+    <string name="pyjamabrosseadents_desc">- Pyjama. Brosse à dents.\n- Merci mais je ne me servirai que de la brosse à
+        dents.\n- Vous faites ce que vous voulez, bonne nuit.
     </string>
     <string name="tresbellemission_title">Très belle mission…</string>
     <string name="tresbellemission_desc">Très belle mission, très agréable.</string>
@@ -245,8 +245,8 @@
     <string name="alaviealamort_title">A la vie, à la mort</string>
     <string name="alaviealamort_desc">Entre nous maintenant, c\'est à la vie, à la mort !</string>
     <string name="allerdeguiser_title">A moins qu\'on y aille déguisés ?</string>
-    <string name="allerdeguiser_desc">A moins qu\'on y aille déguisés ? Ce qui en plus peut être amusant. - Oui très.
-        Mais on y va pas vraiment pour ça. - Oui, bien sûr.
+    <string name="allerdeguiser_desc">- A moins qu\'on y aille déguisés ? Ce qui en plus peut être amusant.\n- Oui très.
+        Mais on y va pas vraiment pour ça.\n- Oui, bien sûr.
     </string>
     <string name="analysepolitique_title">Epargnez-moi vos analyses politiques</string>
     <string name="analysepolitique_desc">Vous êtes bien sympathique Dolorès mais, épargnez-moi vos analyses
@@ -265,16 +265,16 @@
         passée la barrière de l\'hygiène.
     </string>
     <string name="bivouaquer_title">Retournons à la rivière pour bivouaquer</string>
-    <string name="bivouaquer_desc">Alors en attendant de trouver un moyen d\'éviter les crocodiles, retournons à la
-        rivière pour bivouaquer. Pas d\'objection ? - Pas d\'objection.
+    <string name="bivouaquer_desc">- Alors en attendant de trouver un moyen d\'éviter les crocodiles, retournons à la
+        rivière pour bivouaquer. Pas d\'objection ?\n- Pas d\'objection.
     </string>
     <string name="bravootresdrolebravo_title">Bravo ! Très drôle, bravo !</string>
     <string name="bravootresdrolebravo_desc">Ah bravo ! Très drôle, bravo !</string>
     <string name="cacuitpas_title">Ca cuit pas cette connerie…</string>
     <string name="cacuitpas_desc">Mais… Ca cuit pas cette connerie là… Mais pourquoi ça cuit pas ?</string>
     <string name="cadeaudenoel2_title">Je dis cadeau de Noël</string>
-    <string name="cadeaudenoel2_desc">Nan je dis cadeau de Noël, c\'est parce que c\'est par rapport à mon prénom. - Oui
-        c\'est ce que j\'avais compris. - Hmm.
+    <string name="cadeaudenoel2_desc">- Nan je dis cadeau de Noël, c\'est parce que c\'est par rapport à mon prénom.\n- Oui
+        c\'est ce que j\'avais compris.\n- Hmm.
     </string>
     <string name="cafait200kilos_title">Ca fait 200 kilos !</string>
     <string name="cafait200kilos_desc">Mais enfin Noël qu\'est-ce que vous voulez que je fasse de ça ? Ca fait 200 kilos
@@ -297,12 +297,12 @@
     <string name="cavabiensepasser_title">Ca va bien se passer</string>
     <string name="cavabiensepasser_desc">Ne vous inquiétez pas, ça va bien se passer.</string>
     <string name="ceestrigolo_title">Oh si, ça c\'est rigolo !</string>
-    <string name="ceestrigolo_desc">Oh si, ça c\'est rigolo… - Bon ça suffit.</string>
+    <string name="ceestrigolo_desc">- Oh si, ça c\'est rigolo…\n- Bon ça suffit.</string>
     <string name="cequivacestquejesuisla_title">Ce qui va c\'est que je suis là</string>
-    <string name="cequivacestquejesuisla_desc">Ce qui va c\'est que je suis là. - Oh mon dieu… - Merci.</string>
+    <string name="cequivacestquejesuisla_desc">- Ce qui va c\'est que je suis là.\n- Oh mon dieu…\n- Merci.</string>
     <string name="cestlesquelsdechinois_title">C\'est lesquels les chinois alliés aux nazis ?</string>
-    <string name="cestlesquelsdechinois_desc">Attendez, attendez… C\'est lesquels les Chinois qui étaient alliés aux
-        nazis ? - Les Japonais ? - Les Japonais c\'est ça, au temps pour moi. J\'avais un embryon de piste mais non. Si
+    <string name="cestlesquelsdechinois_desc">- Attendez, attendez… C\'est lesquels les Chinois qui étaient alliés aux
+        nazis ?\n- Les Japonais ?\n- Les Japonais c\'est ça, au temps pour moi. J\'avais un embryon de piste mais non. Si
         nous avons affaire à des Chinois de Chine ça ne marche plus.
     </string>
     <string name="cestpas69lanneedelajeunesse_title">C\'est pas 68, année de la jeunesse</string>
@@ -336,7 +336,7 @@
         je peux te dire que ça filait doux. Ca, la mère De La Bath elle mouffetait pas. Et les gamins pareil !
     </string>
     <string name="commentvousavezfaitca_title">Comment vous avez fait ça ?</string>
-    <string name="commentvousavezfaitca_desc">Comment vous avez fait ça ? - Je couds.</string>
+    <string name="commentvousavezfaitca_desc">- Comment vous avez fait ça ?\n- Je couds.</string>
     <string name="completementcretincegamin_title">Complètement crétin ce gamin</string>
     <string name="completementcretincegamin_desc">Complètement crétin ce gamin.</string>
     <string name="costumenazi_title">Ce n\'est qu\'un costume nazi</string>
@@ -365,12 +365,12 @@
         n\'aurez aucun répit jusqu\'à la fin de vos jours.
     </string>
     <string name="etaproposdequoijedisaisca_title">Et à propos de quoi je disais ça ?</string>
-    <string name="etaproposdequoijedisaisca_desc">Et à propos de quoi je disais ça ? - Ca je sais pas.</string>
+    <string name="etaproposdequoijedisaisca_desc">- Et à propos de quoi je disais ça ?\n- Ca je sais pas.</string>
     <string name="etlevraimonde_title">Le vrai monde, il va chez le coiffeur</string>
     <string name="etlevraimonde_desc">Le vrai monde, il va chez le coiffeur. Déjà.</string>
     <string name="etsivousnouspiquer_title">Et si vous nous piquez ?!</string>
-    <string name="etsivousnouspiquer_desc">Et si vous nous piquez, ne saignons-nous pas ? Et si vous nous chatouillez,
-        ne rions-nous pas ? Et si vous nous empoisonnez, ne mourrons-nous pas ?! Aaaaah ! - Magnifique.
+    <string name="etsivousnouspiquer_desc">- Et si vous nous piquez, ne saignons-nous pas ? Et si vous nous chatouillez,
+        ne rions-nous pas ? Et si vous nous empoisonnez, ne mourrons-nous pas ?! Aaaaah !\n- Magnifique.
     </string>
     <string name="faisattentionauxcroco_title">Fais attention aux crocodiles !</string>
     <string name="faisattentionauxcroco_desc">Mais la prochaine fois que tu changes le monde, fais attentions aux
@@ -403,8 +403,8 @@
         je suis une aventure.
     </string>
     <string name="humourjuif_title">Humour juif</string>
-    <string name="humourjuif_desc">Ma foi sans le vouloir, j\'ai l\'impression que j\'ai fait de l\'humour juif. -
-        Allons bon, et qu\'est-ce donc ? - Ma foi je crois que c\'est quand ce n\'est pas rigolo et que ça ne parle pas
+    <string name="humourjuif_desc">- Ma foi sans le vouloir, j\'ai l\'impression que j\'ai fait de l\'humour juif. -
+        Allons bon, et qu\'est-ce donc ?\n- Ma foi je crois que c\'est quand ce n\'est pas rigolo et que ça ne parle pas
         de saucisse.
     </string>
     <string name="humourpasrigolo_title">Humour pas rigolo</string>
@@ -441,7 +441,7 @@
         gens. Le côté je suis juif donc j\'ai raison sur tout.
     </string>
     <string name="jevouscroyaismort_title">Je vous croyais mort !</string>
-    <string name="jevouscroyaismort_desc">Je vous croyais mort ! - Ah, c\'est gentil.</string>
+    <string name="jevouscroyaismort_desc">- Je vous croyais mort !\n- Ah, c\'est gentil.</string>
     <string name="joyeuxnoel_title">Joyeux, Noël</string>
     <string name="joyeuxnoel_desc">Joyeux, Noël</string>
     <string name="jugeunefemme_title">Parce qu\'on juge une femme sur sa cuisine ?</string>
@@ -467,15 +467,15 @@
     <string name="loueur_title">Ca vient de chez le loueur ?</string>
     <string name="loueur_desc">Ah oui, ça vient de chez le loueur d\'accord, je me disais aussi…</string>
     <string name="lsd_title">LSD</string>
-    <string name="lsd_desc">Qu\'est-ce que c\'est ? - LSD. - Ah très bien.</string>
+    <string name="lsd_desc">- Qu\'est-ce que c\'est ?\n- LSD.\n- Ah très bien.</string>
     <string name="maisyaquoiquiva_title">Mais y\'a quoi qui va ?</string>
     <string name="maisyaquoiquiva_desc">Mais y\'a quoi qui va ?!</string>
     <string name="jememettraisdansdebeauxdraps_title">Mr Lee jeux de mots</string>
-    <string name="jememettraisdansdebeauxdraps_desc">Sinon je me mettrai dans de beaux draps ! Mr Lee en portefeuille !
-        Wagon-Lee ! - Bon Hubert je crois qu\'on a fait le tour du sujet. - Oui vous avez raison… Lee couchette.
+    <string name="jememettraisdansdebeauxdraps_desc">- Sinon je me mettrai dans de beaux draps ! Mr Lee en portefeuille !
+        Wagon-Lee !\n- Bon Hubert je crois qu\'on a fait le tour du sujet.\n- Oui vous avez raison… Lee couchette.
     </string>
     <string name="jaccepteauneseulecondition_title">J\'accepte à une seule condition</string>
-    <string name="jaccepteauneseulecondition_desc">J\'accepte à une seule condition. - Acceptée d\'avance, laquelle ? -
+    <string name="jaccepteauneseulecondition_desc">- J\'accepte à une seule condition.\n- Acceptée d\'avance, laquelle ? -
         Je choisis moi-même mon nom de couverture.
     </string>
     <string name="ilfautquelafranceoublie_title">Il faut que la France oublie</string>
@@ -483,7 +483,7 @@
         repartir de l\'avant !
     </string>
     <string name="desglacesalabanane_title">Des glaces à la banane</string>
-    <string name="desglacesalabanane_desc">Des glaces à quoi ? - Des glaces à la banane…</string>
+    <string name="desglacesalabanane_desc">- Des glaces à quoi ?\n- Des glaces à la banane…</string>
     <string name="enfinmoijedisca_title">Moi c\'est Flantier</string>
     <string name="enfinmoijedisca_desc">Ah. En réalité on dit 117. Et en plus moi je vous dis ça mais moi c\'est
         Flantier, Mr Flantier.
@@ -493,15 +493,15 @@
     <string name="voussavezcequejaimerais_title">Vous savez ce que j\'aimerais ?</string>
     <string name="voussavezcequejaimerais_desc">Vous savez ce que j\'aimerais ?</string>
     <string name="vousnemeplaisezpascesttout_title">Vous ne me plaisez pas</string>
-    <string name="vousnemeplaisezpascesttout_desc">Non. - Comment ça non je comprends pas ? - Vous ne me plaisez pas
-        c\'est tout. - Oui justement c\'est ça que je ne comprends pas.
+    <string name="vousnemeplaisezpascesttout_desc">- Non.\n- Comment ça non je comprends pas ?\n- Vous ne me plaisez pas
+        c\'est tout.\n- Oui justement c\'est ça que je ne comprends pas.
     </string>
     <string name="vousmelepaieriez_title">Vous me le payeriez</string>
     <string name="vousmelepaieriez_desc">Je vous l\'avais dit que vous me le pairiez, payeriez, enfin je vous l\'avais
         dit !
     </string>
     <string name="vosarcsetvosfleches_title">Tenez, votre arc et vos flèches !</string>
-    <string name="vosarcsetvosfleches_desc">Tenez, votre arc et vos flèches ! - Vous avez raison, allons-y Dolorès !
+    <string name="vosarcsetvosfleches_desc">- Tenez, votre arc et vos flèches !\n- Vous avez raison, allons-y Dolorès !
     </string>
     <string name="meredefamille_title">Mère de famille</string>
     <string name="meredefamille_desc">Vous avez l\'étoffe d\'une mère de famille.</string>
@@ -558,7 +558,7 @@
     <string name="lapartienestpeutetrepasencoreperdue_title">Partie pas encore perdue</string>
     <string name="lapartienestpeutetrepasencoreperdue_desc">La partie n\'est peut-être pas encore perdue.</string>
     <string name="lachezmoivousmefaitesmal_title">Vous me faites mal</string>
-    <string name="lachezmoivousmefaitesmal_desc">Emmenez les dans mon bureau, schnell ! - Lâchez-moi vous me faites
+    <string name="lachezmoivousmefaitesmal_desc">- Emmenez les dans mon bureau, schnell !\n- Lâchez-moi vous me faites
         mal.
     </string>
     <string name="jevoisbiencequivousplaitdanslenazisme_title">Je vois ce qui vous plaît dans le nazisme</string>
@@ -586,8 +586,8 @@
     <string name="gutenhacht_title">Gute Nacht Herr de la Bacht</string>
     <string name="gutenhacht_desc">Gute Nacht Herr de la Bacht</string>
     <string name="grottesdenazis_title">Vos grottes de nazis !</string>
-    <string name="grottesdenazis_desc">Vous m\'inspirez un sentiment de déjà-vu professeur. Vos vieilles recettes, vos
-        bureaux secrets, vos croix gammées, vos grottes de nazis, tout ça est d\'un banal. - Bien sûr.
+    <string name="grottesdenazis_desc">- Vous m\'inspirez un sentiment de déjà-vu professeur. Vos vieilles recettes, vos
+        bureaux secrets, vos croix gammées, vos grottes de nazis, tout ça est d\'un banal.\n- Bien sûr.
     </string>
     <string name="faistreschaudnon_title">Fait très chaud non ?</string>
     <string name="faistreschaudnon_desc">Fait très chaud non ?</string>
@@ -620,9 +620,9 @@
         plaisez Dolorès, beaucoup.
     </string>
     <string name="clashhubertdolores_title">Clash Hubert/Dolorès</string>
-    <string name="clashhubertdolores_desc">Et bien voilà : vous êtes vieux, vous êtes prétentieux, votre vision des
+    <string name="clashhubertdolores_desc">- Et bien voilà : vous êtes vieux, vous êtes prétentieux, votre vision des
         femmes est archaïque, vous êtes imbu de vous-même, supérieur, parfois à la limite du racisme, vous vous habillez
-        mal, vous êtes infantile, vous n\'êtes pas drôle. Je m\'arrête là ? - Que je m\'habille mal ?
+        mal, vous êtes infantile, vous n\'êtes pas drôle. Je m\'arrête là ?\n- Que je m\'habille mal ?
     </string>
     <string name="chauvequipeut_title">Chauve qui peut</string>
     <string name="chauvequipeut_desc">Chauve qui peut.</string>
@@ -635,8 +635,8 @@
     <string name="casuffit_title">Ca suffit !</string>
     <string name="casuffit_desc">Ca suffit !</string>
     <string name="carlota_title">Carlota/Flantier</string>
-    <string name="carlota_desc">Et bien pour moi vous serez toujours Carlota, Carlota ! - Et bien pour moi vous serez
-        toujours Noël Flantier monsieur. - Carlota, Carlota… - Flantier, Flantier… - Oh arrêtons cette mascarade !
+    <string name="carlota_desc">- Et bien pour moi vous serez toujours Carlota, Carlota !\n- Et bien pour moi vous serez
+        toujours Noël Flantier monsieur.\n- Carlota, Carlota…\n- Flantier, Flantier…\n- Oh arrêtons cette mascarade !
     </string>
     <string name="bravovousconduisezcommeunhomme_title">Vous conduisez comme un homme</string>
     <string name="bravovousconduisezcommeunhomme_desc">Bravo ! Vous conduisez comme un homme.</string>
@@ -645,7 +645,7 @@
     <string name="aumoinsilneconnaitpasmavraieidentite_title">Il ne connaît pas ma vraie identité</string>
     <string name="aumoinsilneconnaitpasmavraieidentite_desc">Au moins il ne connaît pas ma vraie identité.</string>
     <string name="allezyhubert_title">Allez-y Hubert…</string>
-    <string name="allezyhubert_desc">Allez-y Hubert… - Shhhhh…</string>
+    <string name="allezyhubert_desc">- Allez-y Hubert…\n- Shhhhh…</string>
     <string name="secretairedequialors_title">Secrétaire de qui alors ?</string>
     <string name="secretairedequialors_desc">Mais vous êtes la secrétaire de qui alors ?</string>
     <string name="secretaireaussijolie_title">Secrétaire aussi jolie</string>
@@ -665,23 +665,23 @@
     <string name="ouhpardon_title">Ouh, pardon. Bonsoir !</string>
     <string name="ouhpardon_desc">Ouh, pardon. Bonsoir !</string>
     <string name="meilleuragentfrancais_title">Le meilleur agent Français ?</string>
-    <string name="meilleuragentfrancais_desc">Vous êtes bien OSS 117, le meilleur agent Français ? - Oui. Enfin, le
+    <string name="meilleuragentfrancais_desc">- Vous êtes bien OSS 117, le meilleur agent Français ?\n- Oui. Enfin, le
         meilleur, c\'est pas à moi de le dire, déjà ! Pis vous savez comme je dis souvent…
     </string>
     <string name="lemossad_title">Le Mossad</string>
-    <string name="lemossad_desc">Etes-vous disposé à travailler avec le Mossad ? - Le ? - Mossad. Les services secrets
-        Israëliens. - Ahahah.
+    <string name="lemossad_desc">- Etes-vous disposé à travailler avec le Mossad ?\n- Le ?\n- Mossad. Les services secrets
+        Israëliens.\n- Ahahah.
     </string>
     <string name="jecoute_title">J\'écoute…</string>
     <string name="jecoute_desc">J\'écoute…</string>
     <string name="pascequejeveuxentendre_title">Ce n\'est pas ce que je veux entendre</string>
-    <string name="pascequejeveuxentendre_desc">Ce n\'est pas ce que je veux entendre ! - Moi non plus !</string>
+    <string name="pascequejeveuxentendre_desc">- Ce n\'est pas ce que je veux entendre !\n- Moi non plus !</string>
     <string name="pasdesoutiengorges_title">Je ne porte pas de soutien-gorge</string>
     <string name="pasdesoutiengorges_desc">Je ne porte pas de soutien-gorge.</string>
     <string name="pasdobjection_title">Pas d\'objection ?</string>
-    <string name="pasdobjection_desc">Pas d\'objection ? - Pas d\'objection.</string>
-    <string name="pasenvoyerpt_title"><![CDATA[Pas envoyer les P&T]]></string>
-    <string name="pasenvoyerpt_desc"><![CDATA[On a bien fait de ne pas y envoyer les P&T. Ahahah !]]></string>
+    <string name="pasdobjection_desc">- Pas d\'objection ?\n- Pas d\'objection.</string>
+    <string name="pasenvoyerpt_title">Pas envoyer les P&amp;T</string>
+    <string name="pasenvoyerpt_desc">On a bien fait de ne pas y envoyer les P&amp;T. Ahahah !></string>
     <string name="pasjuif_title">C\'est parce que je ne suis pas juif ?</string>
     <string name="pasjuif_desc">C\'est parce que je ne suis pas juif, c\'est ça ?</string>
     <string name="pauvtype_title">Pauv\' type !</string>
@@ -689,7 +689,7 @@
     <string name="pleindemicrobes_title">Il va s\'attraper plein de microbes</string>
     <string name="pleindemicrobes_desc">Il va s\'attraper plein de microbes, c\'est tout ce qu\'il va gagner.</string>
     <string name="pommedamour_title">Pomme d\'amour</string>
-    <string name="pommedamour_desc">Et là, vous faites quoi ? - Je mange une pomme d\'amour.</string>
+    <string name="pommedamour_desc">- Et là, vous faites quoi ?\n- Je mange une pomme d\'amour.</string>
     <string name="pourrencontrermrlee_title">Pour rencontrer Mr Lee…</string>
     <string name="pourrencontrermrlee_desc">Pour rencontrer Mr Lee, vaut mieux une bonne couverture ! Ahahah !</string>
     <string name="purgribouillage_title">Pur gribouillage</string>
@@ -703,7 +703,7 @@
     <string name="habile2_title">Habile</string>
     <string name="habile2_desc">Habile.</string>
     <string name="faireequipeaveclemossad_title">Faire équipe avec le Mossad</string>
-    <string name="faireequipeaveclemossad_desc">Etes-vous prêts à faire équipe avec le Mossad ? - J\'écoute. - Euh non,
+    <string name="faireequipeaveclemossad_desc">- Etes-vous prêts à faire équipe avec le Mossad ?\n- J\'écoute.\n- Euh non,
         c\'est nous qui vous écoutons.
     </string>
     <string name="rarementdesmeresdefamille_title">Rarement des mères de famille</string>
@@ -719,16 +719,16 @@
     <string name="serpentjenemangepas_title">Je ne mange pas de ce pain-là !</string>
     <string name="serpentjenemangepas_desc">Serpent, je ne mange pas de ce pain-là !</string>
     <string name="sinonyaaussilesboules_title">Sinon, y\'a aussi les boules…</string>
-    <string name="sinonyaaussilesboules_desc">Sinon, y\'a aussi les boules… - De Noël ? - Oui. Ahahah ! Oh si ça c\'est
-        rigolo… - Ca suffit. - Faut absolument que j\'appelle Armand.
+    <string name="sinonyaaussilesboules_desc">- Sinon, y\'a aussi les boules…\n- De Noël ?\n- Oui. Ahahah ! Oh si ça c\'est
+        rigolo…\n- Ca suffit.\n- Faut absolument que j\'appelle Armand.
     </string>
     <string name="situationclarifiee_title">La situation est clarifiée</string>
     <string name="situationclarifiee_desc">Bien, la situation est clarifiée.</string>
     <string name="soireetranquille_title">Soirée somme tout très tranquille</string>
     <string name="soireetranquille_desc">Impeccable, j\'ai passé une soirée somme tout très tranquille.</string>
     <string name="excusezcesmanieres_title">Excusez ces manières</string>
-    <string name="excusezcesmanieres_desc">Veuillez excuser ces manières un peu cavalières mais nous tenions à vous
-        parler tranquillement double un sept. - En réalité on dit 117. Et en plus moi je vous dis ça mais moi c\'est
+    <string name="excusezcesmanieres_desc">- Veuillez excuser ces manières un peu cavalières mais nous tenions à vous
+        parler tranquillement double un sept.\n- En réalité on dit 117. Et en plus moi je vous dis ça mais moi c\'est
         Flantier.
     </string>
     <string name="epatant_title">Epatant…</string>
@@ -736,17 +736,17 @@
     <string name="envouloiracarlota_title">En vouloir à Carlota</string>
     <string name="envouloiracarlota_desc">Qui pourrait bien en vouloir à Carlota ?</string>
     <string name="double117_title">Double 117</string>
-    <string name="double117_desc">Mais nous savons aussi ce que vous faites au Brésil, double 117. - Juste 117.</string>
+    <string name="double117_desc">- Mais nous savons aussi ce que vous faites au Brésil, double 117.\n- Juste 117.</string>
     <string name="youresofrench_title">You\'re so french !</string>
-    <string name="youresofrench_desc">Sacré Hubert, you\'re so French ! - Ahahah toi aussi !</string>
+    <string name="youresofrench_desc">- Sacré Hubert, you\'re so French !\n- Ahahah toi aussi !</string>
     <string name="vouspensezquecestmieux_title">Vous pensez que c\'est mieux ?</string>
     <string name="vouspensezquecestmieux_desc">Vous pensez que c\'est mieux ?</string>
     <string name="vousnaimezpasleshommes_title">Vous n\'aimez pas les hommes !</string>
     <string name="vousnaimezpasleshommes_desc">Vous n\'aimez pas les hommes !</string>
     <string name="vousmontez_title">Vous montez ?</string>
-    <string name="vousmontez_desc">Vous montez ? - Oui.</string>
+    <string name="vousmontez_desc">- Vous montez ?\n- Oui.</string>
     <string name="vousfaitesdesquiches_title">Vous faites des quiches ici ?</string>
-    <string name="vousfaitesdesquiches_desc">Vous faites des quiches un peu ici ? - Des quoi ? - Des quiches, des
+    <string name="vousfaitesdesquiches_desc">- Vous faites des quiches un peu ici ?\n- Des quoi ?\n- Des quiches, des
         quiches lorraines.
     </string>
     <string name="vousavezcequejemesuisdit_title">Vous savez ce que je me suis dit ?</string>
@@ -802,8 +802,8 @@
     <string name="trainsdaterissages_title">Trains d\'atterissage</string>
     <string name="trainsdaterissages_desc">Je n\'aurais pas le temps de sortir les trains d\'atterrissage.</string>
     <string name="touslamemeidee_title">Tous eu la même idée</string>
-    <string name="touslamemeidee_desc">Ils ont peut-être tous eu la même idée. - Sans doute, oui. Ou alors ils étaient
-        tous chez le même loueur qu\'Heinrich et ils étaient tous en retard. - Possible. Plus difficile à croire.
+    <string name="touslamemeidee_desc">- Ils ont peut-être tous eu la même idée.\n- Sans doute, oui. Ou alors ils étaient
+        tous chez le même loueur qu\'Heinrich et ils étaient tous en retard.\n- Possible. Plus difficile à croire.
     </string>
     <string name="torturepsychologique_title">Torture psychologique</string>
     <string name="torturepsychologique_desc">Non non c\'était de la torture psychologique.</string>
