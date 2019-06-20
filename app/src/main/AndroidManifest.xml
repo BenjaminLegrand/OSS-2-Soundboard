@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".presentation.OSSApplication"
@@ -31,5 +32,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <service
+            android:name=".presentation.service.BackgroundListenService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 </manifest>

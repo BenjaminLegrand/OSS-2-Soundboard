@@ -28,7 +28,8 @@ class SettingsFragment : BaseVMFragment<SettingsViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel = ViewModelProviders.of(activity!!, viewModelFactory)[ReplySharedViewModel::class.java]
+        sharedViewModel =
+            ViewModelProviders.of(activity!!, viewModelFactory)[ReplySharedViewModel::class.java]
 
         viewModel.mostListenedReply.observeSafe(this) {
             fragment_settings_most_listened_reply.text = it.getMostListenedText(context!!)
@@ -59,9 +60,16 @@ class SettingsFragment : BaseVMFragment<SettingsViewModel>() {
         }
 
         viewModel.multiListenEnabled.observeSafe(this) {
-            fragment_settings_select_multi_listen_switch.isChecked = it
-            fragment_settings_select_multi_listen_switch.setOnCheckedChangeListener { _, checked ->
+            fragment_settings_multi_listen_switch.isChecked = it
+            fragment_settings_multi_listen_switch.setOnCheckedChangeListener { _, checked ->
                 viewModel.updateMultiListenParameter(checked)
+            }
+        }
+
+        viewModel.backgroundListenEnabled.observeSafe(this) {
+            fragment_settings_background_listen_switch.isChecked = it
+            fragment_settings_background_listen_switch.setOnCheckedChangeListener { _, checked ->
+                viewModel.updateBackgroundListenParameter(checked)
             }
         }
 

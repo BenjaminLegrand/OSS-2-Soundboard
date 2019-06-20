@@ -39,9 +39,9 @@ interface ContentRepository {
 
     fun listenToRandomReply(): Completable
 
-    fun releaseRunningPlayers() : Completable
+    fun releaseRunningPlayers(): Completable
 
-    fun isPlayerRunning() : Single<Boolean>
+    fun isPlayerRunning(): Single<Boolean>
 
     fun getAllFilters(): Single<List<FilterType>>
 
@@ -50,5 +50,10 @@ interface ContentRepository {
     fun getAllMovies(): Single<List<Movie>>
 
     fun generateShareData(replyId: Int): Single<Pair<Uri, String>>
+
     fun setReplyAsRingtone(replyId: Int): Completable
+
+    fun isBackgroundListenEnabled(): Single<Boolean>
+
+    fun updateBackgroundListenParameter(enabled: Boolean): Completable
 }

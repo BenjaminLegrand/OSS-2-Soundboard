@@ -41,6 +41,7 @@ class ContentRepositoryImpl @Inject constructor(
     private val context: Context
 ) : ContentRepository {
 
+
     private var startListenTimestamp = 0L
 
     override fun getReplyWithSearch(
@@ -162,7 +163,22 @@ class ContentRepositoryImpl @Inject constructor(
     }
 
     override fun getReplySort(): Single<SortType> {
-        return Single.fromCallable { sharedPrefManager.getReplySort() }
+        return Single.defer {
+            Single.just(sharedPrefManager.getReplySort())
+        }
+    }
+
+    override fun isBackgroundListenEnabled(): Single<Boolean> {
+        return Single.defer {
+            Single.just(sharedPrefManager.isBackgroundListenEnabled())
+        }
+    }
+
+    override fun updateBackgroundListenParameter(enabled: Boolean): Completable {
+        return Completable.defer {
+            sharedPrefManager.setBackgroundListenEnabled(enabled)
+            Completable.complete()
+        }
     }
 
     override fun generateShareData(replyId: Int): Single<Pair<Uri, String>> = Single.defer {
@@ -219,6 +235,4 @@ class ContentRepositoryImpl @Inject constructor(
     private fun increaseTotalReplyTime(duration: Long) {
         sharedPrefManager.increaseTotalReplyTime(duration)
     }
-
-
 }

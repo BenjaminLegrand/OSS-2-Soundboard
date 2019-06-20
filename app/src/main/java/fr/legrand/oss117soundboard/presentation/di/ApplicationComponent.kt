@@ -7,16 +7,20 @@ import dagger.android.support.AndroidSupportInjectionModule
 import fr.legrand.oss117soundboard.presentation.OSSApplication
 import fr.legrand.oss117soundboard.presentation.di.module.ActivityInjectorModule
 import fr.legrand.oss117soundboard.presentation.di.module.ApplicationModule
+import fr.legrand.oss117soundboard.presentation.di.module.ServiceInjectorModule
 import fr.legrand.oss117soundboard.presentation.di.module.ViewModelModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [
-    ApplicationModule::class,
-    AndroidSupportInjectionModule::class,
-    ActivityInjectorModule::class,
-    ViewModelModule::class
-])
+@Component(
+    modules = [
+        ApplicationModule::class,
+        AndroidSupportInjectionModule::class,
+        ActivityInjectorModule::class,
+        ServiceInjectorModule::class,
+        ViewModelModule::class
+    ]
+)
 interface ApplicationComponent {
 
     fun inject(application: OSSApplication)

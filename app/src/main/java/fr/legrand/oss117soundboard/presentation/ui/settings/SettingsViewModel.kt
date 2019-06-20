@@ -30,15 +30,18 @@ class SettingsViewModel @Inject constructor(
     private val disposable = CompositeDisposable()
     val replySort = MutableLiveData<SortViewData>()
     val multiListenEnabled = MutableLiveData<Boolean>()
+    val backgroundListenEnabled = MutableLiveData<Boolean>()
     val mostListenedReply = MutableLiveData<ReplyViewData>()
     val totalReplyTime = MutableLiveData<Triple<Long, Long, Long>>()
 
     init {
         checkMultiListenEnabled()
+        checkBackgroundListenEnabled()
         getReplySort()
         getMostListenedReply()
         getTotalReplyTime()
     }
+
 
     override fun onCleared() {
         super.onCleared()
@@ -46,9 +49,21 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun updateMultiListenParameter(multiListen: Boolean) {
-        disposable.add(contentRepository.updateMultiListenParameter(multiListen).subscribeOn(Schedulers.io()).subscribeBy(
+        disposable.add(contentRepository.updateMultiListenParameter(multiListen).subscribeOn(
+            Schedulers.io()
+        ).subscribeBy(
             onComplete = {
                 multiListenEnabled.postValue(multiListen)
+            }, onError = { Timber.e(it) })
+        )
+    }
+
+    fun updateBackgroundListenParameter(backgroundListen: Boolean) {
+        disposable.add(contentRepository.updateBackgroundListenParameter(backgroundListen).subscribeOn(
+            Schedulers.io()
+        ).subscribeBy(
+            onComplete = {
+                backgroundListenEnabled.postValue(backgroundListen)
             }, onError = { Timber.e(it) })
         )
     }
@@ -67,17 +82,30 @@ class SettingsViewModel @Inject constructor(
         getTotalReplyTime()
     }
 
+    private fun checkBackgroundListenEnabled() {
+        disposable.add(
+            contentRepository.isBackgroundListenEnabled().subscribeOn(Schedulers.io())
+                .subscribeBy(
+                    onSuccess = { backgroundListenEnabled.postValue(it) },
+                    onError = { Timber.e(it) })
+        )
+    }
+
     private fun checkMultiListenEnabled() {
-        disposable.add(contentRepository.multiListenEnabled().subscribeOn(Schedulers.io())
-            .subscribeBy(onNext = { multiListenEnabled.postValue(it) }, onError = { Timber.e(it) })
+        disposable.add(
+            contentRepository.multiListenEnabled().subscribeOn(Schedulers.io())
+                .subscribeBy(
+                    onNext = { multiListenEnabled.postValue(it) },
+                    onError = { Timber.e(it) })
         )
     }
 
     private fun getReplySort() {
-        disposable.add(contentRepository.getReplySort().subscribeOn(Schedulers.io())
-            .subscribeBy(onSuccess = {
-                replySort.postValue(SortViewData(getApplication(), it))
-            }, onError = { Timber.e(it) })
+        disposable.add(
+            contentRepository.getReplySort().subscribeOn(Schedulers.io())
+                .subscribeBy(onSuccess = {
+                    replySort.postValue(SortViewData(getApplication(), it))
+                }, onError = { Timber.e(it) })
         )
     }
 
