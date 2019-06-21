@@ -5,6 +5,7 @@ import fr.legrand.oss117soundboard.data.entity.FilterType
 import fr.legrand.oss117soundboard.data.entity.Movie
 import fr.legrand.oss117soundboard.data.entity.MovieCharacter
 import fr.legrand.oss117soundboard.data.entity.Reply
+import fr.legrand.oss117soundboard.data.values.PlayerStatus
 import fr.legrand.oss117soundboard.data.values.SortType
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -39,9 +40,9 @@ interface ContentRepository {
 
     fun listenToRandomReply(): Completable
 
-    fun releaseRunningPlayers() : Completable
+    fun releaseRunningPlayers(): Completable
 
-    fun isPlayerRunning() : Single<Boolean>
+    fun isPlayerRunning(): Single<Boolean>
 
     fun getAllFilters(): Single<List<FilterType>>
 
@@ -50,5 +51,12 @@ interface ContentRepository {
     fun getAllMovies(): Single<List<Movie>>
 
     fun generateShareData(replyId: Int): Single<Pair<Uri, String>>
+
     fun setReplyAsRingtone(replyId: Int): Completable
+
+    fun isBackgroundListenEnabled(): Single<Boolean>
+
+    fun updateBackgroundListenParameter(enabled: Boolean): Completable
+
+    fun listenToPlayerStatus(): Observable<Pair<PlayerStatus, Int>>
 }

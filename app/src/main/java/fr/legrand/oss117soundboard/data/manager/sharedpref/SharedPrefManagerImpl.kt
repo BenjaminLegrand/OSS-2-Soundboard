@@ -15,12 +15,15 @@ import javax.inject.Singleton
 private const val MULTI_LISTEN_KEY = "MULTI_LISTEN_KEY"
 private const val TOTAL_REPLY_TIME_KEY = "TOTAL_REPLY_TIME_KEY"
 private const val REPLY_SORT_KEY = "REPLY_SORT_KEY"
+private const val BACKGROUND_LISTEN_KEY = "BACKGROUND_LISTEN_KEY"
 
 @Singleton
 class SharedPrefManagerImpl @Inject
 constructor(context: Context) : SharedPrefManager {
 
-    private val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+    private val sharedPreferences: SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
 
     override fun isMultiListenEnabled(): Boolean {
         return sharedPreferences.getBoolean(MULTI_LISTEN_KEY, false)
@@ -34,7 +37,10 @@ constructor(context: Context) : SharedPrefManager {
 
     override fun increaseTotalReplyTime(duration: Long) {
         sharedPreferences.edit {
-            putLong(TOTAL_REPLY_TIME_KEY, sharedPreferences.getLong(TOTAL_REPLY_TIME_KEY, 0) + duration)
+            putLong(
+                TOTAL_REPLY_TIME_KEY,
+                sharedPreferences.getLong(TOTAL_REPLY_TIME_KEY, 0) + duration
+            )
         }
     }
 
@@ -43,13 +49,23 @@ constructor(context: Context) : SharedPrefManager {
     }
 
     override fun getReplySort(): SortType {
-        val sort = sharedPreferences.getString(REPLY_SORT_KEY, SortType.ALPHABETICAL_SORT.name) ?: SortType.ALPHABETICAL_SORT.name
+        val sort = sharedPreferences.getString(REPLY_SORT_KEY, SortType.ALPHABETICAL_SORT.name)
+            ?: SortType.ALPHABETICAL_SORT.name
         return SortType.valueOf(sort)
     }
 
     override fun setReplySort(replySort: String) {
         sharedPreferences.edit {
             putString(REPLY_SORT_KEY, replySort)
+        }
+    }
+
+    override fun isBackgroundListenEnabled(): Boolean =
+        sharedPreferences.getBoolean(BACKGROUND_LISTEN_KEY, false)
+
+    override fun setBackgroundListenEnabled(enabled: Boolean) {
+        sharedPreferences.edit {
+            putBoolean(BACKGROUND_LISTEN_KEY, enabled)
         }
     }
 }

@@ -12,34 +12,19 @@ import javax.inject.Inject
  */
 
 class MainViewModel @Inject constructor(
-        private val contentRepository: ContentRepository
+    private val contentRepository: ContentRepository
 ) : ViewModel() {
 
 
     init {
         initAllReply()
-
     }
-
 
     private fun initAllReply() {
         contentRepository.initAllReply().subscribeOn(Schedulers.io())
-                .subscribeBy(onComplete = {
-                }, onError = {
-                    Timber.e(it)
-                })
+            .subscribeBy(onComplete = {
+            }, onError = {
+                Timber.e(it)
+            })
     }
-
-    fun releaseRunningPlayers() {
-        contentRepository.releaseRunningPlayers().subscribeOn(Schedulers.io())
-                .subscribeBy(onComplete = {
-                }, onError = {
-                    Timber.e(it)
-                })
-    }
-
-    override fun onCleared() {
-        releaseRunningPlayers()
-    }
-
 }

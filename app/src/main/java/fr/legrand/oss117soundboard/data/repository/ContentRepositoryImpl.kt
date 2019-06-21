@@ -14,6 +14,7 @@ import fr.legrand.oss117soundboard.data.manager.file.FileManager
 import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
 import fr.legrand.oss117soundboard.data.manager.sharedpref.SharedPrefManager
 import fr.legrand.oss117soundboard.data.manager.storage.StorageManager
+import fr.legrand.oss117soundboard.data.values.PlayerStatus
 import fr.legrand.oss117soundboard.data.values.SortType
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -40,6 +41,7 @@ class ContentRepositoryImpl @Inject constructor(
     private val mediaPlayerManager: MediaPlayerManager,
     private val context: Context
 ) : ContentRepository {
+
 
     private var startListenTimestamp = 0L
 
@@ -118,6 +120,13 @@ class ContentRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun listenToPlayerStatus(): Observable<Pair<PlayerStatus, Int>> = Observable.defer {
+        mediaPlayerManager.listenToMediaPlayerStatus().map {
+
+            Pair(it, mediaPlayerManager.getPlayerRunningCount())
+        }
+    }
+
     override fun getAllFilters(): Single<List<FilterType>> =
         Single.defer { Single.just(FilterType.values().toList()) }
 
@@ -162,7 +171,22 @@ class ContentRepositoryImpl @Inject constructor(
     }
 
     override fun getReplySort(): Single<SortType> {
-        return Single.fromCallable { sharedPrefManager.getReplySort() }
+        return Single.defer {
+            Single.just(sharedPrefManager.getReplySort())
+        }
+    }
+
+    override fun isBackgroundListenEnabled(): Single<Boolean> {
+        return Single.defer {
+            Single.just(sharedPrefManager.isBackgroundListenEnabled())
+        }
+    }
+
+    override fun updateBackgroundListenParameter(enabled: Boolean): Completable {
+        return Completable.defer {
+            sharedPrefManager.setBackgroundListenEnabled(enabled)
+            Completable.complete()
+        }
     }
 
     override fun generateShareData(replyId: Int): Single<Pair<Uri, String>> = Single.defer {
@@ -219,6 +243,4 @@ class ContentRepositoryImpl @Inject constructor(
     private fun increaseTotalReplyTime(duration: Long) {
         sharedPrefManager.increaseTotalReplyTime(duration)
     }
-
-
 }

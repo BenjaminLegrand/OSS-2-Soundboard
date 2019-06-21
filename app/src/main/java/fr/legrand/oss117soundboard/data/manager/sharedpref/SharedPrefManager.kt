@@ -18,4 +18,8 @@ interface SharedPrefManager {
     fun getReplySort(): SortType
 
     fun setReplySort(replySort: String)
+
+    fun isBackgroundListenEnabled(): Boolean
+
+    fun setBackgroundListenEnabled(enabled: Boolean)
 }

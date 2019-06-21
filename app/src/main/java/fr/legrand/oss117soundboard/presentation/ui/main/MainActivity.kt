@@ -48,7 +48,8 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
         main_activity_bottom_view.setupWithNavController(navController)
 
-        replySharedViewModel = ViewModelProviders.of(this, viewModelFactory)[ReplySharedViewModel::class.java]
+        replySharedViewModel =
+            ViewModelProviders.of(this, viewModelFactory)[ReplySharedViewModel::class.java]
 
         replySharedViewModel.onReplyListenFinished.observeSafe(this) {
             main_activity_fab_stop_listen.hide()
@@ -58,7 +59,7 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
         }
 
         main_activity_fab_stop_listen.setOnClickListener {
-            viewModel.releaseRunningPlayers()
+            replySharedViewModel.releaseRunningPlayers()
             main_activity_fab_stop_listen.hide()
         }
 
@@ -75,9 +76,9 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
         initializeSearch()
     }
 
-    override fun onPause() {
-        super.onPause()
-        viewModel.releaseRunningPlayers()
+    override fun onStop() {
+        super.onStop()
+        replySharedViewModel.releaseRunningPlayersBackground()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -90,8 +91,8 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             subMenu.clear()
             it.forEach { filter ->
                 subMenu.add(
-                        R.id.menu_filter_type_group,
-                        filter.hashCode(), 0, filter.getDisplayName(this)
+                    R.id.menu_filter_type_group,
+                    filter.hashCode(), 0, filter.getDisplayName(this)
                 ).apply {
                     isCheckable = true
 
@@ -101,14 +102,21 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
                     }
 
                     setOnMenuItemClickListener {
-                        displayFilterDialog(filter.getType()) { selected -> isChecked = selected.isNotEmpty() }
+                        displayFilterDialog(filter.getType()) { selected ->
+                            isChecked = selected.isNotEmpty()
+                        }
                         true
                     }
                 }
             }
 
             //Reset item
-            subMenu.add(R.id.menu_filter_type_group, 0, subMenu.size(), getString(R.string.reset_filters)).apply {
+            subMenu.add(
+                R.id.menu_filter_type_group,
+                0,
+                subMenu.size(),
+                getString(R.string.reset_filters)
+            ).apply {
                 isCheckable = false
                 setOnMenuItemClickListener {
                     resetFilters()
@@ -163,40 +171,40 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
     private fun displayFilterDialog(filter: FilterType, onFilterSelected: (IntArray) -> Unit) {
         when (filter) {
             FilterType.CHARACTERS -> dialogComponent.displayMultiChoiceDialog(
-                    title = R.string.filter_characters,
-                    choices = replySharedViewModel.characterFilters.map { it.getDisplayName(this) },
-                    selected = replySharedViewModel.characterFilters.mapIndexedNotNull { index, character ->
-                        if (character.selected) {
-                            index
-                        } else {
-                            null
-                        }
-                    }.toIntArray(),
-                    positiveText = R.string.confirm,
-                    onPositiveClick = {
-                        onFilterSelected(it)
-                        replySharedViewModel.selectCharacterFilters(it)
-                    },
-                    negativeText = R.string.cancel,
-                    onNegativeClick = {}
+                title = R.string.filter_characters,
+                choices = replySharedViewModel.characterFilters.map { it.getDisplayName(this) },
+                selected = replySharedViewModel.characterFilters.mapIndexedNotNull { index, character ->
+                    if (character.selected) {
+                        index
+                    } else {
+                        null
+                    }
+                }.toIntArray(),
+                positiveText = R.string.confirm,
+                onPositiveClick = {
+                    onFilterSelected(it)
+                    replySharedViewModel.selectCharacterFilters(it)
+                },
+                negativeText = R.string.cancel,
+                onNegativeClick = {}
             )
             FilterType.MOVIES -> dialogComponent.displayMultiChoiceDialog(
-                    title = R.string.filter_movies,
-                    choices = replySharedViewModel.movieFilters.map { it.getDisplayName(this) },
-                    selected = replySharedViewModel.movieFilters.mapIndexedNotNull { index, character ->
-                        if (character.selected) {
-                            index
-                        } else {
-                            null
-                        }
-                    }.toIntArray(),
-                    positiveText = R.string.confirm,
-                    onPositiveClick = {
-                        onFilterSelected(it)
-                        replySharedViewModel.selectMovieFilters(it)
-                    },
-                    negativeText = R.string.cancel,
-                    onNegativeClick = {}
+                title = R.string.filter_movies,
+                choices = replySharedViewModel.movieFilters.map { it.getDisplayName(this) },
+                selected = replySharedViewModel.movieFilters.mapIndexedNotNull { index, character ->
+                    if (character.selected) {
+                        index
+                    } else {
+                        null
+                    }
+                }.toIntArray(),
+                positiveText = R.string.confirm,
+                onPositiveClick = {
+                    onFilterSelected(it)
+                    replySharedViewModel.selectMovieFilters(it)
+                },
+                negativeText = R.string.cancel,
+                onNegativeClick = {}
             )
         }
     }
