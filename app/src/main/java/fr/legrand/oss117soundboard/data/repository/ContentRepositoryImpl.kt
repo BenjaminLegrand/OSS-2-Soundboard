@@ -14,6 +14,7 @@ import fr.legrand.oss117soundboard.data.manager.file.FileManager
 import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
 import fr.legrand.oss117soundboard.data.manager.sharedpref.SharedPrefManager
 import fr.legrand.oss117soundboard.data.manager.storage.StorageManager
+import fr.legrand.oss117soundboard.data.values.PlayerStatus
 import fr.legrand.oss117soundboard.data.values.SortType
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -117,6 +118,10 @@ class ContentRepositoryImpl @Inject constructor(
                     }
                 }
         }
+    }
+
+    override fun listenToPlayerStatus(): Observable<Pair<PlayerStatus, Int>> = Observable.defer {
+        mediaPlayerManager.listenToMediaPlayerStatus().map { Pair(it, mediaPlayerManager.getPlayerRunningCount()) }
     }
 
     override fun getAllFilters(): Single<List<FilterType>> =

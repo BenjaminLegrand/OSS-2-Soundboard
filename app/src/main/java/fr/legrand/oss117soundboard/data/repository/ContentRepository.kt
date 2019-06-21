@@ -5,6 +5,7 @@ import fr.legrand.oss117soundboard.data.entity.FilterType
 import fr.legrand.oss117soundboard.data.entity.Movie
 import fr.legrand.oss117soundboard.data.entity.MovieCharacter
 import fr.legrand.oss117soundboard.data.entity.Reply
+import fr.legrand.oss117soundboard.data.values.PlayerStatus
 import fr.legrand.oss117soundboard.data.values.SortType
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -56,4 +57,6 @@ interface ContentRepository {
     fun isBackgroundListenEnabled(): Single<Boolean>
 
     fun updateBackgroundListenParameter(enabled: Boolean): Completable
+
+    fun listenToPlayerStatus(): Observable<Pair<PlayerStatus, Int>>
 }
