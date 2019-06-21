@@ -121,7 +121,10 @@ class ContentRepositoryImpl @Inject constructor(
     }
 
     override fun listenToPlayerStatus(): Observable<Pair<PlayerStatus, Int>> = Observable.defer {
-        mediaPlayerManager.listenToMediaPlayerStatus().map { Pair(it, mediaPlayerManager.getPlayerRunningCount()) }
+        mediaPlayerManager.listenToMediaPlayerStatus().map {
+
+            Pair(it, mediaPlayerManager.getPlayerRunningCount())
+        }
     }
 
     override fun getAllFilters(): Single<List<FilterType>> =

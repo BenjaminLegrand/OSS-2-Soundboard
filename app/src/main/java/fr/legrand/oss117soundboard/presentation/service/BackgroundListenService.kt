@@ -1,14 +1,15 @@
 package fr.legrand.oss117soundboard.presentation.service
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.job.JobParameters
 import android.app.job.JobService
 import android.content.Context
+import android.content.Intent
 import android.os.Build
-import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import dagger.android.AndroidInjection
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
@@ -25,6 +26,9 @@ class BackgroundListenService : JobService() {
 
     @Inject
     lateinit var contentRepository: ContentRepository
+    @Inject
+    lateinit var notificationManager: NotificationManager
+
 
     private val disposable = CompositeDisposable()
     private var parameters: JobParameters? = null
@@ -56,30 +60,45 @@ class BackgroundListenService : JobService() {
     }
 
     private fun startForeground() {
-        startForeground(
-            NOTIFICATION_ID, NotificationCompat.Builder(this, getChannelId())
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(
-                    String.format(
-                        getString(R.string.background_listen_notif_format),
-                        getString(R.string.app_name),
-                        getString(R.string.background_listen).toLowerCase()
-                    )
+        val currentNotificationBuilder = NotificationCompat.Builder(this, getChannelId())
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentTitle(getString(R.string.background_listen))
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setColor(ContextCompat.getColor(this, R.color.colorAccent))
+            .addAction(
+                R.drawable.ic_notif_stop_listen, getString(R.string.stop_listen),
+                PendingIntent.getBroadcast(
+                    this,
+                    0,
+                    Intent(this, BackgroundListenStopReceiver::class.java),
+                    0
                 )
-                .setContentText(getString(R.string.background_listen_notif_content))
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(Notification.CATEGORY_SERVICE).build()
-        )
+            )
+
 
         disposable.add(contentRepository.listenToPlayerStatus().subscribeBy {
+            updateNotificationCount(it.second, currentNotificationBuilder)
             when (it.first) {
-                PlayerStatus.SINGLE_REPLY_ENDED -> Log.i("TAG", "REMAINING ${it.second}")
-                PlayerStatus.ENDED -> stop()
-                PlayerStatus.STARTED -> {
-                    /*Nothing to do currently*/
+                PlayerStatus.BOUND -> {
+                    startForeground(NOTIFICATION_ID, currentNotificationBuilder.build())
                 }
+                PlayerStatus.SINGLE_REPLY_ENDED -> {
+                    notificationManager.notify(NOTIFICATION_ID, currentNotificationBuilder.build())
+                }
+
+                PlayerStatus.ENDED -> stop()
             }
         })
+    }
+
+    private fun updateNotificationCount(count: Int, builder: NotificationCompat.Builder) {
+        builder.setContentText(
+            resources.getQuantityString(
+                R.plurals.background_listen_notif_content,
+                count,
+                count
+            )
+        )
     }
 
     private fun getChannelId(): String {

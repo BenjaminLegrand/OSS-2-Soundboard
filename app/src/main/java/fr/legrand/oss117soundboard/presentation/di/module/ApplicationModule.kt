@@ -1,10 +1,11 @@
 package fr.legrand.oss117soundboard.presentation.di.module
 
 import android.app.Application
+import android.app.NotificationManager
 import android.app.job.JobScheduler
 import android.content.Context
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import fr.legrand.oss117soundboard.data.manager.file.FileManager
 import fr.legrand.oss117soundboard.data.manager.file.FileManagerImpl
 import fr.legrand.oss117soundboard.data.manager.media.MediaPlayerManager
@@ -20,34 +21,47 @@ import fr.legrand.oss117soundboard.presentation.component.background.BackgroundC
 import javax.inject.Singleton
 
 @Module
-abstract class ApplicationModule {
+class ApplicationModule {
 
     @Singleton
-    @Binds
-    abstract fun provideContext(application: Application): Context
+    @Provides
+    fun provideContext(application: Application): Context = application
 
     @Singleton
-    @Binds
-    abstract fun provideContentRepository(repo: ContentRepositoryImpl): ContentRepository
+    @Provides
+    fun provideContentRepository(repo: ContentRepositoryImpl): ContentRepository = repo
 
     @Singleton
-    @Binds
-    abstract fun provideStorageManager(manager: StorageManagerImpl): StorageManager
+    @Provides
+    fun provideStorageManager(manager: StorageManagerImpl): StorageManager = manager
 
     @Singleton
-    @Binds
-    abstract fun provideFileManager(manager: FileManagerImpl): FileManager
+    @Provides
+    fun provideFileManager(manager: FileManagerImpl): FileManager = manager
 
     @Singleton
-    @Binds
-    abstract fun provideShardPrefsManager(manager: SharedPrefManagerImpl): SharedPrefManager
+    @Provides
+    fun provideShardPrefsManager(manager: SharedPrefManagerImpl): SharedPrefManager =
+        manager
 
     @Singleton
-    @Binds
-    abstract fun provideMediaManager(mediaPlayerComponentImpl: MediaPlayerManagerImpl): MediaPlayerManager
+    @Provides
+    fun provideMediaManager(mediaPlayerComponentImpl: MediaPlayerManagerImpl): MediaPlayerManager =
+        mediaPlayerComponentImpl
 
     @Singleton
-    @Binds
-    abstract fun provideBackgroundComponent(backgroundComponentImpl: BackgroundComponentImpl): BackgroundComponent
+    @Provides
+    fun provideBackgroundComponent(backgroundComponentImpl: BackgroundComponentImpl): BackgroundComponent =
+        backgroundComponentImpl
+
+    @Singleton
+    @Provides
+    fun provideNotificationManager(context: Context): NotificationManager =
+        context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    @Singleton
+    @Provides
+    fun provideJobScheduler(context: Context): JobScheduler =
+        context.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
 
 }

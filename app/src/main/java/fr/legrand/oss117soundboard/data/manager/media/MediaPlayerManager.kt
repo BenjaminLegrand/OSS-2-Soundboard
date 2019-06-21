@@ -16,5 +16,6 @@ interface MediaPlayerManager {
     fun playSoundMedia(mediaId: Int, multiListen: Boolean): Completable
 
     fun listenToMediaPlayerStatus(): Observable<PlayerStatus>
+
     fun getPlayerRunningCount(): Int
 }

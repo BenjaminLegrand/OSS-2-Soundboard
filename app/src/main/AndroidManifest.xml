@@ -35,5 +35,6 @@
         <service
             android:name=".presentation.service.BackgroundListenService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:name=".presentation.service.BackgroundListenStopReceiver" />
     </application>
 </manifest>

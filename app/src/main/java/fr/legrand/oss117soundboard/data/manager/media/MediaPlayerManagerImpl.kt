@@ -37,9 +37,6 @@ class MediaPlayerManagerImpl @Inject constructor(
             val trackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
             val simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(context, trackSelector)
 
-            if (runningMediaPlayerList.isEmpty()) {
-                mediaPlayingSubject.onNext(PlayerStatus.STARTED)
-            }
             runningMediaPlayerList.add(RunningPlayer(simpleExoPlayer, mediaId))
 
             if (!multiListen && runningMediaPlayerList.isNotEmpty()
@@ -65,7 +62,6 @@ class MediaPlayerManagerImpl @Inject constructor(
 
     override fun getPlayerRunningCount(): Int = runningMediaPlayerList.size
 
-
     private fun updatePlayerStatusOnStop() {
         if (runningMediaPlayerList.isEmpty()) {
             mediaPlayingSubject.onNext(PlayerStatus.ENDED)
@@ -80,7 +76,8 @@ class MediaPlayerManagerImpl @Inject constructor(
 
     override fun isPlayerCurrentlyRunning() = runningMediaPlayerList.isNotEmpty()
 
-    override fun listenToMediaPlayerStatus(): Observable<PlayerStatus> = mediaPlayingSubject
+    override fun listenToMediaPlayerStatus(): Observable<PlayerStatus> =
+        mediaPlayingSubject.startWith(PlayerStatus.BOUND)
 
     private fun releaseRunningPlayerById(mediaId: Int) {
         runningMediaPlayerList.firstOrNull { it.mediaId == mediaId }?.let {

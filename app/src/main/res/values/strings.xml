@@ -33,8 +33,10 @@
     <string name="ringtone">Utiliser comme sonnerie</string>
     <string name="share_title">Partager avec…</string>
     <string name="background_listen">Écoute en arrière-plan</string>
-    <string name="background_listen_notif_content">Écoute en arrière-plan active</string>
-    <string name="background_listen_notif_format">%s : %s</string>
+    <plurals name="background_listen_notif_content">
+        <item quantity="one">%d réplique en cours</item>
+        <item quantity="other">%d répliques en cours</item>
+    </plurals>
 
     <string name="filter_reply">Filtrer</string>
     <string name="filter_characters">Personnages</string>
@@ -846,6 +848,7 @@
     <string name="j_arrive_desc">J\'arrive.</string>
     <string name="ahahaha_avion_title">Ahahahahah</string>
     <string name="ahahaha_avion_desc">Hmm ahahaha ahah ahahahaahah ah hmmm</string>
+    <string name="stop_listen">Arrêter</string>
 
 
 </resources>

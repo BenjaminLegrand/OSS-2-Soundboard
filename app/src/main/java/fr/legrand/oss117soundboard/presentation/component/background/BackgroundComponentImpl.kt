@@ -9,15 +9,20 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
-class BackgroundComponentImpl @Inject constructor(private val context: Context) :
+class BackgroundComponentImpl @Inject constructor(
+    private val context: Context,
+    private val jobScheduler: JobScheduler
+) :
     BackgroundComponent {
 
-    private val jobScheduler = context.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
     private val appStateSubject = PublishSubject.create<AppState>()
 
     override fun startBackgroundListenService() {
         val jobInfo =
-            JobInfo.Builder(BackgroundListenService.JOB_ID, ComponentName(context, BackgroundListenService::class.java))
+            JobInfo.Builder(
+                BackgroundListenService.JOB_ID,
+                ComponentName(context, BackgroundListenService::class.java)
+            )
                 .setMinimumLatency(1)
                 .setOverrideDeadline(1)
                 .build()

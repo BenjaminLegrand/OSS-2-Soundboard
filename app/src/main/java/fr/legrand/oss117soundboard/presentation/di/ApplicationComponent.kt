@@ -5,10 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import fr.legrand.oss117soundboard.presentation.OSSApplication
-import fr.legrand.oss117soundboard.presentation.di.module.ActivityInjectorModule
-import fr.legrand.oss117soundboard.presentation.di.module.ApplicationModule
-import fr.legrand.oss117soundboard.presentation.di.module.ServiceInjectorModule
-import fr.legrand.oss117soundboard.presentation.di.module.ViewModelModule
+import fr.legrand.oss117soundboard.presentation.di.module.*
 import javax.inject.Singleton
 
 @Singleton
@@ -18,6 +15,7 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         ActivityInjectorModule::class,
         ServiceInjectorModule::class,
+        BroadcastReceiverInjectorModule::class,
         ViewModelModule::class
     ]
 )

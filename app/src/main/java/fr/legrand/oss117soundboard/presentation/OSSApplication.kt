@@ -3,14 +3,12 @@ package fr.legrand.oss117soundboard.presentation
 import android.app.Activity
 import android.app.Application
 import android.app.Service
+import android.content.BroadcastReceiver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import dagger.android.HasServiceInjector
+import dagger.android.*
 import fr.legrand.oss117soundboard.presentation.component.background.BackgroundComponent
 import fr.legrand.oss117soundboard.presentation.di.DaggerApplicationComponent
 import timber.log.Timber
@@ -20,13 +18,15 @@ import javax.inject.Inject
  * Created by Benjamin on 30/09/2017.
  */
 
-class OSSApplication : Application(), HasActivityInjector, HasServiceInjector {
-
+class OSSApplication : Application(), HasActivityInjector, HasServiceInjector,
+    HasBroadcastReceiverInjector {
 
     @Inject
     lateinit var activityInjector: DispatchingAndroidInjector<Activity>
     @Inject
     lateinit var serviceInjector: DispatchingAndroidInjector<Service>
+    @Inject
+    lateinit var broadcastReceiverInjector: DispatchingAndroidInjector<BroadcastReceiver>
     @Inject
     lateinit var backgroundComponent: BackgroundComponent
 
@@ -49,4 +49,7 @@ class OSSApplication : Application(), HasActivityInjector, HasServiceInjector {
 
     override fun activityInjector(): AndroidInjector<Activity> = activityInjector
     override fun serviceInjector(): AndroidInjector<Service> = serviceInjector
+    override fun broadcastReceiverInjector(): AndroidInjector<BroadcastReceiver> =
+        broadcastReceiverInjector
+
 }
