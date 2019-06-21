@@ -39,7 +39,8 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedViewModel = ViewModelProviders.of(activity!!, viewModelFactory)[ReplySharedViewModel::class.java]
+        sharedViewModel =
+            ViewModelProviders.of(activity!!, viewModelFactory)[ReplySharedViewModel::class.java]
 
         initializeRecyclerView()
 
@@ -111,6 +112,9 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
                 search_results_end_indicator.hide()
             }
             viewModel.getAllReplyNegated(args.favorite)
+        } else {
+            search_results_end_indicator.hide()
+            search_results_start_indicator.hide()
         }
     }
 
@@ -146,7 +150,7 @@ class ReplyListFragment : BaseVMFragment<ReplyListViewModel>() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (Settings.System.canWrite(context)) {
                     viewModel.setReplyAsRingtone(it)
-                }else{
+                } else {
                     mainNavigator.requestStartSettingsWritePermission()
                 }
             } else {

@@ -61,7 +61,7 @@ class BackgroundListenService : JobService() {
 
     private fun startForeground() {
         val currentNotificationBuilder = NotificationCompat.Builder(this, getChannelId())
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_listen)
             .setContentTitle(getString(R.string.background_listen))
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setColor(ContextCompat.getColor(this, R.color.colorAccent))

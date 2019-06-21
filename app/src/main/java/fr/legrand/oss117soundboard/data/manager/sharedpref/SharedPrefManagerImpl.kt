@@ -61,7 +61,7 @@ constructor(context: Context) : SharedPrefManager {
     }
 
     override fun isBackgroundListenEnabled(): Boolean =
-        sharedPreferences.getBoolean(BACKGROUND_LISTEN_KEY, true)
+        sharedPreferences.getBoolean(BACKGROUND_LISTEN_KEY, false)
 
     override fun setBackgroundListenEnabled(enabled: Boolean) {
         sharedPreferences.edit {

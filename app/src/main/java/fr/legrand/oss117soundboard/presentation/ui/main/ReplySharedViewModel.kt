@@ -34,14 +34,11 @@ class ReplySharedViewModel @Inject constructor(
     val characterFilters = mutableListOf<MovieCharacterViewData>()
     val movieFilters = mutableListOf<MovieViewData>()
 
-    private var backgroundListenEnabled = false
-
     init {
         requestSearch(NO_SEARCH)
         initFilters()
         getCharacterFilterData()
         getMovieFilterData()
-        checkBackgroundListen()
         listenToAppState()
     }
 
@@ -89,11 +86,7 @@ class ReplySharedViewModel @Inject constructor(
     }
 
     fun releaseRunningPlayersBackground() {
-        if (backgroundListenEnabled) {
-            backgroundComponent.startBackgroundListenService()
-        } else {
-            releaseRunningPlayers()
-        }
+        checkBackgroundListen()
     }
 
     fun resetFilters() {
@@ -160,7 +153,11 @@ class ReplySharedViewModel @Inject constructor(
     private fun checkBackgroundListen() {
         contentRepository.isBackgroundListenEnabled().subscribeOn(Schedulers.io())
             .subscribeBy(onSuccess = {
-                backgroundListenEnabled = it
+                if (it) {
+                    backgroundComponent.startBackgroundListenService()
+                } else {
+                    releaseRunningPlayers()
+                }
             }, onError = {
                 Timber.e(it)
             })
