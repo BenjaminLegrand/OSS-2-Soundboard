@@ -38,6 +38,12 @@
         <item quantity="other">%d répliques en cours</item>
     </plurals>
 
+    <string name="single_filter_full_content_format"><b>%s</b> : %s</string>
+    <plurals name="single_filter_content_limit_format">
+        <item quantity="one">%s et %d autre</item>
+        <item quantity="other">%s et %d autres</item>
+    </plurals>
+    <string name="filter_content_separator">\n</string>
     <string name="filter_reply">Filtrer</string>
     <string name="filter_characters">Personnages</string>
     <string name="filter_movies">Films</string>

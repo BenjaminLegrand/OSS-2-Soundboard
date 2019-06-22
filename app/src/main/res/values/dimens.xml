@@ -41,4 +41,7 @@
     <dimen name="reply_characters_icon_size">12dp</dimen>
     <dimen name="characters_icon_margin">6dp</dimen>
     <dimen name="reply_view_holder_icon_size">16dp</dimen>
+    <dimen name="main_activity_header_shadow_height">6dp</dimen>
+    <dimen name="filter_indicator_icon_size">24dp</dimen>
+    <dimen name="filter_indicator_margin">24dp</dimen>
 </resources>

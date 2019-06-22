@@ -2,6 +2,7 @@ package fr.legrand.oss117soundboard.presentation.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import fr.legrand.oss117soundboard.data.entity.FilterType
 import fr.legrand.oss117soundboard.data.repository.ContentRepository
 import fr.legrand.oss117soundboard.presentation.component.background.AppState
 import fr.legrand.oss117soundboard.presentation.component.background.BackgroundComponent
@@ -30,9 +31,11 @@ class ReplySharedViewModel @Inject constructor(
     val availableFilters = MutableLiveData<List<FilterViewData>>()
     val onCharacterFilterUpdated = MutableLiveData<List<MovieCharacterViewData>>()
     val onMovieFilterUpdated = MutableLiveData<List<MovieViewData>>()
+    val activeFiltersUpdated = MutableLiveData<List<FilterType>>()
 
     val characterFilters = mutableListOf<MovieCharacterViewData>()
     val movieFilters = mutableListOf<MovieViewData>()
+    val activeFilters = mutableListOf<FilterType>()
 
     init {
         requestSearch(NO_SEARCH)
@@ -65,7 +68,13 @@ class ReplySharedViewModel @Inject constructor(
             character.selected = result
             result
         }
+        if (filter.isNotEmpty() && !activeFilters.contains(FilterType.CHARACTERS)) {
+            activeFilters.add(FilterType.CHARACTERS)
+        } else if (filter.isEmpty()) {
+            activeFilters.remove(FilterType.CHARACTERS)
+        }
         onCharacterFilterUpdated.postValue(filter)
+        activeFiltersUpdated.postValue(activeFilters)
     }
 
     fun selectMovieFilters(selected: IntArray) {
@@ -74,7 +83,13 @@ class ReplySharedViewModel @Inject constructor(
             character.selected = result
             result
         }
+        if (filter.isNotEmpty() && !activeFilters.contains(FilterType.MOVIES)) {
+            activeFilters.add(FilterType.MOVIES)
+        } else if (filter.isEmpty()) {
+            activeFilters.remove(FilterType.MOVIES)
+        }
         onMovieFilterUpdated.postValue(filter)
+        activeFiltersUpdated.postValue(activeFilters)
     }
 
     fun releaseRunningPlayers() {
@@ -95,6 +110,8 @@ class ReplySharedViewModel @Inject constructor(
         onCharacterFilterUpdated.value = characterFilters
         movieFilters.forEach { it.selected = false }
         onMovieFilterUpdated.value = movieFilters
+        activeFilters.clear()
+        activeFiltersUpdated.postValue(activeFilters)
     }
 
     private fun getCharacterFilterData() {

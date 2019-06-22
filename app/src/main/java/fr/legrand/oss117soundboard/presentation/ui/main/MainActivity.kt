@@ -3,11 +3,15 @@ package fr.legrand.oss117soundboard.presentation.ui.main
 import android.media.AudioManager
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.ui.setupWithNavController
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.entity.FilterType
 import fr.legrand.oss117soundboard.presentation.component.dialog.DialogComponent
@@ -20,10 +24,13 @@ import fr.legrand.oss117soundboard.presentation.utils.observeSafe
 import fr.legrand.oss117soundboard.presentation.utils.show
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+import kotlin.math.min
 
 /**
  * Created by Benjamin on 30/09/2017.
  */
+
+private const val SINGLE_FILTER_DISPLAY_COUNT_LIMIT = 2
 
 class MainActivity : BaseVMActivity<MainViewModel>() {
 
@@ -63,11 +70,24 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             main_activity_fab_stop_listen.hide()
         }
 
+        replySharedViewModel.activeFiltersUpdated.observeSafe(this) {
+            TransitionManager.beginDelayedTransition(main_activity_root_layout, AutoTransition())
+            if (it.isNotEmpty()) {
+                updateFilterIndicator(it)
+            } else {
+                activity_main_filter_group.hide()
+            }
+        }
+
         navController.addOnDestinationChangedListener { _, dest, _ ->
             if (dest.id == R.id.settings_fragment) {
                 activity_main_search_group.hide()
+                activity_main_filter_group.hide()
             } else {
                 activity_main_search_group.show()
+                if (replySharedViewModel.activeFilters.isNotEmpty()) {
+                    activity_main_filter_group.show()
+                }
             }
             clearSearchFocus()
             invalidateOptionsMenu()
@@ -75,6 +95,7 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
         initializeSearch()
     }
+
 
     override fun onStop() {
         super.onStop()
@@ -128,7 +149,7 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
     }
 
     private fun initializeSearch() {
-        activity_reset_search.setOnClickListener {
+        activity_main_reset_search.setOnClickListener {
             activity_main_search.text.clear()
             clearSearchFocus()
 
@@ -208,4 +229,66 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             )
         }
     }
+
+    private fun updateFilterIndicator(filters: List<FilterType>) {
+        val filterContent = mutableListOf<String>()
+        filters.forEach {
+            when (it) {
+                FilterType.CHARACTERS -> {
+                    val currentCharacterFilters =
+                        replySharedViewModel.characterFilters.filter { it.selected }
+                    val charactersFilterText =
+                        currentCharacterFilters.take(
+                            min(currentCharacterFilters.size, SINGLE_FILTER_DISPLAY_COUNT_LIMIT)
+                        ).joinToString { it.getDisplayName(this) }
+                    filterContent.add(
+                        generateFilterText(
+                            currentCharacterFilters.size,
+                            charactersFilterText,
+                            getString(R.string.filter_characters)
+                        )
+                    )
+                }
+                FilterType.MOVIES -> {
+                    val currentMovieFilters =
+                        replySharedViewModel.movieFilters.filter { it.selected }
+                    val moviesFilterText =
+                        currentMovieFilters.take(
+                            min(currentMovieFilters.size, SINGLE_FILTER_DISPLAY_COUNT_LIMIT)
+                        ).joinToString { it.getDisplayName(this) }
+                    filterContent.add(
+                        generateFilterText(
+                            currentMovieFilters.size,
+                            moviesFilterText,
+                            getString(R.string.filter_movies)
+                        )
+                    )
+                }
+            }
+        }
+        activity_main_filter_group.show()
+        activity_main_filter_indicator_layout.removeAllViews()
+        filterContent.forEach {
+            activity_main_filter_indicator_layout.addView(TextView(this).apply {
+                text = it
+                maxLines = 1
+                ellipsize = TextUtils.TruncateAt.MIDDLE
+            })
+        }
+
+    }
+
+    private fun generateFilterText(size: Int, text: String, label: String) =
+        if (size > SINGLE_FILTER_DISPLAY_COUNT_LIMIT) {
+            val content = resources.getQuantityString(
+                R.plurals.single_filter_content_limit_format,
+                size - SINGLE_FILTER_DISPLAY_COUNT_LIMIT,
+                text,
+                size - SINGLE_FILTER_DISPLAY_COUNT_LIMIT
+            )
+            getString(R.string.single_filter_full_content_format, label, content)
+        } else {
+            getString(R.string.single_filter_full_content_format, label, text)
+        }
+
 }
