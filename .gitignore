@@ -155,3 +155,4 @@ fabric.properties
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
+app/prod/release/output.json

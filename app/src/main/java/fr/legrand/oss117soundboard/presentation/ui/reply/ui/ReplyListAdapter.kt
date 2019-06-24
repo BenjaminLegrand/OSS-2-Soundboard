@@ -2,8 +2,7 @@ package fr.legrand.oss117soundboard.presentation.ui.reply.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.presentation.ui.base.BaseActivity
 import fr.legrand.oss117soundboard.presentation.ui.reply.item.ReplyViewData
@@ -14,7 +13,7 @@ import javax.inject.Inject
  */
 class ReplyListAdapter @Inject
 constructor(private val activity: BaseActivity) :
-    ListAdapter<ReplyViewData, ReplyListViewHolder>(diffUtilCallback) {
+    RecyclerView.Adapter<ReplyListViewHolder>() {
 
     private val replyList = mutableListOf<ReplyViewData>()
 
@@ -49,15 +48,7 @@ constructor(private val activity: BaseActivity) :
     fun setItems(replyList: List<ReplyViewData>) {
         this.replyList.clear()
         this.replyList.addAll(replyList)
-        submitList(replyList)
+        notifyDataSetChanged()
     }
 
-}
-
-private val diffUtilCallback = object : DiffUtil.ItemCallback<ReplyViewData>() {
-    override fun areItemsTheSame(oldItem: ReplyViewData, newItem: ReplyViewData): Boolean =
-        oldItem.getId() == newItem.getId()
-
-    override fun areContentsTheSame(oldItem: ReplyViewData, newItem: ReplyViewData): Boolean =
-        oldItem == newItem
 }
