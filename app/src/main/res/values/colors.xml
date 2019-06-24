@@ -11,4 +11,5 @@
     <color name="base_background_color">#FAFAFA</color>
     <color name="settings_text_pressed">#BDBDBD</color>
     <color name="hint_color">#fff</color>
+    <color name="secondary_text_color">#323232</color>
 </resources>

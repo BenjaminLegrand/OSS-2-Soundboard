@@ -8,7 +8,8 @@
     <string name="favorite_list_title">Favoris</string>
     <string name="reply_list_title">Répliques</string>
     <string name="delete">Retirer</string>
-    <string name="multi_listen">Écoute multiple (8 simultanées max)</string>
+    <string name="multi_listen">Écoute multiple</string>
+    <string name="multi_listen_summary">8 répliques simultanées maximum</string>
     <string name="settings_title">Paramètres</string>
     <string name="easter_egg_url">https://duckduckgo.com/?q=oss+117+3&amp;kad=fr_FR</string>
     <string name="most_listened_reply">Réplique la plus écoutée</string>
@@ -33,11 +34,18 @@
     <string name="ringtone">Utiliser comme sonnerie</string>
     <string name="share_title">Partager avec…</string>
     <string name="background_listen">Écoute en arrière-plan</string>
+    <string name="background_listen_summary">Les répliques en cours continuent lorsque l\'application passe en arrière-plan</string>
     <plurals name="background_listen_notif_content">
         <item quantity="one">%d réplique en cours</item>
         <item quantity="other">%d répliques en cours</item>
     </plurals>
 
+    <string name="single_filter_full_content_format"><b>%s</b> : %s</string>
+    <plurals name="single_filter_content_limit_format">
+        <item quantity="one">%s et %d autre</item>
+        <item quantity="other">%s et %d autres</item>
+    </plurals>
+    <string name="filter_content_separator">\n</string>
     <string name="filter_reply">Filtrer</string>
     <string name="filter_characters">Personnages</string>
     <string name="filter_movies">Films</string>

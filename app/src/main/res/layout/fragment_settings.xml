@@ -29,25 +29,40 @@
             <TextView
                 android:id="@+id/fragment_settings_multi_listen_title"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/settings_min_clickable_height"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base_margin"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/setting_title_padding"
                 android:paddingEnd="@dimen/setting_title_padding"
                 android:text="@string/multi_listen"
                 android:textSize="@dimen/setting_title_text_size"
-                app:layout_constraintBottom_toTopOf="@id/fragment_settings_multi_listen_separator"
+                app:layout_constraintBottom_toTopOf="@id/fragment_settings_multi_listen_summary"
                 app:layout_constraintEnd_toStartOf="@id/fragment_settings_multi_listen_switch"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fragment_settings_settings_label" />
 
+            <TextView
+                android:id="@+id/fragment_settings_multi_listen_summary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/setting_data_margin"
+                android:layout_marginEnd="@dimen/setting_data_margin"
+                android:gravity="start"
+                android:paddingTop="@dimen/base_padding"
+                android:paddingBottom="@dimen/base_padding"
+                android:text="@string/multi_listen_summary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                app:layout_constraintBottom_toTopOf="@id/fragment_settings_multi_listen_separator"
+                app:layout_constraintEnd_toStartOf="@id/fragment_settings_multi_listen_switch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_settings_multi_listen_title" />
 
             <Switch
                 android:id="@+id/fragment_settings_multi_listen_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/base_margin"
-                app:layout_constraintBottom_toBottomOf="@id/fragment_settings_multi_listen_title"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_settings_multi_listen_summary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/fragment_settings_multi_listen_title"
                 app:layout_constraintTop_toTopOf="@id/fragment_settings_multi_listen_title" />
@@ -58,22 +73,38 @@
                 android:layout_height="@dimen/base_separator_height"
                 android:layout_marginTop="@dimen/base_margin"
                 android:background="@color/base_separator_color"
-                app:layout_constraintTop_toBottomOf="@id/fragment_settings_multi_listen_title" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_settings_multi_listen_summary" />
 
             <TextView
                 android:id="@+id/fragment_settings_background_listen_title"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/settings_min_clickable_height"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base_margin"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/setting_title_padding"
                 android:paddingEnd="@dimen/setting_title_padding"
                 android:text="@string/background_listen"
                 android:textSize="@dimen/setting_title_text_size"
-                app:layout_constraintBottom_toTopOf="@id/fragment_settings_background_listen_separator"
+                app:layout_constraintBottom_toTopOf="@id/fragment_settings_background_listen_summary"
                 app:layout_constraintEnd_toStartOf="@id/fragment_settings_background_listen_switch"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fragment_settings_multi_listen_separator" />
+
+            <TextView
+                android:id="@+id/fragment_settings_background_listen_summary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/setting_data_margin"
+                android:layout_marginEnd="@dimen/setting_data_margin"
+                android:gravity="start"
+                android:paddingTop="@dimen/base_padding"
+                android:paddingBottom="@dimen/base_padding"
+                android:text="@string/background_listen_summary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                app:layout_constraintBottom_toTopOf="@id/fragment_settings_background_listen_separator"
+                app:layout_constraintEnd_toStartOf="@id/fragment_settings_background_listen_switch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_settings_background_listen_title" />
 
 
             <Switch
@@ -81,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/base_margin"
-                app:layout_constraintBottom_toBottomOf="@id/fragment_settings_background_listen_title"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_settings_background_listen_summary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/fragment_settings_background_listen_title"
                 app:layout_constraintTop_toTopOf="@id/fragment_settings_background_listen_title" />
@@ -92,7 +123,7 @@
                 android:layout_height="@dimen/base_separator_height"
                 android:layout_marginTop="@dimen/base_margin"
                 android:background="@color/base_separator_color"
-                app:layout_constraintTop_toBottomOf="@id/fragment_settings_background_listen_title" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_settings_background_listen_summary" />
 
             <View
                 android:id="@+id/fragment_settings_reply_sort_area"
