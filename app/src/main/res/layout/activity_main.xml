@@ -4,6 +4,7 @@
     android:id="@+id/main_activity_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/base_background_color">
 
     <androidx.appcompat.widget.Toolbar
@@ -62,37 +63,45 @@
         android:layout_marginBottom="@dimen/base_margin"
         android:background="@drawable/search_background"
         android:elevation="@dimen/search_area_elevation"
-        app:layout_constraintBottom_toTopOf="@id/filter_top_barrier"
+        app:layout_constraintBottom_toTopOf="@id/activity_main_filter_indicator_area"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_main_toolbar" />
 
-
-    <ImageView
-        android:id="@+id/activity_main_filter_indicator_icon"
-        android:layout_width="@dimen/filter_indicator_icon_size"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/filter_indicator_margin"
-        android:src="@drawable/ic_filter"
-        android:tint="@android:color/secondary_text_light"
-        app:layout_constraintBottom_toBottomOf="@id/activity_main_filter_indicator_layout"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/activity_main_filter_indicator_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/activity_main_filter_indicator_layout" />
-
-    <LinearLayout
-        android:id="@+id/activity_main_filter_indicator_layout"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_main_filter_indicator_area"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margin"
-        android:layout_marginEnd="@dimen/filter_indicator_margin"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/main_activity_header_shadow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/activity_main_filter_indicator_icon"
-        app:layout_constraintTop_toBottomOf="@id/activity_main_search_area" />
+        android:paddingBottom="@dimen/base_padding"
+        app:layout_constraintBottom_toTopOf="@id/fragment_container"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_search_area">
 
+        <ImageView
+            android:id="@+id/activity_main_filter_indicator_icon"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/filter_indicator_icon_size"
+            android:layout_marginStart="@dimen/filter_indicator_margin"
+            android:src="@drawable/ic_filter"
+            android:tint="@android:color/secondary_text_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/activity_main_filter_indicator_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/activity_main_filter_indicator_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/base_margin"
+            android:layout_marginEnd="@dimen/filter_indicator_margin"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/activity_main_filter_indicator_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <fragment
         android:id="@+id/fragment_container"
@@ -103,7 +112,7 @@
         app:layout_constraintBottom_toTopOf="@id/main_activity_bottom_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_bottom_barrier"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_filter_indicator_area"
         app:navGraph="@navigation/main_activity_graph" />
 
     <View
@@ -111,7 +120,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/main_activity_header_shadow_height"
         android:background="@drawable/header_shadow"
-        app:layout_constraintTop_toBottomOf="@id/filter_bottom_barrier" />
+        app:layout_constraintTop_toBottomOf="@id/activity_main_filter_indicator_area" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main_activity_fab_stop_listen"
@@ -135,20 +144,6 @@
         app:layout_constraintTop_toBottomOf="@id/fragment_container"
         app:menu="@menu/bottom_navigation_items" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/filter_bottom_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="activity_main_filter_indicator_layout,activity_main_filter_indicator_icon" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/filter_top_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="activity_main_filter_indicator_layout,activity_main_filter_indicator_icon" />
-
     <androidx.constraintlayout.widget.Group
         android:id="@+id/activity_main_search_group"
         android:layout_width="wrap_content"
@@ -160,5 +155,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:constraint_referenced_ids="activity_main_filter_indicator_layout,activity_main_filter_indicator_icon,main_activity_header_shadow" />
+        app:constraint_referenced_ids="activity_main_filter_indicator_area,main_activity_header_shadow" />
 </androidx.constraintlayout.widget.ConstraintLayout>

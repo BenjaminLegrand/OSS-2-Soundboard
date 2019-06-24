@@ -10,8 +10,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.ui.setupWithNavController
-import androidx.transition.AutoTransition
-import androidx.transition.TransitionManager
 import fr.legrand.oss117soundboard.R
 import fr.legrand.oss117soundboard.data.entity.FilterType
 import fr.legrand.oss117soundboard.presentation.component.dialog.DialogComponent
@@ -71,10 +69,10 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
         }
 
         replySharedViewModel.activeFiltersUpdated.observeSafe(this) {
-            TransitionManager.beginDelayedTransition(main_activity_root_layout, AutoTransition())
             if (it.isNotEmpty()) {
                 updateFilterIndicator(it)
             } else {
+                activity_main_filter_indicator_layout.removeAllViews()
                 activity_main_filter_group.hide()
             }
         }
@@ -232,7 +230,7 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
     private fun updateFilterIndicator(filters: List<FilterType>) {
         val filterContent = mutableListOf<String>()
-        filters.forEach {
+        filters.sorted().forEach {
             when (it) {
                 FilterType.CHARACTERS -> {
                     val currentCharacterFilters =
