@@ -10,7 +10,7 @@ android {
         applicationId "fr.legrand.oss117soundboard"
         minSdkVersion Versions.MIN_SDK
         targetSdkVersion Versions.TARGET_SDK
-        versionCode 3
+        versionCode 4
         versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
