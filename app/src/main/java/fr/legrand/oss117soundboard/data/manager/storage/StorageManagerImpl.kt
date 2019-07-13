@@ -34,6 +34,5 @@ class StorageManagerImpl @Inject constructor(context: Context) : StorageManager 
     override fun getAllReply(): List<Reply> = roomManager.getAllReply()
 
     override fun getReplyById(replyId: Int): Reply = roomManager.getReplyById(replyId)
-    override fun resetReplyList() = roomManager.resetReplyList()
 
 }
