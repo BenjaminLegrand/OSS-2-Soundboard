@@ -19,6 +19,4 @@ interface StorageManager {
 
     fun getReplyById(replyId: Int): Reply
 
-    fun resetReplyList()
-
 }

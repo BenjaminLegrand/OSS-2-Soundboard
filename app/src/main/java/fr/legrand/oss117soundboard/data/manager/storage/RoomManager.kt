@@ -1,9 +1,6 @@
 package fr.legrand.oss117soundboard.data.manager.storage
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import fr.legrand.oss117soundboard.data.entity.Reply
 
 @Dao
@@ -23,7 +20,7 @@ interface RoomManager {
     @Query("UPDATE Reply SET isFavorite = :addToFavorite WHERE id = :replyId")
     fun updateFavoriteReply(replyId: Int, addToFavorite: Boolean)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun saveReplyList(replyList: List<Reply>)
 
     @Query("UPDATE Reply SET listenCount = listenCount + 1 WHERE id = :replyId")
@@ -31,8 +28,5 @@ interface RoomManager {
 
     @Query("SELECT * FROM reply WHERE id == :id")
     fun getReplyById(id: Int): Reply
-
-    @Query("DELETE FROM reply")
-    fun resetReplyList()
 
 }

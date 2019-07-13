@@ -62,7 +62,6 @@ class ContentRepositoryImpl @Inject constructor(
 
     override fun initAllReply(): Completable {
         return Completable.defer {
-            storageManager.resetReplyList()
             storageManager.saveReplyList(fileManager.buildReplyListFromResource())
             Completable.complete()
         }
