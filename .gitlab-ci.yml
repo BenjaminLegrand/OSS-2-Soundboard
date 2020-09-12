@@ -1,0 +1,52 @@
+include:
+  remote: 'https://gitlab.com/BenjaminLegrand/shared-gitlab-ci/raw/master/.shared-gitlab-ci.yml'
+
+variables:
+  SDK_TOOLS_VERSION: "6609375"
+  ANDROID_COMPILE_SDK: "30"
+  ANDROID_BUILD_TOOLS: "29.0.3"
+
+stages:
+  - build
+  - test
+  - clean
+
+build_debug:
+  script: ./gradlew assembleDevDebug
+  stage: build
+  tags:
+    - android
+  artifacts:
+    paths:
+      - $DEFAULT_APP_MODULE/build/outputs/apk/debug/dev/*.apk
+    name: "$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
+
+build_release:
+  script: ./gradlew assembleDevRelease
+  stage: build
+  tags:
+    - android
+  artifacts:
+    paths:
+      - $DEFAULT_APP_MODULE/build/outputs/apk/release/dev/*.apk
+    name: "$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
+
+unit_test_debug:
+  script: ./gradlew testDevDebugUnitTest
+  stage: test
+  tags:
+    - android
+
+unit_test_release:
+  script: ./gradlew testDevReleaseUnitTest
+  stage: test
+  tags:
+    - android
+
+clean:
+  script: ./gradlew clean
+  stage: clean
+  tags:
+    - android
+
+
