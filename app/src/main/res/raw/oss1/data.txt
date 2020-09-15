@@ -1,0 +1,406 @@
+constructor(
+        id: xx,
+        name: "Générique",
+        description: "",
+        timestamp: 1,
+        movie: OSS1,
+        characters: Autres,
+)
+
+constructor(
+        id: xx,
+        name: "Musique allemande menacante",
+        description: "",
+        timestamp: 15,
+        movie: OSS1,
+        characters: Autres,
+)
+
+constructor(
+        id: xx,
+        name: "Dépechez vous rubecht",
+        description: "Dépechez vous Rubecht.. imbécile !",
+        timestamp: 48,
+        movie: OSS1,
+        characters: Colonel,
+)
+
+
+constructor(
+        id: xx,
+        name: "Vous dormez Rubecht ?",
+        description: "Vous dormez Rubecht ?",
+        timestamp: 70,
+        movie: OSS1,
+        characters: Colonel,
+)
+
+constructor(
+        id: xx,
+        name: "Vous dormez..",
+        description: "Vous dormez..",
+        timestamp: 83,
+        movie: OSS1,
+        characters: Colonel,
+)
+
+
+constructor(
+        id: xx,
+        name: "Tu n'es pas Rubecht !",
+        description: "Tu n'es pas Rubecht, tu n'es même pas allemand",
+        timestamp: 86,
+        movie: OSS1,
+        characters: Colonel,
+)
+
+constructor(
+        id: xx,
+        name: "T'es ridicule, j'ai une arme, et toi non.",
+        description: "T'es ridicule, j'ai une arme, et toi non.",
+        timestamp: 89,
+        movie: OSS1,
+        characters: Colonel,
+)
+
+constructor(
+        id: xx,
+        name: "Imbécile",
+        description: "Imbécile",
+        timestamp: 95,
+        movie: OSS1,
+        characters: Colonel,
+)
+
+constructor(
+        id: xx,
+        name: "Vous allez piloter ce fichu avion",
+        description: "Vous allez piloter ce fichu avion et m'amener en Amérique du Sud",
+        timestamp: 118,
+        movie: OSS1,
+        characters: Colonel,
+)
+
+constructor(
+        id: xx,
+        name: "Des journauuux",
+        description: "Des journaux, des journauuux",
+        timestamp: 129,
+        movie: OSS1,
+        characters: Colonel,
+)
+
+constructor(
+        id: xx,
+        name: "OSS 117",
+        description: "OSS 117",
+        timestamp: 138,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "OSS117, pour vous servir",
+        description: "OSS117, pour vous servir",
+        timestamp: 139,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+
+constructor(
+        id: xx,
+        name: "Aufviderzen heir Colonel",
+        description: "Aufviderzen heir Colonel",
+        timestamp: 146,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+
+constructor(
+        id: xx,
+        name: "Alors allons redresser cet avion",
+        description: "Alors allons redresser cet avion",
+        timestamp: 160,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+
+constructor(
+        id: xx,
+        name: "J'arrive",
+        description: "J'arrive",
+        timestamp: 160,
+        movie: OSS1,
+        characters: Jack,
+)
+
+constructor(
+        id: xx,
+        name: "Ahahahahah",
+        description: "Hm ahahaha aha ahahahaahah ah hmmm",
+        timestamp: 178,
+        movie: OSS1,
+        characters: Jack, Hubert,
+)
+
+
+constructor(
+        id: xx,
+        name: "Il y a quand même quelquechose qui me turlupine..",
+        description: "Il y a quand même quelquechose qui me turlupine Jack. Pourquoi ne pas avoir donner la serviette alors que tu avais déjà les plans ? Parce que jamais je ne céderais devant la barbarie. Ah oui, exactement comme moi",
+        timestamp: 182,
+        movie: OSS1,
+        characters: Jack, Hubert,
+)
+
+
+constructor(
+        id: xx,
+        name: "Parce que jamais je ne céderais devant la barbarie",
+        description: "Parce que jamais je ne céderais devant la barbarie",
+        timestamp: 191,
+        movie: OSS1,
+        characters: Jack,
+)
+
+
+constructor(
+        id: xx,
+        name: "Générique",
+        description: "Musique du générique par Ludovic Bource",
+        timestamp: 191,
+        movie: OSS1,
+)
+
+constructor(
+        id: xx,
+        name: "Tu as un numéro comme ces vaches que l'on conduit à l'abbatoir.",
+        description: "Tu as un numéro comme ces vaches que l'on conduit à l'abbatoir.",
+        timestamp: 340,
+        movie: OSS1,
+        characters: Princesse,
+)
+
+constructor(
+        id: xx,
+        name: "À votre service",
+        description: "À votre service",
+        timestamp: 340,
+        movie: OSS1,
+        characters: Princesse,
+)
+
+constructor(
+        id: xx,
+        name: "Vous êtes bien grossières pour une femme dont le tonton est pharaon",
+        description: "Vous êtes bien grossières pour une femme dont le tonton est pharaon",
+        timestamp: 360,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "Les pharaons régnaient il y a 4000 ans",
+        description: "Les pharaons régnaient il y a 4000 ans",
+        timestamp: 370,
+        movie: OSS1,
+        characters: Princesse,
+)  
+
+constructor(
+        id: xx,
+        name: "Je le sais ça",
+        description: "Je le sais ça",
+        timestamp: 375,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "Fais moi l'amour",
+        description: "Avant de partir sale espion, fais moi l'amour",
+        timestamp: 380,
+        movie: OSS1,
+        characters: Princesse,
+)
+
+constructor(
+        id: xx,
+        name: "Non je ne crois pas non",
+        description: "Non je ne crois pas non. Pourquoi ? Pas envie",
+        timestamp: 385,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "Je n'ai pas aimé le truc sur les vaches",
+        description: "Je n'ai pas aimé le truc sur les vaches",
+        timestamp: 390,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "Baillonée ?",
+        description: "Baillonée ? Oui..",
+        timestamp: 393,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "Viens crotal !",
+        description: "Viens crotal !",
+        timestamp: 396,
+        movie: OSS1,
+        characters: Princesse,
+)
+
+constructor(
+        id: xx,
+        name: "Oui mais dépechons nous je n'ai que quelques heures",
+        description: "Oui mais dépechons nous je n'ai que quelques heures",
+        timestamp: 395,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "Comment est votre blanquette ?",
+        description: "Comment est votre blanquette ?",
+        timestamp: 420,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "La blanquette est bonne",
+        description: "La blanquette est bonne",
+        timestamp: 422,
+        movie: OSS1,
+        characters: Barman,
+)
+
+
+constructor(
+        id: xx,
+        name: "Comment est votre blanquette ?",
+        description: "Comment est votre blanquette ?",
+        timestamp: 425,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "La blanquette est bonne",
+        description: "La blanquette est bonne",
+        timestamp: 427,
+        movie: OSS1,
+        characters: Barman,
+)
+
+constructor(
+        id: xx,
+        name: "Jack",
+        description: "Jack",
+        timestamp: 440,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "Ahah mouahah",
+        description: "ahah mouahah entre Hubert et Jack",
+        timestamp: 445,
+        movie: OSS1,
+        characters: Hubert,
+)
+
+constructor(
+        id: xx,
+        name: "AAHAH ooOHH",
+        description: "AAHAH ooOHH",
+        timestamp: 450,
+        movie: OSS1,
+        characters: Hubert, Jack
+)
+
+constructor(
+        id: xx,
+        name: "Les ?",
+        description: "Les ?",
+        timestamp: 455,
+        movie: OSS1,
+        characters: Hubert
+)
+
+constructor(
+        id: xx,
+        name: "Joli cocktail",
+        description: "Joli cocktail",
+        timestamp: 460,
+        movie: OSS1,
+        characters: Hubert
+)
+
+constructor(
+        id: xx,
+        name: "Le président Coty ?",
+        description: "Le président Coty ?",
+        timestamp: 462,
+        movie: OSS1,
+        characters: Hubert
+)
+
+constructor(
+        id: xx,
+        name: "Harengs pommes à l'huile",
+        description: "On me dit le plus grand bien de vos harengs pommes à l'huile ? Je vous en mets un ramequin, vous vous ferez une idée.",
+        timestamp: 480 ,
+        movie: OSS1,
+        characters: Hubert, Barman
+)
+
+constructor(
+        id: xx,
+        name: "Expert du monde arabo-musulman",
+        description: "Nous avons besoin de vous sur place. D'un expert, un spécialiste du monde arabo-musulman. Arabo ? Musulman",
+        timestamp: 482 ,
+        movie: OSS1,
+        characters: Hubert, Gars
+)
+
+constructor(
+        id: xx,
+        name: "Conforter les positions de la France",
+        description: "Conforter les positions de la France, instaurer la paix en Egypte, enfin sécurisez le Proche Orient. Pas de problème !" ,
+        timestamp: 495 ,
+        movie: OSS1,
+        characters: Hubert, Gars
+)
+
+constructor(
+        id: xx,
+        name: "Pas de problème !",
+        description: "Pas de problème !" ,
+        timestamp: 497 ,
+        movie: OSS1,
+        characters: Hubert
+)
+
+
+
